@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.biaozhu.mapper.PicInfoMapper">
+    
+    <resultMap type="PicInfo" id="PicInfoResult">
+        <result property="pId"    column="p_id"    />
+        <result property="age"    column="age"    />
+        <result property="gender"    column="gender"    />
+        <result property="imgAddress"    column="img_address"    />
+    </resultMap>
+
+    <sql id="selectPicInfoVo">
+        select p_id, age, gender, img_address from pic_info
+    </sql>
+
+    <select id="selectPicInfoList" parameterType="PicInfo" resultMap="PicInfoResult">
+        <include refid="selectPicInfoVo"/>
+        <where>  
+            <if test="pId != null  and pId != ''"> and p_id = #{pId}</if>
+            <if test="age != null "> and age = #{age}</if>
+            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+            <if test="imgAddress != null  and imgAddress != ''"> and img_address = #{imgAddress}</if>
+        </where>
+    </select>
+    
+    <select id="selectPicInfoByPId" parameterType="String" resultMap="PicInfoResult">
+        <include refid="selectPicInfoVo"/>
+        where p_id = #{pId}
+    </select>
+        
+    <insert id="insertPicInfo" parameterType="PicInfo">
+        insert into pic_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pId != null and pId != ''">p_id,</if>
+            <if test="age != null">age,</if>
+            <if test="gender != null">gender,</if>
+            <if test="imgAddress != null">img_address,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="pId != null and pId != ''">#{pId},</if>
+            <if test="age != null">#{age},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="imgAddress != null">#{imgAddress},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePicInfo" parameterType="PicInfo">
+        update pic_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="age != null">age = #{age},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="imgAddress != null">img_address = #{imgAddress},</if>
+        </trim>
+        where p_id = #{pId}
+    </update>
+
+    <delete id="deletePicInfoByPId" parameterType="String">
+        delete from pic_info where p_id = #{pId}
+    </delete>
+
+    <delete id="deletePicInfoByPIds" parameterType="String">
+        delete from pic_info where p_id in 
+        <foreach item="pId" collection="array" open="(" separator="," close=")">
+            #{pId}
+        </foreach>
+    </delete>
+</mapper>
