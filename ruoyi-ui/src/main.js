@@ -49,6 +49,8 @@ Vue.prototype.selectDictLabels = selectDictLabels
 Vue.prototype.download = download
 Vue.prototype.handleTree = handleTree
 
+Vue.prototype.$bus = new Vue()
+
 // 全局组件挂载
 Vue.component('DictTag', DictTag)
 Vue.component('Pagination', Pagination)

@@ -606,7 +606,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -908,6 +908,7 @@ export default {
     getList() {
       this.loading = true;
       listPic(this.queryParams).then(response => {
+      // listPic().then(response => {
         this.picList = response.rows;
         this.total = response.total;
         this.loading = false;
