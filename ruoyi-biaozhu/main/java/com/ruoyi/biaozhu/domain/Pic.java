@@ -9,7 +9,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 标注对象 pic
  * 
  * @author ruoyi
- * @date 2024-03-30
+ * @date 2024-04-16
  */
 public class Pic extends BaseEntity
 {
@@ -18,241 +18,245 @@ public class Pic extends BaseEntity
     /** 主键 */
     private String pId;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long age;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private String gender;
 
     /** 0假1真 */
     @Excel(name = "0假1真")
     private Long jiazhuangxianshizhimiman;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxShifoushuangceexing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxDuofabingzhao;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxWeizhiShangji;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxWeizhiXiaji;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxWeizhiZhongbu;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxWeizhiXiabu;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxZuzhibingliLiangxing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxZuzhibingliRutouzhuangai;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxZuzhibingliSuiyangai;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxZuzhibinbliLvpaozhuangai;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxZuzhibingliQitaexing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxJiejiezuidajing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxNeibujiegouShixing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxNeibujiegouShixingweizhu;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxNeibujiegouNangxingweizhu;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxNeibujiegouNangshixing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxNeibujiegouHaimianyang;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxNeibujiegouNangxing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxNeibujiegouWufapanduan;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxHuishengGaohuisheng;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxHuishengDenghuisheng;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxHuishengDihuisheng;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxHuishengJidihuisheng;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxHuishengWufapanduan;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxXingzhuangDayudengyu;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxXingzhuangXiaoyu;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxBianyuanGuangzheng;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxBianyuanBuguize;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxBianyuanFenyezhuang;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxBianyuanMohu;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxBianyuanEte;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxJuzhaoqianghuishengDianzhuang;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxJuzhaoqianghuishengCudagaihua;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxJuzhaoqianghuishengBianyuangaihua;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long jzxJuzhaoqianghuishengHuixingwei;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjDaxiaoShuipingjing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjDaxiaoCuizhijing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjXingzhuangTuoyuan;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjXingzhuangLeiyuan;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjXingzhuangBuguize;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjBianyuanBuguize;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjBianyuanGuangzheng;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjLinbamenZhengchang;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjLinbamenPianxin;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjLinbamenXiaoshi;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjLinbamenGaohuishengtuankuai;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjPizhiJunyunzenghou;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjPizhiBujunyunzenghou;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjNeijunzhigaohuisheng;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjYehua;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjGaihua;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjXueliuZhengchang;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjXueliuMenxing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjXueliuBianyuanweizhuxing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjXueliuHunhexing;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private Long lbjBinglijieguo;
+
+    /** 图片线段信息 */
+    @Excel(name = "图片线段信息")
+    private String date;
 
     public void setpId(String pId) 
     {
@@ -794,6 +798,15 @@ public class Pic extends BaseEntity
     {
         return lbjBinglijieguo;
     }
+    public void setDate(String date) 
+    {
+        this.date = date;
+    }
+
+    public String getDate() 
+    {
+        return date;
+    }
 
     @Override
     public String toString() {
@@ -858,6 +871,7 @@ public class Pic extends BaseEntity
             .append("lbjXueliuBianyuanweizhuxing", getLbjXueliuBianyuanweizhuxing())
             .append("lbjXueliuHunhexing", getLbjXueliuHunhexing())
             .append("lbjBinglijieguo", getLbjBinglijieguo())
+            .append("date", getDate())
             .toString();
     }
 }

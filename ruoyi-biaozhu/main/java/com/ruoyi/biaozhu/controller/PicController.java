@@ -79,6 +79,8 @@ public class PicController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody Pic pic)
     {
+        //新增的pid由时间戳加随机字符串生成
+        pic.setpId(String.valueOf(System.currentTimeMillis())+String.valueOf((int)((Math.random()*9+1)*100000)));
         return toAjax(picService.insertPic(pic));
     }
 
