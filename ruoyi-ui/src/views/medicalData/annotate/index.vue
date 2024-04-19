@@ -230,56 +230,6 @@
             </div>
           </el-collapse-item>
         </el-collapse>
-
-        <!-- <el-row>
-          <el-col :span="10" :offset="1">总体情况描述：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="10" :offset="2">甲状腺实质弥漫：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="10" :offset="2">是否双侧恶性：</el-col>
-        </el-row>
-
-        <el-row>
-          <el-col :offset="4">
-            <el-radio v-model="radio9" label="1">是</el-radio>
-            <el-radio v-model="radio9" label="2">否</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="10" :offset="2">多发病灶(单侧叶)：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="10" :offset="2">位置：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="20" :offset="4">
-            <el-checkbox-group v-model="location">
-              <el-checkbox label="up">上极</el-checkbox>
-              <el-checkbox label="down">下极</el-checkbox>
-              <el-checkbox label="central">中部</el-checkbox>
-              <el-checkbox label="isthmus">峡部</el-checkbox>
-            </el-checkbox-group>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="10" :offset="2">组织病理结果：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="20" :offset="4">
-            <el-checkbox-group v-model="histopathologyResults">
-              <el-checkbox label="up">良性</el-checkbox>
-              <el-checkbox label="down">乳头状癌</el-checkbox>
-              <el-checkbox label="central">髓样癌</el-checkbox>
-              <el-checkbox label="isthmus">滤泡状癌</el-checkbox>
-              <el-checkbox label="more">其他恶性</el-checkbox>
-            </el-checkbox-group>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="6" :offset="2">结节最大径：</el-col>
-        </el-row> -->
       </div>
       <div class="content1" style="margin-top: 8px">
         <div class="box1 leftBlue leftVertical">
@@ -295,31 +245,6 @@
                 <el-col :span="3" :offset="1">垂直径</el-col>
                 <el-col :span="8"><el-input></el-input></el-col>
               </el-row>
-              <!--<el-row>-->
-              <!--  <el-col :offset="2">-->
-              <!--    <div>-->
-              <!--      水平径:-->
-              <!--      <el-input-->
-              <!--        placeholder="（单位cm）"-->
-              <!--        v-model="Levelsize "-->
-              <!--        clearable-->
-              <!--        @blur="Levelsizes($event)"-->
-              <!--      >-->
-              <!--      </el-input>-->
-              <!--    </div>-->
-              <!--    <div>-->
-              <!--      垂直径:-->
-              <!--      <el-input-->
-              <!--        placeholder="（单位cm）"-->
-              <!--        v-model="Verticalsize"-->
-              <!--        clearable-->
-              <!--        @blur="Verticalsizes($event)"-->
-              <!--      >-->
-              <!--      </el-input>-->
-              <!--    </div>-->
-
-              <!--  </el-col>-->
-              <!--</el-row>-->
             </el-collapse-item>
           </div>
 
@@ -438,243 +363,21 @@
         </el-collapse>
       </div>
       <el-button type="primary" plain class="tijiao" @click="submit">提交</el-button>
-
-      <!-- <div class="content2">
-        <el-row>
-          <el-col :offset=1>结节描述：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">内部结构：</el-col>
-        </el-row>
-        <el-row>
-
-        </el-row>
-        <el-row>
-          <el-col :offset="2">回声：</el-col>
-        </el-row>
-        <el-row>
-
-        </el-row>
-        <el-row>
-          <el-col :offset="2">形状：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="4">
-            <el-radio v-model="radio1" label="1">纵横比>1</el-radio>
-            <el-radio v-model="radio1" label="2">{{ '纵横比<1' }}</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">边缘：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="4" :span="20">
-            <el-radio v-model="radio2" label="1">边缘光整</el-radio>
-            <el-radio v-model="radio2" label="2">边缘不规则</el-radio>
-            <el-radio v-model="radio2" label="3">边缘分叶状</el-radio>
-            <el-radio v-model="radio2" label="4">边缘模糊</el-radio>
-            <el-radio v-model="radio2" label="5">ETE</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset=2>局灶强回声：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="4" :span="20">
-            <el-radio v-model="radio3" label="1">点状强回声</el-radio>
-            <el-radio v-model="radio3" label="2">粗大钙化</el-radio>
-            <el-radio v-model="radio3" label="3">边缘钙化</el-radio>
-            <el-radio v-model="radio3" label="4">彗星尾</el-radio>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="content3">
-        <el-row>
-          <el-col>淋巴结病变：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="4" :offset="1">大小：</el-col>
-        </el-row>
-        <el-row>
-
-        </el-row>
-        <el-row>
-          <el-col :offset="1">形状：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset=2>
-            <el-radio v-model="radio4" label="1">椭圆形</el-radio>
-            <el-radio v-model="radio4" label="2">类圆形</el-radio>
-            <el-radio v-model="radio4" label="3">不规则</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="1">边缘：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">
-            <el-radio v-model="radio5" label="1">边缘不规则</el-radio>
-            <el-radio v-model="radio5" label="2">边缘光整</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="1">淋巴门：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">
-            <el-radio v-model="radio6" label="1">正常</el-radio>
-            <el-radio v-model="radio6" label="2">偏心</el-radio>
-            <el-radio v-model="radio6" label="3">消失</el-radio>
-            <el-radio v-model="radio6" label="4">高回声团块</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset=1>皮质：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">
-            <el-radio v-model="radio7" label="1">均匀增厚</el-radio>
-            <el-radio v-model="radio7" label="2">不均匀增厚</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset=1>内均质高回声：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">
-            <el-radio v-model="radio9" label="1">是</el-radio>
-            <el-radio v-model="radio9" label="2">否</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset=1>液化：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">
-            <el-radio v-model="radio9" label="1">是</el-radio>
-            <el-radio v-model="radio9" label="2">否</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset=1>钙化：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">
-            <el-radio v-model="radio9" label="1">是</el-radio>
-            <el-radio v-model="radio9" label="2">否</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset=1>血流：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">
-            <el-radio v-model="radio8" label="1">正常</el-radio>
-            <el-radio v-model="radio8" label="2">门型</el-radio>
-            <el-radio v-model="radio8" label="3">边缘为主型</el-radio>
-            <el-radio v-model="radio8" label="4">混合型</el-radio>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset=1>病理结果：</el-col>
-        </el-row>
-        <el-row>
-          <el-col :offset="2">
-            <el-radio v-model="radio9" label="1">是</el-radio>
-            <el-radio v-model="radio9" label="2">否</el-radio>
-          </el-col>
-        </el-row>
-      </div>
-      <div class="content4">
-        <el-row>
-          <el-col :offset=2 :span="6">
-            <el-button type="primary" plain>提交</el-button>
-          </el-col>
-        </el-row>
-      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import CanvasSelect from "canvas-select";
+import {getAnnotateData,updateAnnotateData} from "@/api/medicalData/annotate/index.js";
 
 export default {
-  name: "annotate",
+  name: "Annotate",
   data() {
     return {
+      pId:"",
       activeNames: ["1"],
-      option: [
-        {
-          label: "acbs",
-          coor: [
-            [184, 183],
-            [275, 238],
-          ],
-          active: false,
-          creating: false,
-          dragging: false,
-          uuid: "c50e3f69-8e1e-441b-90ae-c362b63797bf",
-          index: 0,
-          labelFillStyle: "#f00",
-          textFillStyle: "#fff",
-          fillStyle: "rgba(130,22,220,.6)",
-          type: 1,
-        },
-        {
-          label: "polygon",
-          coor: [
-            [135, 291],
-            [129, 319],
-            [146, 346],
-            [174, 365],
-            [214, 362],
-            [196, 337],
-            [161, 288],
-          ],
-          active: false,
-          creating: false,
-          dragging: false,
-          uuid: "f3143c91-4922-4a4f-959e-e649cd89607f",
-          index: 1,
-          type: 2,
-        },
-        {
-          label: "dot",
-          coor: [345, 406],
-          active: false,
-          creating: false,
-          dragging: false,
-          uuid: "ae227dcd-abfb-43eb-b272-9abf39ff0722",
-          index: 2,
-          type: 3,
-        },
-        {
-          label: "line",
-          coor: [
-            [456, 153],
-            [489, 228],
-            [492, 296],
-          ],
-          active: false,
-          creating: false,
-          dragging: false,
-          uuid: "2ca7f0a6-e849-45a2-802f-fad95ebadda3",
-          index: 3,
-          type: 4,
-        },
-        {
-          label: "circle",
-          coor: [369, 197],
-          active: false,
-          creating: false,
-          dragging: false,
-          uuid: "da0bc425-4b9e-4521-85f8-5ee422db0d58",
-          index: 4,
-          radius: 38,
-          type: 5,
-        },
-      ],
+      option: [],
       instance: null,
       instanceStatus: 0,
       labelDisabledState: true,
@@ -756,10 +459,8 @@ export default {
       this.instance.setFocusMode(!this.instance.focusMode);
       this.hideNoSelect = this.instance.focusMode;
     },
-    cvsTest(){
-
-    },
     instanceInit() {
+      this.instance = new CanvasSelect(".container", this.imgUrl);
       this.instance.labelMaxLen = 10;
       // this.option = [];
       this.instance.setData(this.option);
@@ -787,6 +488,12 @@ export default {
         this.labelDisabledState = true;
         window.info = info;
       });
+      //更新
+      this.instance.on('updated', (result) => {
+        console.log('标注结果')
+        console.log(result)
+        this.option=result;
+      });
       // 选中
       this.instance.on("select", (shape) => {
         console.log("select", shape);
@@ -801,12 +508,6 @@ export default {
         this.selectShape = shape;
         window.shape = shape;
       });
-      this.instance.on("updated", (result) => {
-        // console.log('标注结果', result)
-        const list = [...result];
-        list.sort((a, b) => a.index - b.index);
-        this.option = JSON.stringify(list, null, 2);
-      });
     },
     canvasResize(){
       let canvasContainer = document.querySelector('.canvasContainer');
@@ -817,15 +518,19 @@ export default {
     },
   },
   mounted() {
-    this.instance = new CanvasSelect(".container", this.imgUrl);
-    this.instanceInit();
-    this.instance.on('updated', (result) => {
-      console.log('标注结果')
-      console.log(result)
-      this.option=result;
-    });
+    // this.imgUrl
+    this.pId=this.$route.query.pId;
+    console.log("mounted")
+    getAnnotateData({pId:this.pId}).then(res=>{
+      console.log('请求来的数据')
+      console.log(res)
+      this.instanceInit();
+    })
     window.onresize = this.canvasResize
   },
+  activated() {
+    console.log('activated')
+  }
 };
 </script>
 

@@ -85,6 +85,15 @@
           v-hasPermi="['info:biao:export']"
         >导出
         </el-button>
+        <el-button
+          plain
+          icon="el-icon-download"
+          size="mini"
+          @click="handleImport"
+          v-hasPermi="['info:biao:export']"
+        >导入
+        </el-button>
+        <input type="file" id="fileInput" multiple>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
@@ -164,6 +173,7 @@ export default {
   name: "Biao",
   data() {
     return {
+      imgFiles:[],
       // 遮罩层
       loading: true,
       // 选中数组
@@ -309,6 +319,17 @@ export default {
       this.download('info/biao/export', {
         ...this.queryParams
       }, `biao_${new Date().getTime()}.xlsx`)
+    },
+    /**导入图片**/
+    handleImport(){
+      //选择多张图片，存入imgFiles数组中，并调用接口上传,非uniapp
+      const fileInput = document.getElementById('fileInput');
+      const files = fileInput.files;
+
+      console.log(files)
+      //此处上传
+
+
     }
   }
 };

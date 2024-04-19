@@ -85,6 +85,9 @@ export default {
   },
   methods: {
     toggleSideBar() {
+      setTimeout(()=>{
+        $(window).trigger("resize");
+      },500)
       this.$store.dispatch('app/toggleSideBar')
     },
     async logout() {
