@@ -1,17 +1,14 @@
 package com.ruoyi.biaozhu.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ruoyi.biaozhu.domain.PicInfo;
+import com.ruoyi.biaozhu.service.IPicInfoService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
@@ -20,12 +17,14 @@ import com.ruoyi.biaozhu.domain.Pic;
 import com.ruoyi.biaozhu.service.IPicService;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
+import org.springframework.web.multipart.MultipartFile;
+import com.ruoyi.biaozhu.utils.FileUploadUtils;
 
 /**
  * 标注Controller
  * 
  * @author ruoyi
- * @date 2024-03-30
+ * @date 2024-04-19
  */
 @RestController
 @RequestMapping("/biaozhu/pic")
@@ -34,6 +33,11 @@ public class PicController extends BaseController
     @Autowired
     private IPicService picService;
 
+    @Autowired
+    private IPicInfoService picInfoService;
+
+    @Autowired
+    private FileUploadUtils fileUploadUtils;
     /**
      * 查询标注列表
      */
@@ -66,8 +70,6 @@ public class PicController extends BaseController
     @GetMapping(value = "/{pId}")
     public AjaxResult getInfo(@PathVariable("pId") String pId)
     {
-//        Pic pic=picService.selectPicByPId(pId);
-//        System.out.println(pic);
         return success(picService.selectPicByPId(pId));
     }
 
@@ -77,12 +79,93 @@ public class PicController extends BaseController
     @PreAuthorize("@ss.hasPermi('biaozhu:pic:add')")
     @Log(title = "标注", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestBody Pic pic)
-    {
-        //新增的pid由时间戳加随机字符串生成
-        pic.setpId(String.valueOf(System.currentTimeMillis())+String.valueOf((int)((Math.random()*9+1)*100000)));
-        return toAjax(picService.insertPic(pic));
+    public AjaxResult add(@RequestParam("images") List<MultipartFile> images) {
+        FileUploadUtils fileUploadUtils = new FileUploadUtils();
+        List<Pic> pics = new ArrayList<>();
+        List<PicInfo> picInfos = new ArrayList<>();
+        try {
+            for (MultipartFile image : images) {
+                // 生成PID
+                String pId = String.valueOf(System.currentTimeMillis()) + String.valueOf((int)((Math.random() * 9 + 1) * 100000));
+
+                // 指定图片保存的位置和用户ID（这里假设使用PID作为示例的用户ID）
+                String location = "jzx"; // 请根据实际情况修改位置
+                String userId = pId; // 这应该是你识别用户的方式
+
+                // 使用FileUploadUtils来保存文件
+                String path = fileUploadUtils.uploadImgUrl(image, location, userId);
+
+                if (path == null) {
+                    return AjaxResult.error("上传图片失败");
+                }
+
+                // 创建Pic对象并设置属性
+                Pic pic = new Pic();
+                pic.setpId(pId);
+                pic.setImgAddress(path);
+                pics.add(pic);
+
+                PicInfo picInfo = new PicInfo();
+                picInfo.setpId(pId);
+                picInfo.setImgAddress(path);
+                picInfos.add(picInfo);
+            }
+
+            // 批量将pic对象插入数据库
+            int result = picService.insertPics(pics);
+            int result2 = picInfoService.insertPicInfos(picInfos);
+            boolean flag = result > 0 && result2 > 0;
+            return toAjax(flag);
+        } catch (Exception e) {
+            return AjaxResult.error("操作失败：" + e.getMessage());
+        }
     }
+
+//    @PreAuthorize("@ss.hasPermi('biaozhu:pic:add')")
+//    @Log(title = "标注", businessType = BusinessType.INSERT)
+//    @PostMapping
+//    public AjaxResult add(@RequestParam("image") MultipartFile image)
+//    {
+////        FileUploadUtils fileUploadUtils = new FileUploadUtils();
+//        try {
+//            // 生成PID
+//            String pId = String.valueOf(System.currentTimeMillis()) + String.valueOf((int)((Math.random() * 9 + 1) * 100000));
+//
+//            // 指定图片保存的位置和用户ID（这里假设使用PID作为示例的用户ID）
+//            String location = "jzx"; // 请根据实际情况修改位置
+//            String userId = pId; // 这应该是你识别用户的方式
+//
+//            // 使用FileUploadUtils来保存文件
+//            String path = fileUploadUtils.uploadImgUrl(image, location, userId);
+//
+//            if (path == null) {
+//                return AjaxResult.error("上传图片失败");
+//            }
+//
+//            // 创建Pic对象并设置属性
+//            Pic pic = new Pic();
+//            pic.setpId(pId);
+//            pic.setImgAddress(path);
+//            PicInfo picInfo = new PicInfo();
+//            picInfo.setpId(pId);
+//            picInfo.setImgAddress(path);
+//
+//            // 将pic对象插入数据库
+//            int result = picService.insertPic(pic);
+//            int result2 = picInfoService.insertPicInfo(picInfo);
+//
+//            return toAjax(result);
+//        } catch (Exception e) {
+//            return AjaxResult.error("操作失败：" + e.getMessage());
+//        }
+//    }
+//    public AjaxResult add(@RequestBody Pic pic)
+//    {
+//        //新增的pid由时间戳加随机字符串生成
+//        pic.setpId(String.valueOf(System.currentTimeMillis())+String.valueOf((int)((Math.random()*9+1)*100000)));
+//        return toAjax(picService.insertPic(pic));
+//    }
+
 
     /**
      * 修改标注
@@ -92,6 +175,14 @@ public class PicController extends BaseController
     @PutMapping
     public AjaxResult edit(@RequestBody Pic pic)
     {
+        //获取年龄字段，性别字段
+        PicInfo picInfo = new PicInfo();
+        picInfo.setpId(pic.getpId());
+        picInfo.setAge(pic.getAge());
+        picInfo.setGender(pic.getGender());
+        int i=picInfoService.updatePicInfo(picInfo);
+        //pic的isBiaoZhu字段设为1
+        pic.setIsBiaozhu(1L);
         return toAjax(picService.updatePic(pic));
     }
 
@@ -103,6 +194,18 @@ public class PicController extends BaseController
 	@DeleteMapping("/{pIds}")
     public AjaxResult remove(@PathVariable String[] pIds)
     {
+        picInfoService.deletePicInfoByPIds(pIds);
         return toAjax(picService.deletePicByPIds(pIds));
     }
+
+    //查找未标注的图片
+    @PreAuthorize("@ss.hasPermi('biaozhu:pic:unlabeled')")
+    @GetMapping("/unlabeled")
+    public TableDataInfo unlabeled(Pic pic)
+    {
+        startPage();
+        List<Pic> list = picService.selectUnlabeled(pic);
+        return getDataTable(list);
+    }
+
 }

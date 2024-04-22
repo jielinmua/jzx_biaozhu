@@ -58,4 +58,7 @@ public interface IPicInfoService
      * @return 结果
      */
     public int deletePicInfoByPId(String pId);
+
+    //批量插入
+    public int insertPicInfos(List<PicInfo> picInfoList);
 }

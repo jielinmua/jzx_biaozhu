@@ -11,7 +11,7 @@ import com.ruoyi.biaozhu.service.IPicService;
  * 标注Service业务层处理
  * 
  * @author ruoyi
- * @date 2024-03-30
+ * @date 2024-04-19
  */
 @Service
 public class PicServiceImpl implements IPicService 
@@ -89,5 +89,15 @@ public class PicServiceImpl implements IPicService
     public int deletePicByPId(String pId)
     {
         return picMapper.deletePicByPId(pId);
+    }
+
+    @Override
+    public List<Pic> selectUnlabeled(Pic pic) {
+        return picMapper.selectUnlabeled(pic);
+    }
+
+    @Override
+    public int insertPics(List<Pic> picList) {
+        return picMapper.insertPics(picList);
     }
 }

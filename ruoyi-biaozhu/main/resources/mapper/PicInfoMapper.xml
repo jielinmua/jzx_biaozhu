@@ -45,6 +45,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="imgAddress != null">#{imgAddress},</if>
          </trim>
     </insert>
+    <insert id="insertPicInfos">
+        insert into pic_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="list[0].pId != null">p_id,</if>
+            <!-- 你可以继续添加更多的字段 -->
+        </trim>
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="item.pId != null">#{item.pId},</if>
+                <if test="item.imgAddress != null">#{item.imgAddress},</if>
+                <if test="item.gender != null">#{item.gender},</if>
+                <!-- 继续添加每个对象的字段插入 -->
+            </trim>
+        </foreach>
+    </insert>
 
     <update id="updatePicInfo" parameterType="PicInfo">
         update pic_info

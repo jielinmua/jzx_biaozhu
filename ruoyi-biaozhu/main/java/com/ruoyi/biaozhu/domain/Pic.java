@@ -9,7 +9,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 标注对象 pic
  * 
  * @author ruoyi
- * @date 2024-04-16
+ * @date 2024-04-19
  */
 public class Pic extends BaseEntity
 {
@@ -18,12 +18,13 @@ public class Pic extends BaseEntity
     /** 主键 */
     private String pId;
 
-    /**  */
-    @Excel(name = "")
+    /** 年龄
+ */
+    @Excel(name = "年龄 ")
     private Long age;
 
-    /**  */
-    @Excel(name = "")
+    /** 性别 */
+    @Excel(name = "性别")
     private String gender;
 
     /** 0假1真 */
@@ -257,6 +258,14 @@ public class Pic extends BaseEntity
     /** 图片线段信息 */
     @Excel(name = "图片线段信息")
     private String date;
+
+    /** 图片路径 */
+    @Excel(name = "图片路径")
+    private String imgAddress;
+
+    /** 是否标注0为未标注1为已标注 */
+    @Excel(name = "是否标注0为未标注1为已标注")
+    private Long isBiaozhu;
 
     public void setpId(String pId) 
     {
@@ -807,6 +816,24 @@ public class Pic extends BaseEntity
     {
         return date;
     }
+    public void setImgAddress(String imgAddress) 
+    {
+        this.imgAddress = imgAddress;
+    }
+
+    public String getImgAddress() 
+    {
+        return imgAddress;
+    }
+    public void setIsBiaozhu(Long isBiaozhu) 
+    {
+        this.isBiaozhu = isBiaozhu;
+    }
+
+    public Long getIsBiaozhu() 
+    {
+        return isBiaozhu;
+    }
 
     @Override
     public String toString() {
@@ -872,6 +899,8 @@ public class Pic extends BaseEntity
             .append("lbjXueliuHunhexing", getLbjXueliuHunhexing())
             .append("lbjBinglijieguo", getLbjBinglijieguo())
             .append("date", getDate())
+            .append("imgAddress", getImgAddress())
+            .append("isBiaozhu", getIsBiaozhu())
             .toString();
     }
 }

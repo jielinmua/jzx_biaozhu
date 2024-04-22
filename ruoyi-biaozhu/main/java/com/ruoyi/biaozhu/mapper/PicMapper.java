@@ -7,7 +7,7 @@ import com.ruoyi.biaozhu.domain.Pic;
  * 标注Mapper接口
  * 
  * @author ruoyi
- * @date 2024-03-30
+ * @date 2024-04-19
  */
 public interface PicMapper 
 {
@@ -58,4 +58,10 @@ public interface PicMapper
      * @return 结果
      */
     public int deletePicByPIds(String[] pIds);
+
+    //查找未标注的
+    public List<Pic> selectUnlabeled(Pic pic);
+
+    //批量插入
+    public int insertPics(List<Pic> picList);
 }

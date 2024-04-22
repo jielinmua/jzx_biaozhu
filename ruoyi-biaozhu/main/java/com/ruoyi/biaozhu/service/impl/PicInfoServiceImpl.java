@@ -90,4 +90,10 @@ public class PicInfoServiceImpl implements IPicInfoService
     {
         return picInfoMapper.deletePicInfoByPId(pId);
     }
+
+    //批量插入id和路径url
+    @Override
+    public int insertPicInfos(List<PicInfo> picInfoList) {
+        return picInfoMapper.insertPicInfos(picInfoList);
+    }
 }

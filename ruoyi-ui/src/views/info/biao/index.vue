@@ -168,7 +168,7 @@
 
 <script>
 import {listBiao, getBiao, delBiao, addBiao, updateBiao} from "@/api/info/biao";
-
+import request from '@/utils/request'
 export default {
   name: "Biao",
   data() {
@@ -328,7 +328,13 @@ export default {
 
       console.log(files)
       //此处上传
-
+      const formData = new FormData();
+      formData.append('image',files[0]);
+      request({
+        url:'/biaozhu/pic',
+        method:'post',
+        data:formData
+      })
 
     }
   }

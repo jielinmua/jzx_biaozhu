@@ -58,4 +58,7 @@ public interface PicInfoMapper
      * @return 结果
      */
     public int deletePicInfoByPIds(String[] pIds);
+
+    //批量插入pId和imgAddress
+    public int insertPicInfos(List<PicInfo> picInfoList);
 }
