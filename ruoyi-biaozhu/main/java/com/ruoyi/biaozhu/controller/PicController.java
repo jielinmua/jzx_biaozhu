@@ -80,7 +80,7 @@ public class PicController extends BaseController
     @Log(title = "标注", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestParam("images") List<MultipartFile> images) {
-        FileUploadUtils fileUploadUtils = new FileUploadUtils();
+        //FileUploadUtils fileUploadUtils = new FileUploadUtils();
         List<Pic> pics = new ArrayList<>();
         List<PicInfo> picInfos = new ArrayList<>();
         try {

@@ -329,11 +329,20 @@ export default {
       console.log(files)
       //此处上传
       const formData = new FormData();
-      formData.append('image',files[0]);
+      let arr = [];
+      for(let i=0;i<files.length;i++){
+        console.log(files[i])
+        // const formData = new FormData();
+        // formData.append('images',files[i]);
+        arr.push(files[i])
+
+        formData.append('images',files[i]);
+      }
       request({
         url:'/biaozhu/pic',
         method:'post',
-        data:formData
+        // data:formData
+        data: formData
       })
 
     }
