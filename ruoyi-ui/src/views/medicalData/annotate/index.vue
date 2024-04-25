@@ -694,12 +694,18 @@ export default {
       }
     },
     submit() {
-      let data = {
+      let oldData = {
         ...this.markData,
         pId: this.pId,
         date: JSON.stringify(this.option)
       }
+      let data = JSON.parse(JSON.stringify(oldData))
       console.log(data)
+      for (let key in data) {
+        if (data[key] === null) {
+          delete data[key];
+        }
+      }
       updateAnnotateData(data).then(res => {
         if (res.code == 200) {
           this.$message.success('保存成功')
