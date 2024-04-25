@@ -87,13 +87,15 @@
         </el-button>
         <el-button
           plain
-          icon="el-icon-download"
+          icon="el-icon-upload2"
           size="mini"
           @click="handleImport"
           v-hasPermi="['info:biao:export']"
         >导入
         </el-button>
-        <input type="file" id="fileInput" multiple>
+        <div style="width: 0;overflow: hidden">
+          <input type="file" id="fileInput" @change="fileInputChange" ref="fileInput" multiple>
+        </div>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
@@ -169,11 +171,12 @@
 <script>
 import {listBiao, getBiao, delBiao, addBiao, updateBiao} from "@/api/info/biao";
 import request from '@/utils/request'
+
 export default {
   name: "Biao",
   data() {
     return {
-      imgFiles:[],
+      imgFiles: [],
       // 遮罩层
       loading: true,
       // 选中数组
@@ -321,30 +324,39 @@ export default {
       }, `biao_${new Date().getTime()}.xlsx`)
     },
     /**导入图片**/
-    handleImport(){
+    handleImport() {
+      this.$refs.fileInput.value = ''
+      this.$refs.fileInput.click();
+    },
+    fileInputChange() {
       //选择多张图片，存入imgFiles数组中，并调用接口上传,非uniapp
       const fileInput = document.getElementById('fileInput');
       const files = fileInput.files;
-
-      console.log(files)
+      if (files.length == 0) return
       //此处上传
       const formData = new FormData();
       let arr = [];
-      for(let i=0;i<files.length;i++){
-        console.log(files[i])
+      for (let i = 0; i < files.length; i++) {
         // const formData = new FormData();
         // formData.append('images',files[i]);
         arr.push(files[i])
-
-        formData.append('images',files[i]);
+        formData.append('images', files[i]);
       }
+      // return
       request({
-        url:'/biaozhu/pic',
-        method:'post',
+        url: '/biaozhu/pic',
+        method: 'post',
         // data:formData
         data: formData
+      }).then(res=>{
+        console.log(res)
+        if(res.code==200){
+          this.$message.success("上传成功")
+          this.getList()
+        }else(
+          this.$message.error("上传失败")
+        )
       })
-
     }
   }
 };
