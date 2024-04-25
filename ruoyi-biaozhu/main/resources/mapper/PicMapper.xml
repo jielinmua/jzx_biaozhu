@@ -285,75 +285,145 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          </trim>
     </insert>
 
+<!--    <update id="updatePic" parameterType="Pic">-->
+<!--        update pic-->
+<!--        <trim prefix="SET" suffixOverrides=",">-->
+<!--            <if test="age != null">age = #{age},</if>-->
+<!--            <if test="gender != null">gender = #{gender},</if>-->
+<!--            <if test="jiazhuangxianshizhimiman != null">jiazhuangxianshizhimiman = #{jiazhuangxianshizhimiman},</if>-->
+<!--            <if test="jzxShifoushuangceexing != null">jzx_shifoushuangceexing = #{jzxShifoushuangceexing},</if>-->
+<!--            <if test="jzxDuofabingzhao != null">jzx_duofabingzhao = #{jzxDuofabingzhao},</if>-->
+<!--            <if test="jzxWeizhiShangji != null">jzx_weizhi_shangji = #{jzxWeizhiShangji},</if>-->
+<!--            <if test="jzxWeizhiXiaji != null">jzx_weizhi_xiaji = #{jzxWeizhiXiaji},</if>-->
+<!--            <if test="jzxWeizhiZhongbu != null">jzx_weizhi_zhongbu = #{jzxWeizhiZhongbu},</if>-->
+<!--            <if test="jzxWeizhiXiabu != null">jzx_weizhi_xiabu = #{jzxWeizhiXiabu},</if>-->
+<!--            <if test="jzxZuzhibingliLiangxing != null">jzx_zuzhibingli_liangxing = #{jzxZuzhibingliLiangxing},</if>-->
+<!--            <if test="jzxZuzhibingliRutouzhuangai != null">jzx_zuzhibingli_rutouzhuangai = #{jzxZuzhibingliRutouzhuangai},</if>-->
+<!--            <if test="jzxZuzhibingliSuiyangai != null">jzx_zuzhibingli_suiyangai = #{jzxZuzhibingliSuiyangai},</if>-->
+<!--            <if test="jzxZuzhibinbliLvpaozhuangai != null">jzx_zuzhibinbli_lvpaozhuangai = #{jzxZuzhibinbliLvpaozhuangai},</if>-->
+<!--            <if test="jzxZuzhibingliQitaexing != null">jzx_zuzhibingli_qitaexing = #{jzxZuzhibingliQitaexing},</if>-->
+<!--            <if test="jzxJiejiezuidajing != null">jzx_jiejiezuidajing = #{jzxJiejiezuidajing},</if>-->
+<!--            <if test="jzxNeibujiegouShixing != null">jzx_neibujiegou_shixing = #{jzxNeibujiegouShixing},</if>-->
+<!--            <if test="jzxNeibujiegouShixingweizhu != null">jzx_neibujiegou_shixingweizhu = #{jzxNeibujiegouShixingweizhu},</if>-->
+<!--            <if test="jzxNeibujiegouNangxingweizhu != null">jzx_neibujiegou_nangxingweizhu = #{jzxNeibujiegouNangxingweizhu},</if>-->
+<!--            <if test="jzxNeibujiegouNangshixing != null">jzx_neibujiegou_nangshixing = #{jzxNeibujiegouNangshixing},</if>-->
+<!--            <if test="jzxNeibujiegouHaimianyang != null">jzx_neibujiegou_haimianyang = #{jzxNeibujiegouHaimianyang},</if>-->
+<!--            <if test="jzxNeibujiegouNangxing != null">jzx_neibujiegou_nangxing = #{jzxNeibujiegouNangxing},</if>-->
+<!--            <if test="jzxNeibujiegouWufapanduan != null">jzx_neibujiegou_wufapanduan = #{jzxNeibujiegouWufapanduan},</if>-->
+<!--            <if test="jzxHuishengGaohuisheng != null">jzx_huisheng_gaohuisheng = #{jzxHuishengGaohuisheng},</if>-->
+<!--            <if test="jzxHuishengDenghuisheng != null">jzx_huisheng_denghuisheng = #{jzxHuishengDenghuisheng},</if>-->
+<!--            <if test="jzxHuishengDihuisheng != null">jzx_huisheng_dihuisheng = #{jzxHuishengDihuisheng},</if>-->
+<!--            <if test="jzxHuishengJidihuisheng != null">jzx_huisheng_jidihuisheng = #{jzxHuishengJidihuisheng},</if>-->
+<!--            <if test="jzxHuishengWufapanduan != null">jzx_huisheng_wufapanduan = #{jzxHuishengWufapanduan},</if>-->
+<!--            <if test="jzxXingzhuangDayudengyu != null">jzx_xingzhuang_dayudengyu = #{jzxXingzhuangDayudengyu},</if>-->
+<!--            <if test="jzxXingzhuangXiaoyu != null">jzx_xingzhuang_xiaoyu = #{jzxXingzhuangXiaoyu},</if>-->
+<!--            <if test="jzxBianyuanGuangzheng != null">jzx_bianyuan_guangzheng = #{jzxBianyuanGuangzheng},</if>-->
+<!--            <if test="jzxBianyuanBuguize != null">jzx_bianyuan_buguize = #{jzxBianyuanBuguize},</if>-->
+<!--            <if test="jzxBianyuanFenyezhuang != null">jzx_bianyuan_fenyezhuang = #{jzxBianyuanFenyezhuang},</if>-->
+<!--            <if test="jzxBianyuanMohu != null">jzx_bianyuan_mohu = #{jzxBianyuanMohu},</if>-->
+<!--            <if test="jzxBianyuanEte != null">jzx_bianyuan_ete = #{jzxBianyuanEte},</if>-->
+<!--            <if test="jzxBianyuanWufaqueding != null">jzx_bianyuan_wufaqueding = #{jzxBianyuanWufaqueding},</if>-->
+<!--            <if test="jzxJuzhaoqianghuishengDianzhuang != null">jzx_juzhaoqianghuisheng_dianzhuang = #{jzxJuzhaoqianghuishengDianzhuang},</if>-->
+<!--            <if test="jzxJuzhaoqianghuishengCudagaihua != null">jzx_juzhaoqianghuisheng_cudagaihua = #{jzxJuzhaoqianghuishengCudagaihua},</if>-->
+<!--            <if test="jzxJuzhaoqianghuishengBianyuangaihua != null">jzx_juzhaoqianghuisheng_bianyuangaihua = #{jzxJuzhaoqianghuishengBianyuangaihua},</if>-->
+<!--            <if test="jzxJuzhaoqianghuishengHuixingwei != null">jzx_juzhaoqianghuisheng_huixingwei = #{jzxJuzhaoqianghuishengHuixingwei},</if>-->
+<!--            <if test="lbjDaxiaoShuipingjing != null">lbj_daxiao_shuipingjing = #{lbjDaxiaoShuipingjing},</if>-->
+<!--            <if test="lbjDaxiaoCuizhijing != null">lbj_daxiao_cuizhijing = #{lbjDaxiaoCuizhijing},</if>-->
+<!--            <if test="lbjXingzhuangTuoyuan != null">lbj_xingzhuang_tuoyuan = #{lbjXingzhuangTuoyuan},</if>-->
+<!--            <if test="lbjXingzhuangLeiyuan != null">lbj_xingzhuang_leiyuan = #{lbjXingzhuangLeiyuan},</if>-->
+<!--            <if test="lbjXingzhuangBuguize != null">lbj_xingzhuang_buguize = #{lbjXingzhuangBuguize},</if>-->
+<!--            <if test="lbjBianyuanBuguize != null">lbj_bianyuan_buguize = #{lbjBianyuanBuguize},</if>-->
+<!--            <if test="lbjBianyuanGuangzheng != null">lbj_bianyuan_guangzheng = #{lbjBianyuanGuangzheng},</if>-->
+<!--            <if test="lbjLinbamenZhengchang != null">lbj_linbamen_zhengchang = #{lbjLinbamenZhengchang},</if>-->
+<!--            <if test="lbjLinbamenPianxin != null">lbj_linbamen_pianxin = #{lbjLinbamenPianxin},</if>-->
+<!--            <if test="lbjLinbamenXiaoshi != null">lbj_linbamen_xiaoshi = #{lbjLinbamenXiaoshi},</if>-->
+<!--            <if test="lbjLinbamenGaohuishengtuankuai != null">lbj_linbamen_gaohuishengtuankuai = #{lbjLinbamenGaohuishengtuankuai},</if>-->
+<!--            <if test="lbjPizhiJunyunzenghou != null">lbj_pizhi_junyunzenghou = #{lbjPizhiJunyunzenghou},</if>-->
+<!--            <if test="lbjPizhiBujunyunzenghou != null">lbj_pizhi_bujunyunzenghou = #{lbjPizhiBujunyunzenghou},</if>-->
+<!--            <if test="lbjNeijunzhigaohuisheng != null">lbj_neijunzhigaohuisheng = #{lbjNeijunzhigaohuisheng},</if>-->
+<!--            <if test="lbjYehua != null">lbj_yehua = #{lbjYehua},</if>-->
+<!--            <if test="lbjGaihua != null">lbj_gaihua = #{lbjGaihua},</if>-->
+<!--            <if test="lbjXueliuZhengchang != null">lbj_xueliu_zhengchang = #{lbjXueliuZhengchang},</if>-->
+<!--            <if test="lbjXueliuMenxing != null">lbj_xueliu_menxing = #{lbjXueliuMenxing},</if>-->
+<!--            <if test="lbjXueliuBianyuanweizhuxing != null">lbj_xueliu_bianyuanweizhuxing = #{lbjXueliuBianyuanweizhuxing},</if>-->
+<!--            <if test="lbjXueliuHunhexing != null">lbj_xueliu_hunhexing = #{lbjXueliuHunhexing},</if>-->
+<!--            <if test="lbjBinglijieguo != null">lbj_binglijieguo = #{lbjBinglijieguo},</if>-->
+<!--            <if test="date != null">date = #{date},</if>-->
+<!--            <if test="imgAddress != null">img_address = #{imgAddress},</if>-->
+<!--            <if test="isBiaozhu != null">is_biaozhu = #{isBiaozhu},</if>-->
+<!--        </trim>-->
+<!--        where p_id = #{pId}-->
+<!--    </update>-->
+
     <update id="updatePic" parameterType="Pic">
         update pic
         <trim prefix="SET" suffixOverrides=",">
-            <if test="age != null">age = #{age},</if>
-            <if test="gender != null">gender = #{gender},</if>
-            <if test="jiazhuangxianshizhimiman != null">jiazhuangxianshizhimiman = #{jiazhuangxianshizhimiman},</if>
-            <if test="jzxShifoushuangceexing != null">jzx_shifoushuangceexing = #{jzxShifoushuangceexing},</if>
-            <if test="jzxDuofabingzhao != null">jzx_duofabingzhao = #{jzxDuofabingzhao},</if>
-            <if test="jzxWeizhiShangji != null">jzx_weizhi_shangji = #{jzxWeizhiShangji},</if>
-            <if test="jzxWeizhiXiaji != null">jzx_weizhi_xiaji = #{jzxWeizhiXiaji},</if>
-            <if test="jzxWeizhiZhongbu != null">jzx_weizhi_zhongbu = #{jzxWeizhiZhongbu},</if>
-            <if test="jzxWeizhiXiabu != null">jzx_weizhi_xiabu = #{jzxWeizhiXiabu},</if>
-            <if test="jzxZuzhibingliLiangxing != null">jzx_zuzhibingli_liangxing = #{jzxZuzhibingliLiangxing},</if>
-            <if test="jzxZuzhibingliRutouzhuangai != null">jzx_zuzhibingli_rutouzhuangai = #{jzxZuzhibingliRutouzhuangai},</if>
-            <if test="jzxZuzhibingliSuiyangai != null">jzx_zuzhibingli_suiyangai = #{jzxZuzhibingliSuiyangai},</if>
-            <if test="jzxZuzhibinbliLvpaozhuangai != null">jzx_zuzhibinbli_lvpaozhuangai = #{jzxZuzhibinbliLvpaozhuangai},</if>
-            <if test="jzxZuzhibingliQitaexing != null">jzx_zuzhibingli_qitaexing = #{jzxZuzhibingliQitaexing},</if>
-            <if test="jzxJiejiezuidajing != null">jzx_jiejiezuidajing = #{jzxJiejiezuidajing},</if>
-            <if test="jzxNeibujiegouShixing != null">jzx_neibujiegou_shixing = #{jzxNeibujiegouShixing},</if>
-            <if test="jzxNeibujiegouShixingweizhu != null">jzx_neibujiegou_shixingweizhu = #{jzxNeibujiegouShixingweizhu},</if>
-            <if test="jzxNeibujiegouNangxingweizhu != null">jzx_neibujiegou_nangxingweizhu = #{jzxNeibujiegouNangxingweizhu},</if>
-            <if test="jzxNeibujiegouNangshixing != null">jzx_neibujiegou_nangshixing = #{jzxNeibujiegouNangshixing},</if>
-            <if test="jzxNeibujiegouHaimianyang != null">jzx_neibujiegou_haimianyang = #{jzxNeibujiegouHaimianyang},</if>
-            <if test="jzxNeibujiegouNangxing != null">jzx_neibujiegou_nangxing = #{jzxNeibujiegouNangxing},</if>
-            <if test="jzxNeibujiegouWufapanduan != null">jzx_neibujiegou_wufapanduan = #{jzxNeibujiegouWufapanduan},</if>
-            <if test="jzxHuishengGaohuisheng != null">jzx_huisheng_gaohuisheng = #{jzxHuishengGaohuisheng},</if>
-            <if test="jzxHuishengDenghuisheng != null">jzx_huisheng_denghuisheng = #{jzxHuishengDenghuisheng},</if>
-            <if test="jzxHuishengDihuisheng != null">jzx_huisheng_dihuisheng = #{jzxHuishengDihuisheng},</if>
-            <if test="jzxHuishengJidihuisheng != null">jzx_huisheng_jidihuisheng = #{jzxHuishengJidihuisheng},</if>
-            <if test="jzxHuishengWufapanduan != null">jzx_huisheng_wufapanduan = #{jzxHuishengWufapanduan},</if>
-            <if test="jzxXingzhuangDayudengyu != null">jzx_xingzhuang_dayudengyu = #{jzxXingzhuangDayudengyu},</if>
-            <if test="jzxXingzhuangXiaoyu != null">jzx_xingzhuang_xiaoyu = #{jzxXingzhuangXiaoyu},</if>
-            <if test="jzxBianyuanGuangzheng != null">jzx_bianyuan_guangzheng = #{jzxBianyuanGuangzheng},</if>
-            <if test="jzxBianyuanBuguize != null">jzx_bianyuan_buguize = #{jzxBianyuanBuguize},</if>
-            <if test="jzxBianyuanFenyezhuang != null">jzx_bianyuan_fenyezhuang = #{jzxBianyuanFenyezhuang},</if>
-            <if test="jzxBianyuanMohu != null">jzx_bianyuan_mohu = #{jzxBianyuanMohu},</if>
-            <if test="jzxBianyuanEte != null">jzx_bianyuan_ete = #{jzxBianyuanEte},</if>
-            <if test="jzxBianyuanWufaqueding != null">jzx_bianyuan_wufaqueding = #{jzxBianyuanWufaqueding},</if>
-            <if test="jzxJuzhaoqianghuishengDianzhuang != null">jzx_juzhaoqianghuisheng_dianzhuang = #{jzxJuzhaoqianghuishengDianzhuang},</if>
-            <if test="jzxJuzhaoqianghuishengCudagaihua != null">jzx_juzhaoqianghuisheng_cudagaihua = #{jzxJuzhaoqianghuishengCudagaihua},</if>
-            <if test="jzxJuzhaoqianghuishengBianyuangaihua != null">jzx_juzhaoqianghuisheng_bianyuangaihua = #{jzxJuzhaoqianghuishengBianyuangaihua},</if>
-            <if test="jzxJuzhaoqianghuishengHuixingwei != null">jzx_juzhaoqianghuisheng_huixingwei = #{jzxJuzhaoqianghuishengHuixingwei},</if>
-            <if test="lbjDaxiaoShuipingjing != null">lbj_daxiao_shuipingjing = #{lbjDaxiaoShuipingjing},</if>
-            <if test="lbjDaxiaoCuizhijing != null">lbj_daxiao_cuizhijing = #{lbjDaxiaoCuizhijing},</if>
-            <if test="lbjXingzhuangTuoyuan != null">lbj_xingzhuang_tuoyuan = #{lbjXingzhuangTuoyuan},</if>
-            <if test="lbjXingzhuangLeiyuan != null">lbj_xingzhuang_leiyuan = #{lbjXingzhuangLeiyuan},</if>
-            <if test="lbjXingzhuangBuguize != null">lbj_xingzhuang_buguize = #{lbjXingzhuangBuguize},</if>
-            <if test="lbjBianyuanBuguize != null">lbj_bianyuan_buguize = #{lbjBianyuanBuguize},</if>
-            <if test="lbjBianyuanGuangzheng != null">lbj_bianyuan_guangzheng = #{lbjBianyuanGuangzheng},</if>
-            <if test="lbjLinbamenZhengchang != null">lbj_linbamen_zhengchang = #{lbjLinbamenZhengchang},</if>
-            <if test="lbjLinbamenPianxin != null">lbj_linbamen_pianxin = #{lbjLinbamenPianxin},</if>
-            <if test="lbjLinbamenXiaoshi != null">lbj_linbamen_xiaoshi = #{lbjLinbamenXiaoshi},</if>
-            <if test="lbjLinbamenGaohuishengtuankuai != null">lbj_linbamen_gaohuishengtuankuai = #{lbjLinbamenGaohuishengtuankuai},</if>
-            <if test="lbjPizhiJunyunzenghou != null">lbj_pizhi_junyunzenghou = #{lbjPizhiJunyunzenghou},</if>
-            <if test="lbjPizhiBujunyunzenghou != null">lbj_pizhi_bujunyunzenghou = #{lbjPizhiBujunyunzenghou},</if>
-            <if test="lbjNeijunzhigaohuisheng != null">lbj_neijunzhigaohuisheng = #{lbjNeijunzhigaohuisheng},</if>
-            <if test="lbjYehua != null">lbj_yehua = #{lbjYehua},</if>
-            <if test="lbjGaihua != null">lbj_gaihua = #{lbjGaihua},</if>
-            <if test="lbjXueliuZhengchang != null">lbj_xueliu_zhengchang = #{lbjXueliuZhengchang},</if>
-            <if test="lbjXueliuMenxing != null">lbj_xueliu_menxing = #{lbjXueliuMenxing},</if>
-            <if test="lbjXueliuBianyuanweizhuxing != null">lbj_xueliu_bianyuanweizhuxing = #{lbjXueliuBianyuanweizhuxing},</if>
-            <if test="lbjXueliuHunhexing != null">lbj_xueliu_hunhexing = #{lbjXueliuHunhexing},</if>
-            <if test="lbjBinglijieguo != null">lbj_binglijieguo = #{lbjBinglijieguo},</if>
-            <if test="date != null">date = #{date},</if>
-            <if test="imgAddress != null">img_address = #{imgAddress},</if>
-            <if test="isBiaozhu != null">is_biaozhu = #{isBiaozhu},</if>
+            age = #{age},
+            gender = #{gender},
+            jiazhuangxianshizhimiman = #{jiazhuangxianshizhimiman},
+            jzx_shifoushuangceexing = #{jzxShifoushuangceexing},
+            jzx_duofabingzhao = #{jzxDuofabingzhao},
+            jzx_weizhi_shangji = #{jzxWeizhiShangji},
+            jzx_weizhi_xiaji = #{jzxWeizhiXiaji},
+            jzx_weizhi_zhongbu = #{jzxWeizhiZhongbu},
+            jzx_weizhi_xiabu = #{jzxWeizhiXiabu},
+            jzx_zuzhibingli_liangxing = #{jzxZuzhibingliLiangxing},
+            jzx_zuzhibingli_rutouzhuangai = #{jzxZuzhibingliRutouzhuangai},
+            jzx_zuzhibingli_suiyangai = #{jzxZuzhibingliSuiyangai},
+            jzx_zuzhibinbli_lvpaozhuangai = #{jzxZuzhibinbliLvpaozhuangai},
+            jzx_zuzhibingli_qitaexing = #{jzxZuzhibingliQitaexing},
+            jzx_jiejiezuidajing = #{jzxJiejiezuidajing},
+            jzx_neibujiegou_shixing = #{jzxNeibujiegouShixing},
+            jzx_neibujiegou_shixingweizhu = #{jzxNeibujiegouShixingweizhu},
+            jzx_neibujiegou_nangxingweizhu = #{jzxNeibujiegouNangxingweizhu},
+            jzx_neibujiegou_nangshixing = #{jzxNeibujiegouNangshixing},
+            jzx_neibujiegou_haimianyang = #{jzxNeibujiegouHaimianyang},
+            jzx_neibujiegou_nangxing = #{jzxNeibujiegouNangxing},
+            jzx_neibujiegou_wufapanduan = #{jzxNeibujiegouWufapanduan},
+            jzx_huisheng_gaohuisheng = #{jzxHuishengGaohuisheng},
+            jzx_huisheng_denghuisheng = #{jzxHuishengDenghuisheng},
+            jzx_huisheng_dihuisheng = #{jzxHuishengDihuisheng},
+            jzx_huisheng_jidihuisheng = #{jzxHuishengJidihuisheng},
+            jzx_huisheng_wufapanduan = #{jzxHuishengWufapanduan},
+            jzx_xingzhuang_dayudengyu = #{jzxXingzhuangDayudengyu},
+            jzx_xingzhuang_xiaoyu = #{jzxXingzhuangXiaoyu},
+            jzx_bianyuan_guangzheng = #{jzxBianyuanGuangzheng},
+            jzx_bianyuan_buguize = #{jzxBianyuanBuguize},
+            jzx_bianyuan_fenyezhuang = #{jzxBianyuanFenyezhuang},
+            jzx_bianyuan_mohu = #{jzxBianyuanMohu},
+            jzx_bianyuan_ete = #{jzxBianyuanEte},
+            jzx_bianyuan_wufaqueding = #{jzxBianyuanWufaqueding},
+            jzx_juzhaoqianghuisheng_dianzhuang = #{jzxJuzhaoqianghuishengDianzhuang},
+            jzx_juzhaoqianghuisheng_cudagaihua = #{jzxJuzhaoqianghuishengCudagaihua},
+            jzx_juzhaoqianghuisheng_bianyuangaihua = #{jzxJuzhaoqianghuishengBianyuangaihua},
+            jzx_juzhaoqianghuisheng_huixingwei = #{jzxJuzhaoqianghuishengHuixingwei},
+            lbj_daxiao_shuipingjing = #{lbjDaxiaoShuipingjing},
+            lbj_daxiao_cuizhijing = #{lbjDaxiaoCuizhijing},
+            lbj_xingzhuang_tuoyuan = #{lbjXingzhuangTuoyuan},
+            lbj_xingzhuang_leiyuan = #{lbjXingzhuangLeiyuan},
+            lbj_xingzhuang_buguize = #{lbjXingzhuangBuguize},
+            lbj_bianyuan_buguize = #{lbjBianyuanBuguize},
+            lbj_bianyuan_guangzheng = #{lbjBianyuanGuangzheng},
+            lbj_linbamen_zhengchang = #{lbjLinbamenZhengchang},
+            lbj_linbamen_pianxin = #{lbjLinbamenPianxin},
+            lbj_linbamen_xiaoshi = #{lbjLinbamenXiaoshi},
+            lbj_linbamen_gaohuishengtuankuai = #{lbjLinbamenGaohuishengtuankuai},
+            lbj_pizhi_junyunzenghou = #{lbjPizhiJunyunzenghou},
+            lbj_pizhi_bujunyunzenghou = #{lbjPizhiBujunyunzenghou},
+            lbj_neijunzhigaohuisheng = #{lbjNeijunzhigaohuisheng},
+            lbj_yehua = #{lbjYehua},
+            lbj_gaihua = #{lbjGaihua},
+            lbj_xueliu_zhengchang = #{lbjXueliuZhengchang},
+            lbj_xueliu_menxing = #{lbjXueliuMenxing},
+            lbj_xueliu_bianyuanweizhuxing = #{lbjXueliuBianyuanweizhuxing},
+            lbj_xueliu_hunhexing = #{lbjXueliuHunhexing},
+            lbj_binglijieguo = #{lbjBinglijieguo},
+            date = #{date},
+            is_biaozhu = #{isBiaozhu}
         </trim>
         where p_id = #{pId}
     </update>
+
 
     <delete id="deletePicByPId" parameterType="String">
         delete from pic where p_id = #{pId}
