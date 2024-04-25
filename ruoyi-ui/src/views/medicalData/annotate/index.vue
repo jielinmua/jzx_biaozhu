@@ -694,21 +694,13 @@ export default {
       }
     },
     submit() {
-      console.log("点击了提交");
-      console.log(
-        "甲状腺实质弥漫：" + this.radio1,
-        "是否双侧恶性:" + this.radio2,
-        "多发病灶(单侧叶):" + this.radio3 + "位置:" + this.location + "组织病理结果:" + this.histopathologyResults + "结节最大径:" + this.input + "内部结构:" + this.radio4 + "回声:" + this.radio5 +
-        "形状:" + this.radio6 + "边缘:" + this.radio7 + "局灶强回声:" + this.radio8 + "水平径:" + this.Levelsize + "垂直径:" + this.Verticalsize + "淋巴结病变形状:" + this.radio10 + "淋巴结病变边缘:" + this.radio11 +
-        "淋巴门:" + this.radio12 + "皮质:" + this.radio13 + "内均质高回声:" + this.radio14 + "液化:" + this.radio15 + "钙化:" + this.radio16 + "血流:" + this.radio17 + "病理结果:" + this.radio18
-      );
       let data = {
         ...this.markData,
         pId: this.pId,
         date: JSON.stringify(this.option)
       }
-      return
-      updateAnnotateData().then(res => {
+      console.log(data)
+      updateAnnotateData(data).then(res => {
         if (res.code == 200) {
           this.$message.success('保存成功')
         } else {
