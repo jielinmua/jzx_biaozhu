@@ -86,7 +86,7 @@ export function isArray(arg) {
 export function copyFields(obj1, obj2) {
   Object.keys(obj1).forEach(key => {
     if (obj2.hasOwnProperty(key)) {
-      obj1[key] = obj2[key];
+      obj1[key] = obj2[key]||0;
     }
   });
 }
