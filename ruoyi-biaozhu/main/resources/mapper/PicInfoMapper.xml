@@ -70,15 +70,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
 
 
+<!--    <update id="updatePicInfo" parameterType="PicInfo">-->
+<!--        update pic_info-->
+<!--        <trim prefix="SET" suffixOverrides=",">-->
+<!--            <if test="age != null">age = #{age},</if>-->
+<!--            <if test="gender != null">gender = #{gender},</if>-->
+<!--            <if test="imgAddress != null">img_address = #{imgAddress},</if>-->
+<!--        </trim>-->
+<!--        where p_id = #{pId}-->
+<!--    </update>-->
     <update id="updatePicInfo" parameterType="PicInfo">
         update pic_info
-        <trim prefix="SET" suffixOverrides=",">
-            <if test="age != null">age = #{age},</if>
-            <if test="gender != null">gender = #{gender},</if>
-            <if test="imgAddress != null">img_address = #{imgAddress},</if>
-        </trim>
+        SET age = #{age},
+        gender = #{gender}
         where p_id = #{pId}
     </update>
+
+
 
     <delete id="deletePicInfoByPId" parameterType="String">
         delete from pic_info where p_id = #{pId}
