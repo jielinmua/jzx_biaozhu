@@ -9,7 +9,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 标注对象 pic
  * 
  * @author ruoyi
- * @date 2024-04-19
+ * @date 2024-04-25
  */
 public class Pic extends BaseEntity
 {
@@ -27,232 +27,236 @@ public class Pic extends BaseEntity
     @Excel(name = "性别")
     private String gender;
 
-    /** 0假1真 */
-    @Excel(name = "0假1真")
+    /** 甲状腺实质弥漫 0假1真 */
+    @Excel(name = "甲状腺实质弥漫 0假1真")
     private Long jiazhuangxianshizhimiman;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺是否双侧恶性 0假1真 */
+    @Excel(name = "甲状腺是否双侧恶性 0假1真")
     private Long jzxShifoushuangceexing;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺多发病灶（单侧叶） 0假1真 */
+    @Excel(name = "甲状腺多发病灶", readConverterExp = "单=侧叶")
     private Long jzxDuofabingzhao;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺位置上极 0假1真 */
+    @Excel(name = "甲状腺位置上极 0假1真")
     private Long jzxWeizhiShangji;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺位置下极 0假1真 */
+    @Excel(name = "甲状腺位置下极 0假1真")
     private Long jzxWeizhiXiaji;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺位置中部 0假1真 */
+    @Excel(name = "甲状腺位置中部 0假1真")
     private Long jzxWeizhiZhongbu;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺位置峡部 0假1真 */
+    @Excel(name = "甲状腺位置峡部 0假1真")
     private Long jzxWeizhiXiabu;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺病理组织结果 良性0假1真 */
+    @Excel(name = "甲状腺病理组织结果 良性0假1真")
     private Long jzxZuzhibingliLiangxing;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺病理组织结果乳头状癌 0假1真 */
+    @Excel(name = "甲状腺病理组织结果乳头状癌 0假1真")
     private Long jzxZuzhibingliRutouzhuangai;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺病理组织结果髓样癌 0假1真 */
+    @Excel(name = "甲状腺病理组织结果髓样癌 0假1真")
     private Long jzxZuzhibingliSuiyangai;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺病理组织结果滤泡状癌 0假1真 */
+    @Excel(name = "甲状腺病理组织结果滤泡状癌 0假1真")
     private Long jzxZuzhibinbliLvpaozhuangai;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺病理组织结果其他恶性 0假1真 */
+    @Excel(name = "甲状腺病理组织结果其他恶性 0假1真")
     private Long jzxZuzhibingliQitaexing;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺结节最大径 float类型 */
+    @Excel(name = "甲状腺结节最大径 float类型")
     private Long jzxJiejiezuidajing;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺内部结构实性0假1真 */
+    @Excel(name = "甲状腺内部结构实性0假1真")
     private Long jzxNeibujiegouShixing;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺内部结构实性为主0假1真 */
+    @Excel(name = "甲状腺内部结构实性为主0假1真")
     private Long jzxNeibujiegouShixingweizhu;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺内部结构囊性为主0假1真 */
+    @Excel(name = "甲状腺内部结构囊性为主0假1真")
     private Long jzxNeibujiegouNangxingweizhu;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺内部结构囊实性0假1真 */
+    @Excel(name = "甲状腺内部结构囊实性0假1真")
     private Long jzxNeibujiegouNangshixing;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺内部结构海绵样0假1真 */
+    @Excel(name = "甲状腺内部结构海绵样0假1真")
     private Long jzxNeibujiegouHaimianyang;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺内部结构囊性0假1真 */
+    @Excel(name = "甲状腺内部结构囊性0假1真")
     private Long jzxNeibujiegouNangxing;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺内部结构无法判断0假1真 */
+    @Excel(name = "甲状腺内部结构无法判断0假1真")
     private Long jzxNeibujiegouWufapanduan;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺回声高回声0假1真 */
+    @Excel(name = "甲状腺回声高回声0假1真")
     private Long jzxHuishengGaohuisheng;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺回声等回声0假1真 */
+    @Excel(name = "甲状腺回声等回声0假1真")
     private Long jzxHuishengDenghuisheng;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺回声低回声0假1真 */
+    @Excel(name = "甲状腺回声低回声0假1真")
     private Long jzxHuishengDihuisheng;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺回声极低回声0假1真 */
+    @Excel(name = "甲状腺回声极低回声0假1真")
     private Long jzxHuishengJidihuisheng;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺回声无法判断0假1真 */
+    @Excel(name = "甲状腺回声无法判断0假1真")
     private Long jzxHuishengWufapanduan;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺形状纵横比≥1  0假1真 */
+    @Excel(name = "甲状腺形状纵横比≥1  0假1真")
     private Long jzxXingzhuangDayudengyu;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺形状纵横比&lt;1  0假1真 */
+    @Excel(name = "甲状腺形状纵横比&lt;1  0假1真")
     private Long jzxXingzhuangXiaoyu;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺边缘光整0假1真 */
+    @Excel(name = "甲状腺边缘光整0假1真")
     private Long jzxBianyuanGuangzheng;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺边缘不规则0假1真 */
+    @Excel(name = "甲状腺边缘不规则0假1真")
     private Long jzxBianyuanBuguize;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺边缘分叶状0假1真 */
+    @Excel(name = "甲状腺边缘分叶状0假1真")
     private Long jzxBianyuanFenyezhuang;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺边缘模糊0假1真 */
+    @Excel(name = "甲状腺边缘模糊0假1真")
     private Long jzxBianyuanMohu;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺边缘ETE0假1真 */
+    @Excel(name = "甲状腺边缘ETE0假1真")
     private Long jzxBianyuanEte;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺边缘无法确定 */
+    @Excel(name = "甲状腺边缘无法确定")
+    private Long jzxBianyuanWufaqueding;
+
+    /** 甲状腺局灶强回声点状强回声0假1真 */
+    @Excel(name = "甲状腺局灶强回声点状强回声0假1真")
     private Long jzxJuzhaoqianghuishengDianzhuang;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺局灶强回声粗大钙化0假1真 */
+    @Excel(name = "甲状腺局灶强回声粗大钙化0假1真")
     private Long jzxJuzhaoqianghuishengCudagaihua;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺局灶强回声边缘钙化0假1真 */
+    @Excel(name = "甲状腺局灶强回声边缘钙化0假1真")
     private Long jzxJuzhaoqianghuishengBianyuangaihua;
 
-    /**  */
-    @Excel(name = "")
+    /** 甲状腺局灶强回声彗星尾0假1真 */
+    @Excel(name = "甲状腺局灶强回声彗星尾0假1真")
     private Long jzxJuzhaoqianghuishengHuixingwei;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结大小水平径 */
+    @Excel(name = "淋巴结大小水平径")
     private Long lbjDaxiaoShuipingjing;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结大小垂直径 */
+    @Excel(name = "淋巴结大小垂直径")
     private Long lbjDaxiaoCuizhijing;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结形状椭圆形0假1真 */
+    @Excel(name = "淋巴结形状椭圆形0假1真")
     private Long lbjXingzhuangTuoyuan;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结形状类圆形0假1真 */
+    @Excel(name = "淋巴结形状类圆形0假1真")
     private Long lbjXingzhuangLeiyuan;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结形状不规则0假1真 */
+    @Excel(name = "淋巴结形状不规则0假1真")
     private Long lbjXingzhuangBuguize;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结边缘不规则0假1真 */
+    @Excel(name = "淋巴结边缘不规则0假1真")
     private Long lbjBianyuanBuguize;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结边缘光整0假1真 */
+    @Excel(name = "淋巴结边缘光整0假1真")
     private Long lbjBianyuanGuangzheng;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结淋巴门正常0假1真 */
+    @Excel(name = "淋巴结淋巴门正常0假1真")
     private Long lbjLinbamenZhengchang;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结淋巴门偏心0假1真 */
+    @Excel(name = "淋巴结淋巴门偏心0假1真")
     private Long lbjLinbamenPianxin;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结淋巴门消失0假1真 */
+    @Excel(name = "淋巴结淋巴门消失0假1真")
     private Long lbjLinbamenXiaoshi;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结淋巴门高回声团快0假1真 */
+    @Excel(name = "淋巴结淋巴门高回声团快0假1真")
     private Long lbjLinbamenGaohuishengtuankuai;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结皮质均匀增厚0假1真 */
+    @Excel(name = "淋巴结皮质均匀增厚0假1真")
     private Long lbjPizhiJunyunzenghou;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结皮质不均匀增厚0假1真 */
+    @Excel(name = "淋巴结皮质不均匀增厚0假1真")
     private Long lbjPizhiBujunyunzenghou;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结内均质高回声0假1真 */
+    @Excel(name = "淋巴结内均质高回声0假1真")
     private Long lbjNeijunzhigaohuisheng;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结液化0假1真 */
+    @Excel(name = "淋巴结液化0假1真")
     private Long lbjYehua;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结钙化0假1真 */
+    @Excel(name = "淋巴结钙化0假1真")
     private Long lbjGaihua;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结血流正常0假1真 */
+    @Excel(name = "淋巴结血流正常0假1真")
     private Long lbjXueliuZhengchang;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结血流门型0假1真 */
+    @Excel(name = "淋巴结血流门型0假1真")
     private Long lbjXueliuMenxing;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结血流边缘为主型0假1真 */
+    @Excel(name = "淋巴结血流边缘为主型0假1真")
     private Long lbjXueliuBianyuanweizhuxing;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结血流混合型0假1真 */
+    @Excel(name = "淋巴结血流混合型0假1真")
     private Long lbjXueliuHunhexing;
 
-    /**  */
-    @Excel(name = "")
+    /** 淋巴结病理结果是否 0假1真 */
+    @Excel(name = "淋巴结病理结果是否 0假1真")
     private Long lbjBinglijieguo;
 
     /** 图片线段信息 */
@@ -582,6 +586,15 @@ public class Pic extends BaseEntity
     {
         return jzxBianyuanEte;
     }
+    public void setJzxBianyuanWufaqueding(Long jzxBianyuanWufaqueding) 
+    {
+        this.jzxBianyuanWufaqueding = jzxBianyuanWufaqueding;
+    }
+
+    public Long getJzxBianyuanWufaqueding() 
+    {
+        return jzxBianyuanWufaqueding;
+    }
     public void setJzxJuzhaoqianghuishengDianzhuang(Long jzxJuzhaoqianghuishengDianzhuang) 
     {
         this.jzxJuzhaoqianghuishengDianzhuang = jzxJuzhaoqianghuishengDianzhuang;
@@ -873,6 +886,7 @@ public class Pic extends BaseEntity
             .append("jzxBianyuanFenyezhuang", getJzxBianyuanFenyezhuang())
             .append("jzxBianyuanMohu", getJzxBianyuanMohu())
             .append("jzxBianyuanEte", getJzxBianyuanEte())
+            .append("jzxBianyuanWufaqueding", getJzxBianyuanWufaqueding())
             .append("jzxJuzhaoqianghuishengDianzhuang", getJzxJuzhaoqianghuishengDianzhuang())
             .append("jzxJuzhaoqianghuishengCudagaihua", getJzxJuzhaoqianghuishengCudagaihua())
             .append("jzxJuzhaoqianghuishengBianyuangaihua", getJzxJuzhaoqianghuishengBianyuangaihua())
