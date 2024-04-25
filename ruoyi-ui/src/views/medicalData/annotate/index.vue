@@ -88,8 +88,8 @@
                 <span class="collapse-title" slot="title">是否双侧恶性</span>
                 <el-row>
                   <el-col :offset="2">
-                    <el-radio v-model="markData.jzxShiFoushuangceexing" :label="1">是</el-radio>
-                    <el-radio v-model="markData.jzxShiFoushuangceexing" :label="0">否</el-radio>
+                    <el-radio v-model="markData.jzxShifoushuangceexing" :label="1">是</el-radio>
+                    <el-radio v-model="markData.jzxShifoushuangceexing" :label="0">否</el-radio>
                   </el-col>
                 </el-row>
               </el-collapse-item>
@@ -134,7 +134,7 @@
                 <span class="collapse-title" slot="title">组织病理结果</span>
                 <el-row>
                   <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxZuZhibingliLiangxing" @change="bingliChange(1)" :true-label="1"
+                    <el-checkbox v-model="markData.jzxZuzhibingliLiangxing" @change="bingliChange(1)" :true-label="1"
                                  :false-label="0">良性
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxZuzhibingliRutouzhuangai" @change="bingliChange(2)"
@@ -143,7 +143,7 @@
                     <el-checkbox v-model="markData.jzxZuzhibingliSuiyangai" @change="bingliChange(3)" :true-label="1"
                                  :false-label="0">髓样癌
                     </el-checkbox>
-                    <el-checkbox v-model="markData.jzxZuzhibingliLvpaozhuangai" @change="bingliChange(4)"
+                    <el-checkbox v-model="markData.jzxZuzhibinbliLvpaozhuangai" @change="bingliChange(4)"
                                  :true-label="1" :false-label="0">滤泡状癌
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxZuzhibingliQitaexing" @change="bingliChange(5)" :true-label="1"
@@ -228,10 +228,10 @@
                 <span class="collapse-title" slot="title">形状</span>
                 <el-row>
                   <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxXingzhuangDayuDengyu" @change="jzxxingzhuangChange(1)"
+                    <el-checkbox v-model="markData.jzxXingzhuangDayudengyu" @change="jzxxingzhuangChange(1)"
                                  :true-label="1" :false-label="0">纵横比≥1
                     </el-checkbox>
-                    <el-checkbox v-model="markData.jzxXingzhuangxiaoyu" @change="jzxxingzhuangChange(2)" :true-label="1"
+                    <el-checkbox v-model="markData.jzxXingzhuangXiaoyu" @change="jzxxingzhuangChange(2)" :true-label="1"
                                  :false-label="0">纵横比<1
                     </el-checkbox>
                   </el-col>
@@ -336,7 +336,7 @@
               <span class="collapse-title" slot="title">边缘</span>
               <el-row>
                 <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjXingzhuangBuguize" @change="lbjbianyuanChange(1)" :true-label="1"
+                  <el-checkbox v-model="markData.lbjBianyuanBuguize" @change="lbjbianyuanChange(1)" :true-label="1"
                                :false-label="0">边缘不规则
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjBianyuanGuangzheng" @change="lbjbianyuanChange(2)" :true-label="1"
@@ -361,7 +361,7 @@
                   <el-checkbox v-model="markData.lbjLinbamenXiaoshi" @change="lbjlinbamenChange(3)" :true-label="1"
                                :false-label="0">消失
                   </el-checkbox>
-                  <el-checkbox v-model="markData.lbjLinbamenGaohuishengTuankuai" @change="lbjlinbamenChange(4)"
+                  <el-checkbox v-model="markData.lbjLinbamenGaohuishengtuankuai" @change="lbjlinbamenChange(4)"
                                :true-label="1" :false-label="0">高回声团块
                   </el-checkbox>
                 </el-col>
@@ -374,10 +374,10 @@
               <span class="collapse-title" slot="title">皮质</span>
               <el-row>
                 <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjPizhiJunyunZenghou" @change="lbjpizhiChange(1)" :true-label="1"
+                  <el-checkbox v-model="markData.lbjPizhiJunyunzenghou" @change="lbjpizhiChange(1)" :true-label="1"
                                :false-label="0">均匀增厚
                   </el-checkbox>
-                  <el-checkbox v-model="markData.lbjPizhiBujunyunZenghou" @change="lbjpizhiChange(2)" :true-label="1"
+                  <el-checkbox v-model="markData.lbjPizhiBujunyunzenghou" @change="lbjpizhiChange(2)" :true-label="1"
                                :false-label="0">不均匀增厚
                   </el-checkbox>
                 </el-col>
@@ -390,8 +390,8 @@
               <span class="collapse-title" slot="title">内均质高回声</span>
               <el-row>
                 <el-col :offset="2">
-                  <el-radio v-model="markData.lbjNeijunzhiGaohuisheng" :label="1">是</el-radio>
-                  <el-radio v-model="markData.lbjNeijunzhiGaohuisheng" :label="0">否</el-radio>
+                  <el-radio v-model="markData.lbjNeijunzhigaohuisheng" :label="1">是</el-radio>
+                  <el-radio v-model="markData.lbjNeijunzhigaohuisheng" :label="0">否</el-radio>
                 </el-col>
               </el-row>
             </el-collapse-item>
@@ -448,8 +448,8 @@
               <span class="collapse-title" slot="title">病理结果</span>
               <el-row>
                 <el-col :offset="2">
-                  <el-radio v-model="markData.lbjBinglijiegou" :label="1">是</el-radio>
-                  <el-radio v-model="markData.lbjBinglijiegou" :label="0">否</el-radio>
+                  <el-radio v-model="markData.lbjBinglijieguo" :label="1">是</el-radio>
+                  <el-radio v-model="markData.lbjBinglijieguo" :label="0">否</el-radio>
                 </el-col>
               </el-row>
             </el-collapse-item>
@@ -487,16 +487,16 @@ export default {
       histopathologyResults: [],
       markData: {
         jiazhuangxianshizhimiman: null,
-        jzxShiFoushuangceexing: null,
+        jzxShifoushuangceexing: null,
         jzxDuofabingzhao: null,
         jzxWeizhiShangji: null,
         jzxWeizhiXiaji: null,
         jzxWeizhiZhongbu: null,
         jzxWeizhiXiabu: null,
-        jzxZuZhibingliLiangxing: null,
+        jzxZuzhibingliLiangxing: null,
         jzxZuzhibingliRutouzhuangai: null,
         jzxZuzhibingliSuiyangai: null,
-        jzxZuzhibingliLvpaozhuangai: null,
+        jzxZuzhibinbliLvpaozhuangai: null,
         jzxZuzhibingliQitaexing: null,
         jzxJiejiezuidajing: null,
         jzxNeibujiegouShixing: null,
@@ -511,8 +511,8 @@ export default {
         jzxHuishengDihuisheng: null,
         jzxHuishengJidihuisheng: null,
         jzxHuishengWufapanduan: null,
-        jzxXingzhuangDayuDengyu: null,
-        jzxXingzhuangxiaoyu: null,
+        jzxXingzhuangDayudengyu: null,
+        jzxXingzhuangXiaoyu: null,
         jzxBianyuanGuangzheng: null,
         jzxBianyuanBuguize: null,
         jzxBianyuanFenyezhuang: null,
@@ -528,21 +528,22 @@ export default {
         lbjXingzhuangTuoyuan: null,
         lbjXingzhuangLeiyuan: null,
         lbjXingzhuangBuguize: null,
+        lbjBianyuanBuguize: null,
         lbjBianyuanGuangzheng: null,
         lbjLinbamenZhengchang: null,
         lbjLinbamenPianxin: null,
         lbjLinbamenXiaoshi: null,
-        lbjLinbamenGaohuishengTuankuai: null,
-        lbjPizhiJunyunZenghou: null,
-        lbjPizhiBujunyunZenghou: null,
-        lbjNeijunzhiGaohuisheng: null,
+        lbjLinbamenGaohuishengtuankuai: null,
+        lbjPizhiJunyunzenghou: null,
+        lbjPizhiBujunyunzenghou: null,
+        lbjNeijunzhigaohuisheng: null,
         lbjYehua: null,
         lbjGaihua: null,
         lbjXueliuZhengchang: null,
         lbjXueliuMenxing: null,
         lbjXueliuBianyuanweizhuxing: null,
         lbjXueliuHunhexing: null,
-        lbjBinglijiegou: null,
+        lbjBinglijieguo: null,
       }
     };
   },
@@ -568,19 +569,17 @@ export default {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
     },
     bingliChange(val) {
       console.log(val)
-      let arr = ["jzxZuZhibingliLiangxing", "jzxZuzhibingliRutouzhuangai", "jzxZuzhibingliSuiyangai", "jzxZuzhibingliLvpaozhuangai", "jzxZuzhibingliQitaexing"]
+      let arr = ["jzxZuzhibingliLiangxing", "jzxZuzhibingliRutouzhuangai", "jzxZuzhibingliSuiyangai", "jzxZuzhibinbliLvpaozhuangai", "jzxZuzhibingliQitaexing"]
       for (let i = 1; i <= arr.length; i++) {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
@@ -592,7 +591,6 @@ export default {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
@@ -604,19 +602,17 @@ export default {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
     },
     jzxxingzhuangChange(val) {
       console.log(val)
-      let arr = ["jzxXingzhuangDayuDengyu", "jzxXingzhuangxiaoyu"]
+      let arr = ["jzxXingzhuangDayudengyu", "jzxXingzhuangXiaoyu"]
       for (let i = 1; i <= arr.length; i++) {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
@@ -628,7 +624,6 @@ export default {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
@@ -640,31 +635,28 @@ export default {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
     },
     lbjlinbamenChange(val) {
       console.log(val)
-      let arr = ["lbjLinbamenZhengchang", "lbjLinbamenPianxin", "lbjLinbamenXiaoshi", "lbjLinbamenGaohuishengTuankuai"]
+      let arr = ["lbjLinbamenZhengchang", "lbjLinbamenPianxin", "lbjLinbamenXiaoshi", "lbjLinbamenGaohuishengtuankuai"]
       for (let i = 1; i <= arr.length; i++) {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
     },
     lbjpizhiChange(val) {
       console.log(val)
-      let arr = ["lbjPizhiJunyunZenghou", "lbjPizhiBujunyunZenghou"]
+      let arr = ["lbjPizhiJunyunzenghou", "lbjPizhiBujunyunzenghou"]
       for (let i = 1; i <= arr.length; i++) {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
@@ -676,35 +668,27 @@ export default {
         if (i == val) {
           continue
         }
-        ;
         console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
     },
     lbjbianyuanChange(val) {
       console.log(val)
-      let arr = ["lbjXingzhuangBuguize", "lbjBianyuanGuangzheng"]
+      let arr = ["lbjBianyuanBuguize", "lbjBianyuanGuangzheng"]
       for (let i = 1; i <= arr.length; i++) {
         if (i == val) {
           continue
         }
-        ;
-        console.log(i)
         this.markData[arr[i - 1]] = 0;
       }
     },
     submit() {
-      let oldData = {
+      let data = {
         ...this.markData,
-        pId: this.pId,
+        pId:this.pId,
+        age:this.patientAge||"",
+        gender:this.patientSex||"",
         date: JSON.stringify(this.option)
-      }
-      let data = JSON.parse(JSON.stringify(oldData))
-      console.log(data)
-      for (let key in data) {
-        if (data[key] === null) {
-          delete data[key];
-        }
       }
       updateAnnotateData(data).then(res => {
         if (res.code == 200) {

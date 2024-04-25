@@ -16,7 +16,8 @@ export function getAnnotateData(data) {
 export function updateAnnotateData(data){
   return request({
     url:'/biaozhu/pic',
+    headers:{'Content-Type':'application/json'},
     method:'put',
-    data:data
+    data:JSON.stringify(data)
   })
 }

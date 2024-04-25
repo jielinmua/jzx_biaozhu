@@ -102,7 +102,7 @@
 
     <el-table v-loading="loading" :data="biaoList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column label="${comment}" align="center" prop="pId"/>
+      <el-table-column label="pid" align="center" prop="pId"/>
       <el-table-column label="年龄" align="center" prop="age"/>
       <el-table-column label="性别" align="center" prop="gender"/>
       <el-table-column label="图片地址" align="center" prop="imgAddress"/>
