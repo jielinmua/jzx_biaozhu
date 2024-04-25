@@ -78,3 +78,15 @@ export function isArray(arg) {
   }
   return Array.isArray(arg)
 }
+
+/**
+ * @param obj1
+ * @param obj2
+ */
+export function copyFields(obj1, obj2) {
+  Object.keys(obj1).forEach(key => {
+    if (obj2.hasOwnProperty(key)) {
+      obj1[key] = obj2[key];
+    }
+  });
+}

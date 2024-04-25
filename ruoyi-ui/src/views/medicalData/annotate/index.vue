@@ -53,9 +53,9 @@
         </div>
         <div class="message">
           <div>年龄</div>
-          <div>{{patientAge}}</div>
+          <div>{{ patientAge }}</div>
           <div>性别</div>
-          <div>{{patientSex}}</div>
+          <div>{{ patientSex }}</div>
         </div>
       </div>
       <div class="content1">
@@ -112,11 +112,19 @@
                 <span class="collapse-title" slot="title">位置</span>
                 <el-row>
                   <el-col :offset="2">
-                      <el-checkbox v-model="markData.jzxWeizhiShangji" @change="weizhiChange(1)" :true-label="1" :false-label="0">上极</el-checkbox>
-                      <el-checkbox v-model="markData.jzxWeizhiXiaji" @change="weizhiChange(2)" :true-label="1" :false-label="0">下极</el-checkbox>
-                      <el-checkbox v-model="markData.jzxWeizhiZhongbu" @change="weizhiChange(3)" :true-label="1" :false-label="0">中部</el-checkbox>
-                      <el-checkbox v-model="markData.jzxWeizhiXiabu" @change="weizhiChange(4)" :true-label="1" :false-label="0">峡部</el-checkbox>
-                    </el-col>
+                    <el-checkbox v-model="markData.jzxWeizhiShangji" @change="weizhiChange(1)" :true-label="1"
+                                 :false-label="0">上极
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxWeizhiXiaji" @change="weizhiChange(2)" :true-label="1"
+                                 :false-label="0">下极
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxWeizhiZhongbu" @change="weizhiChange(3)" :true-label="1"
+                                 :false-label="0">中部
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxWeizhiXiabu" @change="weizhiChange(4)" :true-label="1"
+                                 :false-label="0">峡部
+                    </el-checkbox>
+                  </el-col>
                 </el-row>
               </el-collapse-item>
             </div>
@@ -126,11 +134,21 @@
                 <span class="collapse-title" slot="title">组织病理结果</span>
                 <el-row>
                   <el-col :offset="2">
-                      <el-checkbox v-model="markData.jzxZuZhibingliLiangxing" @change="bingliChange(1)" :true-label="1" :false-label="0">良性</el-checkbox>
-                      <el-checkbox v-model="markData.jzxZuzhibingliRutouzhuangai" @change="bingliChange(2)" :true-label="1" :false-label="0">乳头状癌</el-checkbox>
-                      <el-checkbox v-model="markData.jzxZuzhibingliSuiyangai" @change="bingliChange(3)" :true-label="1" :false-label="0">髓样癌</el-checkbox>
-                      <el-checkbox v-model="markData.jzxZuzhibingliLvpaozhuangai" @change="bingliChange(4)" :true-label="1" :false-label="0">滤泡状癌</el-checkbox>
-                      <el-checkbox v-model="markData.jzxZuzhibingliQitaexing" @change="bingliChange(5)" :true-label="1" :false-label="0">其他恶性</el-checkbox>
+                    <el-checkbox v-model="markData.jzxZuZhibingliLiangxing" @change="bingliChange(1)" :true-label="1"
+                                 :false-label="0">良性
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxZuzhibingliRutouzhuangai" @change="bingliChange(2)"
+                                 :true-label="1" :false-label="0">乳头状癌
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxZuzhibingliSuiyangai" @change="bingliChange(3)" :true-label="1"
+                                 :false-label="0">髓样癌
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxZuzhibingliLvpaozhuangai" @change="bingliChange(4)"
+                                 :true-label="1" :false-label="0">滤泡状癌
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxZuzhibingliQitaexing" @change="bingliChange(5)" :true-label="1"
+                                 :false-label="0">其他恶性
+                    </el-checkbox>
                   </el-col>
                 </el-row>
               </el-collapse-item>
@@ -154,13 +172,27 @@
                 <span class="collapse-title" slot="title">内部结构</span>
                 <el-row>
                   <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxNeibujiegouShixing" @change="jiegouChange(1)" :true-label="1" :false-label="0">实性</el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouShixingweizhu" @change="jiegouChange(2)" :true-label="1" :false-label="0">实性为主</el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouNangxingweizhu" @change="jiegouChange(3)" :true-label="1" :false-label="0">囊性为主</el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouNangshixing" @change="jiegouChange(4)" :true-label="1" :false-label="0">囊实性</el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouHaimianyang" @change="jiegouChange(5)" :true-label="1" :false-label="0">海绵样</el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouNangxing" @change="jiegouChange(6)" :true-label="1" :false-label="0">囊性</el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouWufapanduan" @change="jiegouChange(7)" :true-label="1" :false-label="0">无法判断</el-checkbox>
+                    <el-checkbox v-model="markData.jzxNeibujiegouShixing" @change="jiegouChange(1)" :true-label="1"
+                                 :false-label="0">实性
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxNeibujiegouShixingweizhu" @change="jiegouChange(2)"
+                                 :true-label="1" :false-label="0">实性为主
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxNeibujiegouNangxingweizhu" @change="jiegouChange(3)"
+                                 :true-label="1" :false-label="0">囊性为主
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxNeibujiegouNangshixing" @change="jiegouChange(4)" :true-label="1"
+                                 :false-label="0">囊实性
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxNeibujiegouHaimianyang" @change="jiegouChange(5)" :true-label="1"
+                                 :false-label="0">海绵样
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxNeibujiegouNangxing" @change="jiegouChange(6)" :true-label="1"
+                                 :false-label="0">囊性
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxNeibujiegouWufapanduan" @change="jiegouChange(7)" :true-label="1"
+                                 :false-label="0">无法判断
+                    </el-checkbox>
                   </el-col>
                 </el-row>
               </el-collapse-item>
@@ -171,11 +203,21 @@
                 <span class="collapse-title" slot="title">回声</span>
                 <el-row>
                   <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxHuishengGaohuisheng" @change="huishengChange(1)" :true-label="1" :false-label="0">高回声</el-checkbox>
-                    <el-checkbox v-model="markData.jzxHuishengDenghuisheng" @change="huishengChange(2)" :true-label="1" :false-label="0">等回声</el-checkbox>
-                    <el-checkbox v-model="markData.jzxHuishengDihuisheng" @change="huishengChange(3)" :true-label="1" :false-label="0">低回声</el-checkbox>
-                    <el-checkbox v-model="markData.jzxHuishengJidihuisheng" @change="huishengChange(4)" :true-label="1" :false-label="0">极低回声</el-checkbox>
-                    <el-checkbox v-model="markData.jzxHuishengWufapanduan" @change="huishengChange(5)" :true-label="1" :false-label="0">无法判断</el-checkbox>
+                    <el-checkbox v-model="markData.jzxHuishengGaohuisheng" @change="huishengChange(1)" :true-label="1"
+                                 :false-label="0">高回声
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxHuishengDenghuisheng" @change="huishengChange(2)" :true-label="1"
+                                 :false-label="0">等回声
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxHuishengDihuisheng" @change="huishengChange(3)" :true-label="1"
+                                 :false-label="0">低回声
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxHuishengJidihuisheng" @change="huishengChange(4)" :true-label="1"
+                                 :false-label="0">极低回声
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxHuishengWufapanduan" @change="huishengChange(5)" :true-label="1"
+                                 :false-label="0">无法判断
+                    </el-checkbox>
                   </el-col>
                 </el-row>
               </el-collapse-item>
@@ -186,8 +228,12 @@
                 <span class="collapse-title" slot="title">形状</span>
                 <el-row>
                   <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxXingzhuangDayuDengyu" @change="jzxxingzhuangChange(1)" :true-label="1" :false-label="0">纵横比≥1</el-checkbox>
-                    <el-checkbox v-model="markData.jzxXingzhuangxiaoyu" @change="jzxxingzhuangChange(2)" :true-label="1" :false-label="0">纵横比<1</el-checkbox>
+                    <el-checkbox v-model="markData.jzxXingzhuangDayuDengyu" @change="jzxxingzhuangChange(1)"
+                                 :true-label="1" :false-label="0">纵横比≥1
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxXingzhuangxiaoyu" @change="jzxxingzhuangChange(2)" :true-label="1"
+                                 :false-label="0">纵横比<1
+                    </el-checkbox>
                   </el-col>
                 </el-row>
               </el-collapse-item>
@@ -198,12 +244,24 @@
                 <span class="collapse-title" slot="title">边缘</span>
                 <el-row>
                   <el-col :offset="2" :span="20">
-                    <el-checkbox v-model="markData.jzxBianyuanGuangzheng" @change="jzxbianyuanChange(1)" :true-label="1" :false-label="0">边缘光整</el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanBuguize" @change="jzxbianyuanChange(2)" :true-label="1" :false-label="0">边缘不规则</el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanFenyezhuang" @change="jzxbianyuanChange(3)" :true-label="1" :false-label="0">边缘分叶状</el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanMohu" @change="jzxbianyuanChange(4)" :true-label="1" :false-label="0">边缘模糊</el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanEte" @change="jzxbianyuanChange(5)" :true-label="1" :false-label="0">ETE</el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanWufaqueding" @change="jzxbianyuanChange(6)" :true-label="1" :false-label="0">无法确定</el-checkbox>
+                    <el-checkbox v-model="markData.jzxBianyuanGuangzheng" @change="jzxbianyuanChange(1)" :true-label="1"
+                                 :false-label="0">边缘光整
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxBianyuanBuguize" @change="jzxbianyuanChange(2)" :true-label="1"
+                                 :false-label="0">边缘不规则
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxBianyuanFenyezhuang" @change="jzxbianyuanChange(3)"
+                                 :true-label="1" :false-label="0">边缘分叶状
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxBianyuanMohu" @change="jzxbianyuanChange(4)" :true-label="1"
+                                 :false-label="0">边缘模糊
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxBianyuanEte" @change="jzxbianyuanChange(5)" :true-label="1"
+                                 :false-label="0">ETE
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxBianyuanWufaqueding" @change="jzxbianyuanChange(6)"
+                                 :true-label="1" :false-label="0">无法确定
+                    </el-checkbox>
                   </el-col>
                 </el-row>
               </el-collapse-item>
@@ -214,10 +272,18 @@
                 <span class="collapse-title" slot="title">局灶强回声</span>
                 <el-row>
                   <el-col :offset="2" :span="20">
-                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengDianzhuang" :true-label="1" :false-label="0">点状强回声</el-checkbox>
-                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengCudagaihua" :true-label="1" :false-label="0">粗大钙化</el-checkbox>
-                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengBianyuangaihua" :true-label="1" :false-label="0">边缘钙化</el-checkbox>
-                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengHuixingwei" :true-label="1" :false-label="0">彗星尾</el-checkbox>
+                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengDianzhuang" :true-label="1" :false-label="0">
+                      点状强回声
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengCudagaihua" :true-label="1" :false-label="0">
+                      粗大钙化
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengBianyuangaihua" :true-label="1"
+                                 :false-label="0">边缘钙化
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengHuixingwei" :true-label="1" :false-label="0">
+                      彗星尾
+                    </el-checkbox>
                   </el-col>
                 </el-row>
               </el-collapse-item>
@@ -251,9 +317,15 @@
               <span class="collapse-title" slot="title">形状</span>
               <el-row>
                 <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjXingzhuangTuoyuan" @change="lbjxingzhuangChange(1)" :true-label="1" :false-label="0">椭圆形</el-checkbox>
-                  <el-checkbox v-model="markData.lbjXingzhuangLeiyuan" @change="lbjxingzhuangChange(2)" :true-label="1" :false-label="0">类圆形</el-checkbox>
-                  <el-checkbox v-model="markData.lbjXingzhuangBuguize" @change="lbjxingzhuangChange(3)" :true-label="1" :false-label="0">不规则</el-checkbox>
+                  <el-checkbox v-model="markData.lbjXingzhuangTuoyuan" @change="lbjxingzhuangChange(1)" :true-label="1"
+                               :false-label="0">椭圆形
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjXingzhuangLeiyuan" @change="lbjxingzhuangChange(2)" :true-label="1"
+                               :false-label="0">类圆形
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjXingzhuangBuguize" @change="lbjxingzhuangChange(3)" :true-label="1"
+                               :false-label="0">不规则
+                  </el-checkbox>
                 </el-col>
               </el-row>
             </el-collapse-item>
@@ -264,8 +336,12 @@
               <span class="collapse-title" slot="title">边缘</span>
               <el-row>
                 <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjXingzhuangBuguize" @change="lbjbianyuanChange(1)" :true-label="1" :false-label="0">边缘不规则</el-checkbox>
-                  <el-checkbox v-model="markData.lbjBianyuanGuangzheng" @change="lbjbianyuanChange(2)" :true-label="1" :false-label="0">边缘光整</el-checkbox>
+                  <el-checkbox v-model="markData.lbjXingzhuangBuguize" @change="lbjbianyuanChange(1)" :true-label="1"
+                               :false-label="0">边缘不规则
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjBianyuanGuangzheng" @change="lbjbianyuanChange(2)" :true-label="1"
+                               :false-label="0">边缘光整
+                  </el-checkbox>
                 </el-col>
               </el-row>
             </el-collapse-item>
@@ -276,10 +352,18 @@
               <span class="collapse-title" slot="title">淋巴门</span>
               <el-row class="buju">
                 <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjLinbamenZhengchang" @change="lbjlinbamenChange(1)" :true-label="1" :false-label="0">正常</el-checkbox>
-                  <el-checkbox v-model="markData.lbjLinbamenPianxin" @change="lbjlinbamenChange(2)" :true-label="1" :false-label="0">偏心</el-checkbox>
-                  <el-checkbox v-model="markData.lbjLinbamenXiaoshi" @change="lbjlinbamenChange(3)" :true-label="1" :false-label="0">消失</el-checkbox>
-                  <el-checkbox v-model="markData.lbjLinbamenGaohuishengTuankuai" @change="lbjlinbamenChange(4)" :true-label="1" :false-label="0">高回声团块</el-checkbox>
+                  <el-checkbox v-model="markData.lbjLinbamenZhengchang" @change="lbjlinbamenChange(1)" :true-label="1"
+                               :false-label="0">正常
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjLinbamenPianxin" @change="lbjlinbamenChange(2)" :true-label="1"
+                               :false-label="0">偏心
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjLinbamenXiaoshi" @change="lbjlinbamenChange(3)" :true-label="1"
+                               :false-label="0">消失
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjLinbamenGaohuishengTuankuai" @change="lbjlinbamenChange(4)"
+                               :true-label="1" :false-label="0">高回声团块
+                  </el-checkbox>
                 </el-col>
               </el-row>
             </el-collapse-item>
@@ -290,8 +374,12 @@
               <span class="collapse-title" slot="title">皮质</span>
               <el-row>
                 <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjPizhiJunyunZenghou" @change="lbjpizhiChange(1)" :true-label="1" :false-label="0">均匀增厚</el-checkbox>
-                  <el-checkbox v-model="markData.lbjPizhiBujunyunZenghou" @change="lbjpizhiChange(2)" :true-label="1" :false-label="0">不均匀增厚</el-checkbox>
+                  <el-checkbox v-model="markData.lbjPizhiJunyunZenghou" @change="lbjpizhiChange(1)" :true-label="1"
+                               :false-label="0">均匀增厚
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjPizhiBujunyunZenghou" @change="lbjpizhiChange(2)" :true-label="1"
+                               :false-label="0">不均匀增厚
+                  </el-checkbox>
                 </el-col>
               </el-row>
             </el-collapse-item>
@@ -338,10 +426,18 @@
               <span class="collapse-title" slot="title">血流</span>
               <el-row>
                 <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjXueliuZhengchang" @change="lbjxueliuChange(1)" :true-label="1" :false-label="0">正常</el-checkbox>
-                  <el-checkbox v-model="markData.lbjXueliuMenxing" @change="lbjxueliuChange(2)" :true-label="1" :false-label="0">门型</el-checkbox>
-                  <el-checkbox v-model="markData.lbjXueliuBianyuanweizhuxing" @change="lbjxueliuChange(3)" :true-label="1" :false-label="0">边缘为主型</el-checkbox>
-                  <el-checkbox v-model="markData.lbjXueliuHunhexing" @change="lbjxueliuChange(4)" :true-label="1" :false-label="0">混合型</el-checkbox>
+                  <el-checkbox v-model="markData.lbjXueliuZhengchang" @change="lbjxueliuChange(1)" :true-label="1"
+                               :false-label="0">正常
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjXueliuMenxing" @change="lbjxueliuChange(2)" :true-label="1"
+                               :false-label="0">门型
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjXueliuBianyuanweizhuxing" @change="lbjxueliuChange(3)"
+                               :true-label="1" :false-label="0">边缘为主型
+                  </el-checkbox>
+                  <el-checkbox v-model="markData.lbjXueliuHunhexing" @change="lbjxueliuChange(4)" :true-label="1"
+                               :false-label="0">混合型
+                  </el-checkbox>
                 </el-col>
               </el-row>
             </el-collapse-item>
@@ -368,13 +464,14 @@
 <script>
 import CanvasSelect from "canvas-select";
 import {getAnnotateData, updateAnnotateData} from "@/api/medicalData/annotate/index.js";
+import {copyFields} from "@/utils/validate.js"
 
 export default {
   name: "Annotate",
   data() {
     return {
-      patientAge:"",
-      patientSex:'',
+      patientAge: "",
+      patientSex: '',
       pId: "",
       activeNames: ["1"],
       option: [],
@@ -430,6 +527,7 @@ export default {
         jzxBianyuanFenyezhuang: 0,
         jzxBianyuanMohu: 0,
         jzxBianyuanEte: 0,
+        jzxBianyuanWufaqueding: 0,
         jzxJuzhaoqianghuishengDianzhuang: 0,
         jzxJuzhaoqianghuishengCudagaihua: 0,
         jzxJuzhaoqianghuishengBianyuangaihua: 0,
@@ -472,125 +570,136 @@ export default {
     },
   },
   methods: {
-    weizhiChange(val){
+    weizhiChange(val) {
       console.log(val)
-      let arr = ["jzxWeizhiShangji","jzxWeizhiXiaji","jzxWeizhiZhongbu","jzxWeizhiXiabu"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["jzxWeizhiShangji", "jzxWeizhiXiaji", "jzxWeizhiZhongbu", "jzxWeizhiXiabu"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    bingliChange(val){
+    bingliChange(val) {
       console.log(val)
-      let arr = ["jzxZuZhibingliLiangxing","jzxZuzhibingliRutouzhuangai","jzxZuzhibingliSuiyangai","jzxZuzhibingliLvpaozhuangai","jzxZuzhibingliQitaexing"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["jzxZuZhibingliLiangxing", "jzxZuzhibingliRutouzhuangai", "jzxZuzhibingliSuiyangai", "jzxZuzhibingliLvpaozhuangai", "jzxZuzhibingliQitaexing"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    jiegouChange(val){
+    jiegouChange(val) {
       console.log(val)
-      let arr = ["jzxNeibujiegouShixing","jzxNeibujiegouShixingweizhu","jzxNeibujiegouNangxingweizhu","jzxNeibujiegouNangshixing","jzxNeibujiegouHaimianyang","jzxNeibujiegouNangxing","jzxNeibujiegouWufapanduan"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["jzxNeibujiegouShixing", "jzxNeibujiegouShixingweizhu", "jzxNeibujiegouNangxingweizhu", "jzxNeibujiegouNangshixing", "jzxNeibujiegouHaimianyang", "jzxNeibujiegouNangxing", "jzxNeibujiegouWufapanduan"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    huishengChange(val){
+    huishengChange(val) {
       console.log(val)
-      let arr = ["jzxHuishengGaohuisheng","jzxHuishengDenghuisheng","jzxHuishengDihuisheng","jzxHuishengJidihuisheng","jzxHuishengWufapanduan"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["jzxHuishengGaohuisheng", "jzxHuishengDenghuisheng", "jzxHuishengDihuisheng", "jzxHuishengJidihuisheng", "jzxHuishengWufapanduan"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    jzxxingzhuangChange(val){
+    jzxxingzhuangChange(val) {
       console.log(val)
-      let arr = ["jzxXingzhuangDayuDengyu","jzxXingzhuangxiaoyu"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["jzxXingzhuangDayuDengyu", "jzxXingzhuangxiaoyu"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    jzxbianyuanChange(val){
+    jzxbianyuanChange(val) {
       console.log(val)
-      let arr = ["jzxBianyuanGuangzheng","jzxBianyuanBuguize","jzxBianyuanFenyezhuang","jzxBianyuanMohu","jzxBianyuanEte","jzxBianyuanWufaqueding"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["jzxBianyuanGuangzheng", "jzxBianyuanBuguize", "jzxBianyuanFenyezhuang", "jzxBianyuanMohu", "jzxBianyuanEte", "jzxBianyuanWufaqueding"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    lbjxingzhuangChange(val){
+    lbjxingzhuangChange(val) {
       console.log(val)
-      let arr = ["lbjXingzhuangTuoyuan","lbjXingzhuangLeiyuan","lbjXingzhuangBuguize"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["lbjXingzhuangTuoyuan", "lbjXingzhuangLeiyuan", "lbjXingzhuangBuguize"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    lbjlinbamenChange(val){
+    lbjlinbamenChange(val) {
       console.log(val)
-      let arr = ["lbjLinbamenZhengchang","lbjLinbamenPianxin","lbjLinbamenXiaoshi","lbjLinbamenGaohuishengTuankuai"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["lbjLinbamenZhengchang", "lbjLinbamenPianxin", "lbjLinbamenXiaoshi", "lbjLinbamenGaohuishengTuankuai"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    lbjpizhiChange(val){
+    lbjpizhiChange(val) {
       console.log(val)
-      let arr = ["lbjPizhiJunyunZenghou","lbjPizhiBujunyunZenghou"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["lbjPizhiJunyunZenghou", "lbjPizhiBujunyunZenghou"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    lbjxueliuChange(val){
+    lbjxueliuChange(val) {
       console.log(val)
-      let arr = ["lbjXueliuZhengchang","lbjXueliuMenxing","lbjXueliuBianyuanweizhuxing","lbjXueliuHunhexing"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["lbjXueliuZhengchang", "lbjXueliuMenxing", "lbjXueliuBianyuanweizhuxing", "lbjXueliuHunhexing"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
-    lbjbianyuanChange(val){
+    lbjbianyuanChange(val) {
       console.log(val)
-      let arr = ["lbjXingzhuangBuguize","lbjBianyuanGuangzheng"]
-      for (let i = 1;i<=arr.length;i++) {
-        if(i == val) {
+      let arr = ["lbjXingzhuangBuguize", "lbjBianyuanGuangzheng"]
+      for (let i = 1; i <= arr.length; i++) {
+        if (i == val) {
           continue
-        };
+        }
+        ;
         console.log(i)
-        this.markData[arr[i-1]] = 0;
+        this.markData[arr[i - 1]] = 0;
       }
     },
     submit() {
@@ -602,6 +711,19 @@ export default {
         "形状:" + this.radio6 + "边缘:" + this.radio7 + "局灶强回声:" + this.radio8 + "水平径:" + this.Levelsize + "垂直径:" + this.Verticalsize + "淋巴结病变形状:" + this.radio10 + "淋巴结病变边缘:" + this.radio11 +
         "淋巴门:" + this.radio12 + "皮质:" + this.radio13 + "内均质高回声:" + this.radio14 + "液化:" + this.radio15 + "钙化:" + this.radio16 + "血流:" + this.radio17 + "病理结果:" + this.radio18
       );
+      let data = {
+        ...this.markData,
+        pId: this.pId,
+        date: JSON.stringify(this.option)
+      }
+      return
+      updateAnnotateData().then(res => {
+        if (res.code == 200) {
+          this.$message.success('保存成功')
+        } else {
+          this.$message.error('保存失败')
+        }
+      })
     },
     inputs(e) {
     },
@@ -697,29 +819,35 @@ export default {
     },
   },
   mounted() {
-    // this.imgUrl
     this.pId = this.$route.query.pId;
     console.log("mounted")
     getAnnotateData({pId: this.pId}).then(res => {
+      this.patientAge = res.data.age;
+      this.patientSex = res.data.gender;
+      let serverOption = JSON.parse(res.data.date)
       console.log('请求来的数据')
       console.log(res)
       this.imgUrl = res.data.imgAddress
+      this.option = typeof (serverOption) == 'Array' ? serverOption : []
       this.instanceInit();
+      copyFields(this.markData, res.data)
     })
     window.onresize = this.canvasResize
   },
   activated() {
-    console.log('activated')
-    console.log(this.$route.query.pId)
-    if(this.pId != this.$route.query.pId){
+    if (this.pId != this.$route.query.pId) {
       this.pId = this.$route.query.pId;
       getAnnotateData({pId: this.pId}).then(res => {
+        this.patientAge = res.data.age;
+        this.patientSex = res.data.gender;
+        let serverOption = JSON.parse(res.data.date)
         console.log('请求来的数据')
         console.log(res)
+        copyFields(this.markData, res.data)
         this.imgUrl = res.data.imgAddress
         this.instance.setImage(this.imgUrl)
-        this.option = res.data.date || []
-        this.instance.setData([])
+        this.option = typeof (serverOption) == 'Array' ? serverOption : []
+        this.instance.setData(this.option)
       })
     }
   }
