@@ -18,11 +18,11 @@ public class FileUploadUtils {
 
 
     //@Value("${ruoyi.url}")
-    private String url="https://chronic.mindyard.cn/uploadPath";
+    private String url="https://jzx.mindyard.cn/uploadPath";
 
 
     //@Value("${ruoyi.profile}")
-    private String proFile="/home/chenpeng/workspace/system/chronic/uploadPath/";
+    private String proFile="/home/chenpeng/workspace/system/jzx/uploadPath/";
 
     public String uploadImgUrl(MultipartFile file,String location,String phone){
         try {
