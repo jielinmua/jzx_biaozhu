@@ -9,10 +9,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="age"    column="age"    />
         <result property="gender"    column="gender"    />
         <result property="imgAddress"    column="img_address"    />
+        <result property="patientId"    column="patient_id"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
     </resultMap>
 
     <sql id="selectPicInfoVo">
-        select p_id, age, gender, img_address from pic_info
+        select p_id, age, gender, img_address, patient_id, create_time, update_time from pic_info
     </sql>
 
     <select id="selectPicInfoList" parameterType="PicInfo" resultMap="PicInfoResult">
@@ -22,7 +25,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="age != null "> and age = #{age}</if>
             <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
             <if test="imgAddress != null  and imgAddress != ''"> and img_address = #{imgAddress}</if>
+            <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
         </where>
+        ORDER BY create_time DESC
     </select>
     
     <select id="selectPicInfoByPId" parameterType="String" resultMap="PicInfoResult">
@@ -37,38 +42,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="age != null">age,</if>
             <if test="gender != null">gender,</if>
             <if test="imgAddress != null">img_address,</if>
+            <if test="patientId != null">patient_id,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="pId != null and pId != ''">#{pId},</if>
             <if test="age != null">#{age},</if>
             <if test="gender != null">#{gender},</if>
             <if test="imgAddress != null">#{imgAddress},</if>
+            <if test="patientId != null">#{patientId},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
          </trim>
     </insert>
-<!--    <insert id="insertPicInfos">-->
-<!--        insert into pic_info-->
-<!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->
-<!--            <if test="list[0].pId != null">p_id,</if>-->
-<!--            &lt;!&ndash; 你可以继续添加更多的字段 &ndash;&gt;-->
-<!--        </trim>-->
-<!--        values-->
-<!--        <foreach collection="list" item="item" index="index" separator=",">-->
-<!--            <trim prefix="(" suffix=")" suffixOverrides=",">-->
-<!--                <if test="item.pId != null">#{item.pId},</if>-->
-<!--                <if test="item.imgAddress != null">#{item.imgAddress},</if>-->
-<!--                <if test="item.gender != null">#{item.gender},</if>-->
-<!--                &lt;!&ndash; 继续添加每个对象的字段插入 &ndash;&gt;-->
-<!--            </trim>-->
-<!--        </foreach>-->
-<!--    </insert>-->
-    <insert id="insertPicInfos" parameterType="java.util.List">
-        insert into pic_info (p_id, img_address)
-        values
-        <foreach collection="list" item="pic" index="index" separator=",">
-            (#{pic.pId}, #{pic.imgAddress})
-        </foreach>
-    </insert>
-
 
 <!--    <update id="updatePicInfo" parameterType="PicInfo">-->
 <!--        update pic_info-->
@@ -76,17 +63,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--            <if test="age != null">age = #{age},</if>-->
 <!--            <if test="gender != null">gender = #{gender},</if>-->
 <!--            <if test="imgAddress != null">img_address = #{imgAddress},</if>-->
+<!--            <if test="patientId != null">patient_id = #{patientId},</if>-->
+<!--            <if test="createTime != null">create_time = #{createTime},</if>-->
+<!--            <if test="updateTime != null">update_time = #{updateTime},</if>-->
 <!--        </trim>-->
 <!--        where p_id = #{pId}-->
 <!--    </update>-->
     <update id="updatePicInfo" parameterType="PicInfo">
         update pic_info
         SET age = #{age},
-        gender = #{gender}
+            gender = #{gender}
         where p_id = #{pId}
     </update>
-
-
 
     <delete id="deletePicInfoByPId" parameterType="String">
         delete from pic_info where p_id = #{pId}
@@ -98,4 +86,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             #{pId}
         </foreach>
     </delete>
+
+    <insert id="insertPicInfos" parameterType="java.util.List">
+        insert into pic_info (p_id, img_address,create_time,age,gender,patient_id)
+        values
+        <foreach collection="list" item="pic" index="index" separator=",">
+            (#{pic.pId}, #{pic.imgAddress},#{pic.createTime},#{pic.age},#{pic.gender},#{pic.patientId})
+        </foreach>
+    </insert>
 </mapper>

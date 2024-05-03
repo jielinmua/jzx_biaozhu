@@ -9,7 +9,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 标注对象 pic
  * 
  * @author ruoyi
- * @date 2024-04-25
+ * @date 2024-04-29
  */
 public class Pic extends BaseEntity
 {
@@ -17,6 +17,10 @@ public class Pic extends BaseEntity
 
     /** 主键 */
     private String pId;
+
+    /** 病人id */
+    @Excel(name = "病人id")
+    private String patientId;
 
     /** 年龄
  */
@@ -267,8 +271,8 @@ public class Pic extends BaseEntity
     @Excel(name = "图片路径")
     private String imgAddress;
 
-    /** 是否标注0为未标注1为已标注 */
-    @Excel(name = "是否标注0为未标注1为已标注")
+    /** 是否标注0为未标注1为已标注2丢弃 */
+    @Excel(name = "是否标注0为未标注1为已标注2丢弃")
     private Long isBiaozhu;
 
     public void setpId(String pId) 
@@ -279,6 +283,15 @@ public class Pic extends BaseEntity
     public String getpId() 
     {
         return pId;
+    }
+    public void setPatientId(String patientId) 
+    {
+        this.patientId = patientId;
+    }
+
+    public String getPatientId() 
+    {
+        return patientId;
     }
     public void setAge(Long age) 
     {
@@ -852,8 +865,10 @@ public class Pic extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("pId", getpId())
+            .append("patientId", getPatientId())
             .append("age", getAge())
             .append("gender", getGender())
+            .append("createTime", getCreateTime())
             .append("jiazhuangxianshizhimiman", getJiazhuangxianshizhimiman())
             .append("jzxShifoushuangceexing", getJzxShifoushuangceexing())
             .append("jzxDuofabingzhao", getJzxDuofabingzhao())
@@ -915,6 +930,7 @@ public class Pic extends BaseEntity
             .append("date", getDate())
             .append("imgAddress", getImgAddress())
             .append("isBiaozhu", getIsBiaozhu())
+            .append("updateTime", getUpdateTime())
             .toString();
     }
 }

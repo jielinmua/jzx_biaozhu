@@ -9,14 +9,14 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 数据图表对象 pic_info
  * 
  * @author ruoyi
- * @date 2024-04-07
+ * @date 2024-04-29
  */
 public class PicInfo extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** $column.columnComment */
-    @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
+    /**  */
+    @Excel(name = "")
     private String pId;
 
     /** 年龄 */
@@ -30,6 +30,10 @@ public class PicInfo extends BaseEntity
     /** 图片地址 */
     @Excel(name = "图片地址")
     private String imgAddress;
+
+    /** 病人id */
+    @Excel(name = "病人id")
+    private String patientId;
 
     public void setpId(String pId) 
     {
@@ -67,6 +71,15 @@ public class PicInfo extends BaseEntity
     {
         return imgAddress;
     }
+    public void setPatientId(String patientId) 
+    {
+        this.patientId = patientId;
+    }
+
+    public String getPatientId() 
+    {
+        return patientId;
+    }
 
     @Override
     public String toString() {
@@ -75,6 +88,9 @@ public class PicInfo extends BaseEntity
             .append("age", getAge())
             .append("gender", getGender())
             .append("imgAddress", getImgAddress())
+            .append("patientId", getPatientId())
+            .append("createTime", getCreateTime())
+            .append("updateTime", getUpdateTime())
             .toString();
     }
 }

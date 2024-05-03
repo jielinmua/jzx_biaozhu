@@ -1,6 +1,7 @@
 package com.ruoyi.biaozhu.service.impl;
 
 import java.util.List;
+import com.ruoyi.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.biaozhu.mapper.PicMapper;
@@ -11,7 +12,7 @@ import com.ruoyi.biaozhu.service.IPicService;
  * 标注Service业务层处理
  * 
  * @author ruoyi
- * @date 2024-04-19
+ * @date 2024-04-29
  */
 @Service
 public class PicServiceImpl implements IPicService 
@@ -52,6 +53,7 @@ public class PicServiceImpl implements IPicService
     @Override
     public int insertPic(Pic pic)
     {
+        pic.setCreateTime(DateUtils.getNowDate());
         return picMapper.insertPic(pic);
     }
 
@@ -64,6 +66,7 @@ public class PicServiceImpl implements IPicService
     @Override
     public int updatePic(Pic pic)
     {
+        pic.setUpdateTime(DateUtils.getNowDate());
         return picMapper.updatePic(pic);
     }
 
@@ -99,5 +102,15 @@ public class PicServiceImpl implements IPicService
     @Override
     public int insertPics(List<Pic> picList) {
         return picMapper.insertPics(picList);
+    }
+
+    @Override
+    public List<Pic> selectDiscard(Pic pic) {
+        return picMapper.selectDiscard(pic);
+    }
+
+    @Override
+    public List<Pic> selectLabeled(Pic pic) {
+        return picMapper.selectLabeled(pic);
     }
 }

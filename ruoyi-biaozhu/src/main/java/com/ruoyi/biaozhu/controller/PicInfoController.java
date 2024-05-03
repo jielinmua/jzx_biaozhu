@@ -25,7 +25,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * 数据图表Controller
  * 
  * @author ruoyi
- * @date 2024-04-07
+ * @date 2024-04-29
  */
 @RestController
 @RequestMapping("/info/biao")

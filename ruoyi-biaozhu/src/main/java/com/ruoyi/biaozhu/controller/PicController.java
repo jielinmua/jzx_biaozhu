@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.biaozhu.domain.PicInfo;
 import com.ruoyi.biaozhu.service.IPicInfoService;
+import com.ruoyi.biaozhu.utils.FileUploadUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +19,12 @@ import com.ruoyi.biaozhu.service.IPicService;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 import org.springframework.web.multipart.MultipartFile;
-import com.ruoyi.biaozhu.utils.FileUploadUtils;
 
 /**
  * 标注Controller
  * 
  * @author ruoyi
- * @date 2024-04-19
+ * @date 2024-04-29
  */
 @RestController
 @RequestMapping("/biaozhu/pic")
@@ -38,6 +38,9 @@ public class PicController extends BaseController
 
     @Autowired
     private FileUploadUtils fileUploadUtils;
+
+
+
     /**
      * 查询标注列表
      */
@@ -79,7 +82,7 @@ public class PicController extends BaseController
     @PreAuthorize("@ss.hasPermi('biaozhu:pic:add')")
     @Log(title = "标注", businessType = BusinessType.INSERT)
     @PostMapping
-    public AjaxResult add(@RequestParam("images") List<MultipartFile> images) {
+    public AjaxResult add(@RequestParam("images") List<MultipartFile> images,String patientId,String gender,Long age) {
         //FileUploadUtils fileUploadUtils = new FileUploadUtils();
         List<Pic> pics = new ArrayList<>();
         List<PicInfo> picInfos = new ArrayList<>();
@@ -103,11 +106,21 @@ public class PicController extends BaseController
                 Pic pic = new Pic();
                 pic.setpId(pId);
                 pic.setImgAddress(path);
+                pic.setCreateTime(new java.util.Date());
+                pic.setPatientId(patientId);
+                pic.setGender(gender);
+                pic.setAge(age);
                 pics.add(pic);
+                //插入创建时间
+
 
                 PicInfo picInfo = new PicInfo();
                 picInfo.setpId(pId);
                 picInfo.setImgAddress(path);
+                picInfo.setCreateTime(new java.util.Date());
+                picInfo.setPatientId(patientId);
+                picInfo.setGender(gender);
+                picInfo.setAge(age);
                 picInfos.add(picInfo);
             }
 
@@ -181,8 +194,8 @@ public class PicController extends BaseController
         picInfo.setAge(pic.getAge());
         picInfo.setGender(pic.getGender());
         int i=picInfoService.updatePicInfo(picInfo);
-        //pic的isBiaoZhu字段设为1
-        pic.setIsBiaozhu(1L);
+//        //pic的isBiaoZhu字段设为1
+//        pic.setIsBiaozhu(1L);
         return toAjax(picService.updatePic(pic));
     }
 
@@ -191,7 +204,7 @@ public class PicController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('biaozhu:pic:remove')")
     @Log(title = "标注", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{pIds}")
+    @DeleteMapping("/{pIds}")
     public AjaxResult remove(@PathVariable String[] pIds)
     {
         picInfoService.deletePicInfoByPIds(pIds);
@@ -204,7 +217,30 @@ public class PicController extends BaseController
     public TableDataInfo unlabeled(Pic pic)
     {
         startPage();
-        List<Pic> list = picService.selectUnlabeled(pic);
+        pic.setIsBiaozhu(0L);
+        List<Pic> list = picService.selectPicList(pic);
+        return getDataTable(list);
+    }
+
+    //查找已标注图片
+    @PreAuthorize("@ss.hasPermi('biaozhu:pic:labeled')")
+    @GetMapping("/labeled")
+    public TableDataInfo labeled(Pic pic)
+    {
+        startPage();
+        pic.setIsBiaozhu(1L);
+        List<Pic> list = picService.selectPicList(pic);
+        return getDataTable(list);
+    }
+
+    //查找丢弃图片
+    @PreAuthorize("@ss.hasPermi('biaozhu:pic:discard')")
+    @GetMapping("/discard")
+    public TableDataInfo discard(Pic pic)
+    {
+        startPage();
+        pic.setIsBiaozhu(2L);
+        List<Pic> list = picService.selectPicList(pic);
         return getDataTable(list);
     }
 

@@ -6,8 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="Pic" id="PicResult">
         <result property="pId"    column="p_id"    />
+        <result property="patientId"    column="patient_id"    />
         <result property="age"    column="age"    />
         <result property="gender"    column="gender"    />
+        <result property="createTime"    column="create_time"    />
         <result property="jiazhuangxianshizhimiman"    column="jiazhuangxianshizhimiman"    />
         <result property="jzxShifoushuangceexing"    column="jzx_shifoushuangceexing"    />
         <result property="jzxDuofabingzhao"    column="jzx_duofabingzhao"    />
@@ -69,15 +71,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="date"    column="date"    />
         <result property="imgAddress"    column="img_address"    />
         <result property="isBiaozhu"    column="is_biaozhu"    />
+        <result property="updateTime"    column="update_time"    />
     </resultMap>
 
     <sql id="selectPicVo">
-        select p_id, age, gender, jiazhuangxianshizhimiman, jzx_shifoushuangceexing, jzx_duofabingzhao, jzx_weizhi_shangji, jzx_weizhi_xiaji, jzx_weizhi_zhongbu, jzx_weizhi_xiabu, jzx_zuzhibingli_liangxing, jzx_zuzhibingli_rutouzhuangai, jzx_zuzhibingli_suiyangai, jzx_zuzhibinbli_lvpaozhuangai, jzx_zuzhibingli_qitaexing, jzx_jiejiezuidajing, jzx_neibujiegou_shixing, jzx_neibujiegou_shixingweizhu, jzx_neibujiegou_nangxingweizhu, jzx_neibujiegou_nangshixing, jzx_neibujiegou_haimianyang, jzx_neibujiegou_nangxing, jzx_neibujiegou_wufapanduan, jzx_huisheng_gaohuisheng, jzx_huisheng_denghuisheng, jzx_huisheng_dihuisheng, jzx_huisheng_jidihuisheng, jzx_huisheng_wufapanduan, jzx_xingzhuang_dayudengyu, jzx_xingzhuang_xiaoyu, jzx_bianyuan_guangzheng, jzx_bianyuan_buguize, jzx_bianyuan_fenyezhuang, jzx_bianyuan_mohu, jzx_bianyuan_ete, jzx_bianyuan_wufaqueding, jzx_juzhaoqianghuisheng_dianzhuang, jzx_juzhaoqianghuisheng_cudagaihua, jzx_juzhaoqianghuisheng_bianyuangaihua, jzx_juzhaoqianghuisheng_huixingwei, lbj_daxiao_shuipingjing, lbj_daxiao_cuizhijing, lbj_xingzhuang_tuoyuan, lbj_xingzhuang_leiyuan, lbj_xingzhuang_buguize, lbj_bianyuan_buguize, lbj_bianyuan_guangzheng, lbj_linbamen_zhengchang, lbj_linbamen_pianxin, lbj_linbamen_xiaoshi, lbj_linbamen_gaohuishengtuankuai, lbj_pizhi_junyunzenghou, lbj_pizhi_bujunyunzenghou, lbj_neijunzhigaohuisheng, lbj_yehua, lbj_gaihua, lbj_xueliu_zhengchang, lbj_xueliu_menxing, lbj_xueliu_bianyuanweizhuxing, lbj_xueliu_hunhexing, lbj_binglijieguo, date, img_address, is_biaozhu from pic
+        select p_id, patient_id, age, gender, create_time, jiazhuangxianshizhimiman, jzx_shifoushuangceexing, jzx_duofabingzhao, jzx_weizhi_shangji, jzx_weizhi_xiaji, jzx_weizhi_zhongbu, jzx_weizhi_xiabu, jzx_zuzhibingli_liangxing, jzx_zuzhibingli_rutouzhuangai, jzx_zuzhibingli_suiyangai, jzx_zuzhibinbli_lvpaozhuangai, jzx_zuzhibingli_qitaexing, jzx_jiejiezuidajing, jzx_neibujiegou_shixing, jzx_neibujiegou_shixingweizhu, jzx_neibujiegou_nangxingweizhu, jzx_neibujiegou_nangshixing, jzx_neibujiegou_haimianyang, jzx_neibujiegou_nangxing, jzx_neibujiegou_wufapanduan, jzx_huisheng_gaohuisheng, jzx_huisheng_denghuisheng, jzx_huisheng_dihuisheng, jzx_huisheng_jidihuisheng, jzx_huisheng_wufapanduan, jzx_xingzhuang_dayudengyu, jzx_xingzhuang_xiaoyu, jzx_bianyuan_guangzheng, jzx_bianyuan_buguize, jzx_bianyuan_fenyezhuang, jzx_bianyuan_mohu, jzx_bianyuan_ete, jzx_bianyuan_wufaqueding, jzx_juzhaoqianghuisheng_dianzhuang, jzx_juzhaoqianghuisheng_cudagaihua, jzx_juzhaoqianghuisheng_bianyuangaihua, jzx_juzhaoqianghuisheng_huixingwei, lbj_daxiao_shuipingjing, lbj_daxiao_cuizhijing, lbj_xingzhuang_tuoyuan, lbj_xingzhuang_leiyuan, lbj_xingzhuang_buguize, lbj_bianyuan_buguize, lbj_bianyuan_guangzheng, lbj_linbamen_zhengchang, lbj_linbamen_pianxin, lbj_linbamen_xiaoshi, lbj_linbamen_gaohuishengtuankuai, lbj_pizhi_junyunzenghou, lbj_pizhi_bujunyunzenghou, lbj_neijunzhigaohuisheng, lbj_yehua, lbj_gaihua, lbj_xueliu_zhengchang, lbj_xueliu_menxing, lbj_xueliu_bianyuanweizhuxing, lbj_xueliu_hunhexing, lbj_binglijieguo, date, img_address, is_biaozhu, update_time from pic
     </sql>
 
     <select id="selectPicList" parameterType="Pic" resultMap="PicResult">
         <include refid="selectPicVo"/>
         <where>  
+            <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
             <if test="age != null "> and age = #{age}</if>
             <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
             <if test="jiazhuangxianshizhimiman != null "> and jiazhuangxianshizhimiman = #{jiazhuangxianshizhimiman}</if>
@@ -142,6 +146,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="imgAddress != null  and imgAddress != ''"> and img_address = #{imgAddress}</if>
             <if test="isBiaozhu != null "> and is_biaozhu = #{isBiaozhu}</if>
         </where>
+        ORDER BY create_time DESC
     </select>
     
     <select id="selectPicByPId" parameterType="String" resultMap="PicResult">
@@ -153,8 +158,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into pic
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="pId != null">p_id,</if>
+            <if test="patientId != null">patient_id,</if>
             <if test="age != null">age,</if>
             <if test="gender != null">gender,</if>
+            <if test="createTime != null">create_time,</if>
             <if test="jiazhuangxianshizhimiman != null">jiazhuangxianshizhimiman,</if>
             <if test="jzxShifoushuangceexing != null">jzx_shifoushuangceexing,</if>
             <if test="jzxDuofabingzhao != null">jzx_duofabingzhao,</if>
@@ -216,11 +223,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="date != null">date,</if>
             <if test="imgAddress != null">img_address,</if>
             <if test="isBiaozhu != null">is_biaozhu,</if>
+            <if test="updateTime != null">update_time,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="pId != null">#{pId},</if>
+            <if test="patientId != null">#{patientId},</if>
             <if test="age != null">#{age},</if>
             <if test="gender != null">#{gender},</if>
+            <if test="createTime != null">#{createTime},</if>
             <if test="jiazhuangxianshizhimiman != null">#{jiazhuangxianshizhimiman},</if>
             <if test="jzxShifoushuangceexing != null">#{jzxShifoushuangceexing},</if>
             <if test="jzxDuofabingzhao != null">#{jzxDuofabingzhao},</if>
@@ -282,14 +292,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="date != null">#{date},</if>
             <if test="imgAddress != null">#{imgAddress},</if>
             <if test="isBiaozhu != null">#{isBiaozhu},</if>
+            <if test="updateTime != null">#{updateTime},</if>
          </trim>
     </insert>
 
 <!--    <update id="updatePic" parameterType="Pic">-->
 <!--        update pic-->
 <!--        <trim prefix="SET" suffixOverrides=",">-->
+<!--            <if test="patientId != null">patient_id = #{patientId},</if>-->
 <!--            <if test="age != null">age = #{age},</if>-->
 <!--            <if test="gender != null">gender = #{gender},</if>-->
+<!--            <if test="createTime != null">create_time = #{createTime},</if>-->
 <!--            <if test="jiazhuangxianshizhimiman != null">jiazhuangxianshizhimiman = #{jiazhuangxianshizhimiman},</if>-->
 <!--            <if test="jzxShifoushuangceexing != null">jzx_shifoushuangceexing = #{jzxShifoushuangceexing},</if>-->
 <!--            <if test="jzxDuofabingzhao != null">jzx_duofabingzhao = #{jzxDuofabingzhao},</if>-->
@@ -351,6 +364,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--            <if test="date != null">date = #{date},</if>-->
 <!--            <if test="imgAddress != null">img_address = #{imgAddress},</if>-->
 <!--            <if test="isBiaozhu != null">is_biaozhu = #{isBiaozhu},</if>-->
+<!--            <if test="updateTime != null">update_time = #{updateTime},</if>-->
 <!--        </trim>-->
 <!--        where p_id = #{pId}-->
 <!--    </update>-->
@@ -358,8 +372,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updatePic" parameterType="Pic">
         update pic
         <trim prefix="SET" suffixOverrides=",">
+            patient_id = #{patientId},
             age = #{age},
             gender = #{gender},
+            create_time = #{createTime},
             jiazhuangxianshizhimiman = #{jiazhuangxianshizhimiman},
             jzx_shifoushuangceexing = #{jzxShifoushuangceexing},
             jzx_duofabingzhao = #{jzxDuofabingzhao},
@@ -419,7 +435,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             lbj_xueliu_hunhexing = #{lbjXueliuHunhexing},
             lbj_binglijieguo = #{lbjBinglijieguo},
             date = #{date},
-            is_biaozhu = #{isBiaozhu}
+            is_biaozhu = #{isBiaozhu},
+            update_time = #{updateTime}
         </trim>
         where p_id = #{pId}
     </update>
@@ -437,14 +454,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <insert id="insertPics" parameterType="java.util.List">
-        insert into pic (p_id, img_address)
+        insert into pic (p_id, img_address,create_time,age,gender,patient_id)
         values
         <foreach collection="list" item="pic" index="index" separator=",">
-            (#{pic.pId}, #{pic.imgAddress})
+            (#{pic.pId}, #{pic.imgAddress},#{pic.createTime},#{pic.age},#{pic.gender},#{pic.patientId})
         </foreach>
     </insert>
 
     <select id="selectUnlabeled" resultMap="PicResult">
-        select * from pic where is_biaozhu = 0
+        select * from pic where is_biaozhu = 0 ORDER BY create_time DESC
+    </select>
+    <select id="selectDiscard" resultType="com.ruoyi.biaozhu.domain.Pic">
+        select * from pic where is_biaozhu = 2 ORDER BY create_time DESC
+    </select>
+    <select id="selectLabeled" resultType="com.ruoyi.biaozhu.domain.Pic">
+        select * from pic where is_biaozhu = 1 ORDER BY create_time DESC
     </select>
 </mapper>
