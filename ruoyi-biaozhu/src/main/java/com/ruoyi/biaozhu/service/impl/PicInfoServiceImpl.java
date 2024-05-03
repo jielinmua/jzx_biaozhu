@@ -12,7 +12,7 @@ import com.ruoyi.biaozhu.service.IPicInfoService;
  * 数据图表Service业务层处理
  * 
  * @author ruoyi
- * @date 2024-04-29
+ * @date 2024-05-03
  */
 @Service
 public class PicInfoServiceImpl implements IPicInfoService 

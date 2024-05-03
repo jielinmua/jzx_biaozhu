@@ -7,7 +7,7 @@ import com.ruoyi.biaozhu.domain.PicInfo;
  * 数据图表Mapper接口
  * 
  * @author ruoyi
- * @date 2024-04-29
+ * @date 2024-05-03
  */
 public interface PicInfoMapper 
 {

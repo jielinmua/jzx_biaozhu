@@ -375,7 +375,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             patient_id = #{patientId},
             age = #{age},
             gender = #{gender},
-            create_time = #{createTime},
             jiazhuangxianshizhimiman = #{jiazhuangxianshizhimiman},
             jzx_shifoushuangceexing = #{jzxShifoushuangceexing},
             jzx_duofabingzhao = #{jzxDuofabingzhao},

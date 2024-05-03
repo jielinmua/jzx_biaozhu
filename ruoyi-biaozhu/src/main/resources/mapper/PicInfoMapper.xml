@@ -12,10 +12,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="patientId"    column="patient_id"    />
         <result property="createTime"    column="create_time"    />
         <result property="updateTime"    column="update_time"    />
+        <result property="isBiaozhu"    column="is_biaozhu"    />
     </resultMap>
 
     <sql id="selectPicInfoVo">
-        select p_id, age, gender, img_address, patient_id, create_time, update_time from pic_info
+        select p_id, age, gender, img_address, patient_id, create_time, update_time, is_biaozhu from pic_info
     </sql>
 
     <select id="selectPicInfoList" parameterType="PicInfo" resultMap="PicInfoResult">
@@ -26,6 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
             <if test="imgAddress != null  and imgAddress != ''"> and img_address = #{imgAddress}</if>
             <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
+            <if test="isBiaozhu != null "> and is_biaozhu = #{isBiaozhu}</if>
         </where>
         ORDER BY create_time DESC
     </select>
@@ -45,6 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="patientId != null">patient_id,</if>
             <if test="createTime != null">create_time,</if>
             <if test="updateTime != null">update_time,</if>
+            <if test="isBiaozhu != null">is_biaozhu,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="pId != null and pId != ''">#{pId},</if>
@@ -54,6 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="patientId != null">#{patientId},</if>
             <if test="createTime != null">#{createTime},</if>
             <if test="updateTime != null">#{updateTime},</if>
+            <if test="isBiaozhu != null">#{isBiaozhu},</if>
          </trim>
     </insert>
 
@@ -66,13 +70,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--            <if test="patientId != null">patient_id = #{patientId},</if>-->
 <!--            <if test="createTime != null">create_time = #{createTime},</if>-->
 <!--            <if test="updateTime != null">update_time = #{updateTime},</if>-->
+<!--            <if test="isBiaozhu != null">is_biaozhu = #{isBiaozhu},</if>-->
 <!--        </trim>-->
 <!--        where p_id = #{pId}-->
 <!--    </update>-->
     <update id="updatePicInfo" parameterType="PicInfo">
         update pic_info
         SET age = #{age},
-            gender = #{gender}
+            gender = #{gender},
+            is_biaozhu = #{isBiaozhu}
         where p_id = #{pId}
     </update>
 

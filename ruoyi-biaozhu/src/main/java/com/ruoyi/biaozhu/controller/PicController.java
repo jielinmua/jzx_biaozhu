@@ -193,6 +193,7 @@ public class PicController extends BaseController
         picInfo.setpId(pic.getpId());
         picInfo.setAge(pic.getAge());
         picInfo.setGender(pic.getGender());
+        picInfo.setIsBiaozhu(pic.getIsBiaozhu());
         int i=picInfoService.updatePicInfo(picInfo);
 //        //pic的isBiaoZhu字段设为1
 //        pic.setIsBiaozhu(1L);
