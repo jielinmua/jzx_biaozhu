@@ -1,6 +1,10 @@
 package com.ruoyi.biaozhu.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
+
 import com.ruoyi.common.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,10 +57,33 @@ public class PicInfoServiceImpl implements IPicInfoService
     @Override
     public int insertPicInfo(PicInfo picInfo)
     {
+        picInfo.setpId(getNo());
+        picInfo.setPatientId(getNo());
         picInfo.setCreateTime(DateUtils.getNowDate());
-        return picInfoMapper.insertPicInfo(picInfo);
+        if (!picInfo.getFileList().isEmpty()){
+            for (String s : picInfo.getFileList()) {
+                picInfo.setpId(getNo());
+                picInfo.setImgAddress(s);
+                picInfoMapper.insertPicInfo(picInfo);
+            }
+            return 1;
+        }else {
+            return picInfoMapper.insertPicInfo(picInfo);
+        }
+
     }
 
+    public String getNo() {
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String newDate = sdf.format(new Date());
+        String result = "";
+        Random random = new Random();
+        for (int i = 0; i < 3; i++) {
+            result += random.nextInt(10);
+        }
+        return newDate + result;
+    }
     /**
      * 修改数据图表
      * 

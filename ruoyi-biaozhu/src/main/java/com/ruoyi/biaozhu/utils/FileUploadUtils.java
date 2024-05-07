@@ -17,12 +17,12 @@ import java.util.Map;
 public class FileUploadUtils {
 
 
-    //@Value("${ruoyi.url}")
-    private String url="https://jzx.mindyard.cn/uploadPath";
+    @Value("${ruoyi.url}")
+    private String url;
 
 
-    //@Value("${ruoyi.profile}")
-    private String proFile="/home/chenpeng/workspace/system/jzx/uploadPath/";
+    @Value("${ruoyi.profile}")
+    private String proFile;
 
     public String uploadImgUrl(MultipartFile file,String location,String phone){
         try {
@@ -35,6 +35,55 @@ public class FileUploadUtils {
             return null;
         }
 
+    }
+
+
+    public String uploadImgUrl(MultipartFile file){
+        try {
+            LocalDate now = LocalDate.now();
+            String time = now.toString();
+            String front = saveFile(file,time);
+            String[] fronts = front.split("uploadPath");
+            return url+fronts[1];
+        }catch (Exception e){
+            return null;
+        }
+
+    }
+
+    private String saveFile(MultipartFile file,String time) {
+
+
+        try {
+            String f = file.getOriginalFilename();
+            int dotIndex = f.lastIndexOf('.');
+            String extension="";
+            if (dotIndex > 0 && dotIndex < f.length() - 1) {
+                extension = f.substring(dotIndex + 1).toLowerCase();
+                // 这里假设你只关心 JPEG 和 PNG 图片格式，如果需要支持更多格式需要自行修改判断条件
+                if (extension.equals("jpg") || extension.equals("jpeg")) {
+                    extension = ".jpg";
+                } else if (extension.equals("png")) {
+                    extension = ".png";
+                } else {
+                    extension = "";
+                }
+            }
+            // Generate a unique file name based on the current time
+            String fileName = System.currentTimeMillis()+"";
+//            String mainDir="E:/saveImg/";
+            File dir = new File(proFile+"/"+time+"/");
+            if(!dir.exists()){
+                boolean mkdirs = dir.mkdirs();
+            }
+            Path path = Paths.get( proFile+"/"+time+"/" + "/" + fileName + extension);
+            // Save the file to disk
+            Files.write(path, file.getBytes());
+            // Return the file path
+            return path.toString();
+        } catch (IOException e) {
+            return null;
+        }
     }
 
     private String saveFile(MultipartFile file, String location, String userId, String time) {

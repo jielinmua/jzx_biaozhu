@@ -2,6 +2,10 @@ package com.ruoyi.biaozhu.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ruoyi.biaozhu.utils.FileUploadUtils;
+import com.ruoyi.common.config.RuoYiConfig;
+import com.ruoyi.common.utils.file.FileUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +24,7 @@ import com.ruoyi.biaozhu.domain.PicInfo;
 import com.ruoyi.biaozhu.service.IPicInfoService;
 import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 数据图表Controller
@@ -33,6 +38,9 @@ public class PicInfoController extends BaseController
 {
     @Autowired
     private IPicInfoService picInfoService;
+
+    @Autowired
+    private FileUploadUtils fileUploadUtils;
 
     /**
      * 查询数据图表列表
@@ -101,4 +109,28 @@ public class PicInfoController extends BaseController
     {
         return toAjax(picInfoService.deletePicInfoByPIds(pIds));
     }
+
+
+    @PostMapping("/fileUpload")
+    public AjaxResult uploadFile(MultipartFile file) throws Exception
+    {
+        try
+        {
+            // 上传文件路径
+            String filePath = RuoYiConfig.getUploadPath();
+            // 上传并返回新文件名称
+            String fileName = fileUploadUtils.uploadImgUrl(file);
+            AjaxResult ajax = AjaxResult.success();
+            ajax.put("url", fileName);
+            ajax.put("fileName", fileName);
+            ajax.put("newFileName", FileUtils.getName(fileName));
+            ajax.put("originalFilename", file.getOriginalFilename());
+            return ajax;
+        }
+        catch (Exception e)
+        {
+            return AjaxResult.error(e.getMessage());
+        }
+    }
+
 }
