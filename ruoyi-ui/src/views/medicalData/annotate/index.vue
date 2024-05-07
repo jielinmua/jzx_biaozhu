@@ -10,6 +10,7 @@
           <el-button @click="instanceChange(5)" :type="instanceStatus == 5 ? 'primary' : ''">圆</el-button>
           <el-button @click="instanceChange(0)" :type="instanceStatus == 0 ? 'primary' : ''">选中</el-button>
           <el-button @click="instanceFitting">重置图片位置</el-button>
+
           <el-button @click="instanceFocus" :type="hideNoSelect? 'primary' : ''">隐藏未选中</el-button>
           <el-button @click="instanceShowName" :type="hideName? 'primary' : ''">隐藏标记名称</el-button>
           <el-button @click="downImg">下载</el-button>
@@ -39,6 +40,7 @@
           <el-input type="text" v-model="selectLabel" :disabled="labelDisabledState"></el-input>
         </div>
         <div class="canvasTool resetBtn">
+          <el-button @click="discard">丢弃该数据</el-button>
           <el-button @click="instanceFitting"><i class="icon el-icon-refresh-left"/>重置图片位置</el-button>
         </div>
         <canvas class="container"></canvas>
@@ -300,12 +302,12 @@
             <el-collapse-item class="jiantou daxiao">
               <span class="collapse-title" slot="title">大小</span>
               <el-row>
-                <el-col :span="3" :offset="1">水平径</el-col>
-                <el-col :span="8">
+                <el-col :span="4" :offset="1">水平径</el-col>
+                <el-col :span="6">
                   <el-input v-model="markData.lbjDaxiaoShuipingjing"></el-input>
                 </el-col>
-                <el-col :span="3" :offset="1">垂直径</el-col>
-                <el-col :span="8">
+                <el-col :span="4" :offset="1">垂直径</el-col>
+                <el-col :span="6">
                   <el-input v-model="markData.lbjDaxiaoCuizhijing"></el-input>
                 </el-col>
               </el-row>
@@ -457,6 +459,12 @@
         </el-collapse>
       </div>
       <el-button type="primary" plain class="tijiao" @click="submit">提交</el-button>
+<!--      <el-button-group>-->
+<!--        <el-button type="primary" icon="el-icon-arrow-left">上一条</el-button>-->
+<!--        <el-button type="primary">下一条<i class="el-icon-arrow-right el-icon&#45;&#45;right"></i></el-button>-->
+<!--      </el-button-group>-->
+      <el-button class="next" @click="prev()" :loading="loading">上一个</el-button>
+      <el-button class="next" @click="next()" :loading="loading">下一个</el-button>
     </div>
   </div>
 </template>
@@ -465,11 +473,27 @@
 import CanvasSelect from "canvas-select";
 import {getAnnotateData, updateAnnotateData} from "@/api/medicalData/annotate/index.js";
 import {copyFields} from "@/utils/validate.js"
+import {listBiao} from "@/api/info/biao";
 
 export default {
   name: "Annotate",
   data() {
     return {
+      index: 0,
+      // 总条数
+      total: 0,
+      // 数据图表表格数据
+      biaoList: [],
+      // 查询参数
+      queryParams: {
+        pageNum: 1,
+        pageSize: 10,
+        pId: null,
+        age: null,
+        gender: null,
+        imgAddress: null
+      },
+      loading: false,
       patientAge: "",
       patientSex: '',
       pId: "",
@@ -554,6 +578,7 @@ export default {
     //   },
     //   deep: true,
     // },
+
     selectLabel(val) {
       if (!this.labelDisabledState) {
         this.selectShape.label = val;
@@ -561,7 +586,116 @@ export default {
       }
     },
   },
+  created() {
+    this.getList();
+    // this.detail()
+  },
   methods: {
+    // 详细数据
+    detail(a){
+      // console.log("这")
+      // this.pId = this.$route.query.pId;
+      getAnnotateData({pId:a}).then(res => {
+        console.log(res)
+
+        this.patientAge = res.data.age;
+        this.patientSex = res.data.gender;
+        // this.$message.warning("年龄"+this.patientAge+"性别"+this.patientSex );
+        let serverOption = JSON.parse(res.data.date)
+        console.log('请求来的数据')
+        console.log(res)
+        copyFields(this.markData, res.data)
+        this.imgUrl = res.data.imgAddress.replace(/\\/g, '/');
+        this.instance.setImage(this.imgUrl)
+        this.option = typeof (serverOption) == 'Array' ? serverOption : []
+        this.instance.setData(this.option)
+      })
+    },
+
+    /** 查询数据图表列表 */
+    async getList() {
+      this.loading = true;
+      console.log(this.queryParams.pageNum)
+      await listBiao(this.queryParams).then(response => {
+        this.biaoList = response.rows;
+        this.total = response.total;
+        this.loading = false;
+        console.log(this.$route.query.pId)
+        this.biaoList.forEach((item, index) => {
+
+          if (this.$route.query.pId === item.pId) {
+            this.index = index;
+            // this.$message.warning("第"+this.index + "数据");
+          }
+        });
+      });
+    },
+    // 上一个
+    async prev() {
+      this.loading = true;
+      if (this.queryParams.pageNum == 1 && this.index == 0) {
+        this.$message.warning("已经是第一页！！！");
+        this.loading = false;
+        return;
+      }
+      this.index--;
+      if (this.index < 0) {
+        if (this.queryParams.pageNum > 1) {
+          this.queryParams.pageNum--;
+          // this.index = 9
+        }
+        await this.getList();
+        this.index = this.queryParams.pageSize - 1;
+      }
+      this.pId = this.biaoList[this.index].pId;
+      // this.$message.warning(this.pId+"index的值为"+this.index);
+      var newUrl =
+        this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}`;
+      window.history.replaceState("", "", newUrl)
+      // await this.getList();
+      this.detail(this.pId)
+      this.loading = false;
+    },
+    // 点击下一个触发事件
+    async next() {
+      this.loading = true;
+      this.index++;
+      // this.$message.warning("index的值为"+this.index+this.biaoList.length);
+      // this.$message.warning(this.biaoList.length);
+      if (this.index >= this.biaoList.length) {
+        if (
+          (this.queryParams.pageNum - 1) * this.queryParams.pageSize +
+          this.biaoList.length >= this.total
+        ) {
+          this.$message.warning("已经是最后一页！！！");
+          this.index--;
+          this.loading = false;
+          return;
+        }
+
+        this.queryParams.pageNum++;
+        // this.index = 0;
+        await this.getList();
+        this.index = 0;
+      }
+
+      this.pId = this.biaoList[this.index].pId;
+
+
+      // this.$message.warning(this.pId+"index的值为"+this.index);
+
+      var newUrl =
+        this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}`;
+      window.history.replaceState("", "", newUrl);
+      // await this.getList();
+      // this.$message.warning("1");
+      this.detail(this.pId)
+      this.loading = false;
+    },
+
+
+
+
     weizhiChange(val) {
       console.log(val)
       let arr = ["jzxWeizhiShangji", "jzxWeizhiXiaji", "jzxWeizhiZhongbu", "jzxWeizhiXiabu"]
@@ -688,7 +822,8 @@ export default {
         pId:this.pId,
         age:this.patientAge||"",
         gender:this.patientSex||"",
-        date: JSON.stringify(this.option)
+        date: JSON.stringify(this.option),
+        isBiaozhu:1
       }
       updateAnnotateData(data).then(res => {
         if (res.code == 200) {
@@ -728,6 +863,24 @@ export default {
     },
     instanceFitting() {
       this.instance.fitZoom();
+    },
+    // 丢弃
+    discard(){
+      let data = {
+        ...this.markData,
+        pId:this.pId,
+        age:this.patientAge||"",
+        gender:this.patientSex||"",
+        date: JSON.stringify(this.option),
+        isBiaozhu:2
+      }
+      updateAnnotateData(data).then(res => {
+        if (res.code == 200) {
+          this.$message.success('丢弃成功')
+        } else {
+          this.$message.error('丢弃失败')
+        }
+      })
     },
     instanceFocus() {
       this.instance.setFocusMode(!this.instance.focusMode);
@@ -794,13 +947,16 @@ export default {
   mounted() {
     this.pId = this.$route.query.pId;
     console.log("mounted")
+    console.log(this.pId )
     getAnnotateData({pId: this.pId}).then(res => {
+      console.log(res)
       this.patientAge = res.data.age;
       this.patientSex = res.data.gender;
+      console.log(res.data.date)
       let serverOption = JSON.parse(res.data.date)
       console.log('请求来的数据')
       console.log(res)
-      this.imgUrl = res.data.imgAddress
+      this.imgUrl = res.data.imgAddress.replace(/\\/g, '/');
       this.option = typeof (serverOption) == 'Array' ? serverOption : []
       this.instanceInit();
       copyFields(this.markData, res.data)
@@ -813,11 +969,12 @@ export default {
       getAnnotateData({pId: this.pId}).then(res => {
         this.patientAge = res.data.age;
         this.patientSex = res.data.gender;
+        console.log(res.data.date)
         let serverOption = JSON.parse(res.data.date)
         console.log('请求来的数据')
         console.log(res)
         copyFields(this.markData, res.data)
-        this.imgUrl = res.data.imgAddress
+        this.imgUrl = res.data.imgAddress.replace(/\\/g, '/');
         this.instance.setImage(this.imgUrl)
         this.option = typeof (serverOption) == 'Array' ? serverOption : []
         this.instance.setData(this.option)
@@ -853,7 +1010,7 @@ div {
 }
 
 .leftAsh::after {
-  background-size: #ddd;
+  //background-size: #ddd;
   width: 2px;
   height: 80%;
 }
@@ -952,7 +1109,8 @@ div {
   bottom: 24px;
   right: 24px;
   height: 36px;
-  width: 140px;
+  width: 260px;
+  display: flex;
 }
 
 .container {
