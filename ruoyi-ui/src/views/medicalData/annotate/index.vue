@@ -589,6 +589,9 @@ export default {
   created() {
     this.getList();
     // this.detail()
+    this.queryParams.pageNum = this.$route.query.pageNum
+    this.queryParams.pageSize = this.$route.query.pageSize
+    this.pId = this.$route.query.pid
   },
   methods: {
     // 详细数据
@@ -605,7 +608,7 @@ export default {
         console.log('请求来的数据')
         console.log(res)
         copyFields(this.markData, res.data)
-        this.imgUrl = res.data.imgAddress.replace(/\\/g, '/');
+        this.imgUrl = res.data.imgAddress
         this.instance.setImage(this.imgUrl)
         this.option = typeof (serverOption) == 'Array' ? serverOption : []
         this.instance.setData(this.option)
@@ -623,7 +626,7 @@ export default {
         console.log(this.$route.query.pId)
         this.biaoList.forEach((item, index) => {
 
-          if (this.$route.query.pId === item.pId) {
+          if (this.pId === item.pId) {
             this.index = index;
             // this.$message.warning("第"+this.index + "数据");
           }
@@ -956,7 +959,7 @@ export default {
       let serverOption = JSON.parse(res.data.date)
       console.log('请求来的数据')
       console.log(res)
-      this.imgUrl = res.data.imgAddress.replace(/\\/g, '/');
+      this.imgUrl = res.data.imgAddress
       this.option = typeof (serverOption) == 'Array' ? serverOption : []
       this.instanceInit();
       copyFields(this.markData, res.data)
@@ -974,7 +977,7 @@ export default {
         console.log('请求来的数据')
         console.log(res)
         copyFields(this.markData, res.data)
-        this.imgUrl = res.data.imgAddress.replace(/\\/g, '/');
+        this.imgUrl = res.data.imgAddress
         this.instance.setImage(this.imgUrl)
         this.option = typeof (serverOption) == 'Array' ? serverOption : []
         this.instance.setData(this.option)

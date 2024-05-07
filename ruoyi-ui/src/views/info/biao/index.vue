@@ -464,10 +464,13 @@ export default {
       console.log(row)
       // return;
       //跳转页面
+      // this.queryParams.pageNum = this.queryParams.pageNum
       this.$router.push({
         path: '/medicalData/annotate',
         query: {
-          pId: row.pId
+          pId: row.pId,
+          pageNum:this.queryParams.pageNum,
+          pageSize:this.queryParams.pageSize,
         }
       })
     },
