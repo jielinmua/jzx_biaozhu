@@ -605,8 +605,12 @@ export default {
         console.log('请求来的数据')
         console.log(res)
         copyFields(this.markData, res.data)
+        this.$message.warning(res.data.imgAddress.replace(/\\/g, '/'));
         this.imgUrl = res.data.imgAddress.replace(/\\/g, '/');
-        this.instance.setImage(this.imgUrl)
+        this.$message.warning(this.instance);
+        // // this.instance.setImage(this.imgUrl)
+        this.instance=this.imgUrl
+        // this.instance=this.imgUrl
         this.option = typeof (serverOption) == 'Array' ? serverOption : []
         this.instance.setData(this.option)
       })
@@ -648,7 +652,7 @@ export default {
         this.index = this.queryParams.pageSize - 1;
       }
       this.pId = this.biaoList[this.index].pId;
-      // this.$message.warning(this.pId+"index的值为"+this.index);
+      this.$message.warning(this.pId+"index的值为"+this.index);
       var newUrl =
         this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}`;
       window.history.replaceState("", "", newUrl)
@@ -682,7 +686,7 @@ export default {
       this.pId = this.biaoList[this.index].pId;
 
 
-      // this.$message.warning(this.pId+"index的值为"+this.index);
+      this.$message.warning(this.pId+"index的值为"+this.index);
 
       var newUrl =
         this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}`;
@@ -975,7 +979,8 @@ export default {
         console.log(res)
         copyFields(this.markData, res.data)
         this.imgUrl = res.data.imgAddress.replace(/\\/g, '/');
-        this.instance.setImage(this.imgUrl)
+        // this.instance.setImage(this.imgUrl)
+        this.instance=this.imgUrl
         this.option = typeof (serverOption) == 'Array' ? serverOption : []
         this.instance.setData(this.option)
       })
