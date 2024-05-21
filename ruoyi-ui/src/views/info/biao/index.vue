@@ -301,13 +301,18 @@
         </el-form-item>
         <el-form-item label="图片" prop="gender">
           <el-upload
-            :action="imgUpload.url"
-            :headers="imgUpload.headers"
+            action=""
+            :name="uploadId"
+            :ref="`Uploader-${uploadId}`"
             list-type="picture-card"
-            :on-success="handlePictureSuccess"
+            multiple
+            accept="image/*"
             :before-upload="beforeAvatarUpload"
             :on-preview="handlePictureCardPreview"
+            :on-change="handleChange"
             :file-list="fileList"
+            :auto-upload="false"
+            :http-request="httpRequest"
           >
             <i class="el-icon-plus"></i>
           </el-upload>
@@ -325,9 +330,10 @@
 </template>
 
 <script>
-import {listBiao, getBiao, delBiao, addBiao, updateBiao} from "@/api/info/biao";
+import {listBiao, getBiao, delBiao, addBiao, updateBiao, uploadFile} from "@/api/info/biao";
 import request from '@/utils/request'
 import {getToken} from "@/utils/auth";
+import {nextTick} from "vue";
 
 export default {
   name: "Biao",
@@ -383,6 +389,9 @@ export default {
       //图片地址
       imageUrl: "",
       dialogVisible: false,
+      uploadId: Math.random().toString(36).substr(2).toLocaleUpperCase(),
+      uploadFiles: [],
+      fm: new FormData(),
     };
   },
   created() {
@@ -404,9 +413,23 @@ export default {
         this.getList()
       }
     },
+    // 批量上传
+    httpRequest(file) {
+      this.fm.append('file', file.file);
+      if (this.fm.getAll('file').length === this.fileTotal) {
+        uploadFile( this.fm).then(res => {
+          this.$message.success('图片上传成功！')
+          console.log(res)
+        }).catch(res => {
+          this.$message.success('图片上传失败！')
+        })
+      }
+
+    },
+
     //图片上传前的相关判断
     beforeAvatarUpload(file) {
-      const isJPG = file.type === 'image/jpeg' || file.type == 'image/png';
+      const isJPG = file.type === 'image/jpeg' || file.type === 'image/png';
       const isLt2M = file.size / 1024 / 1024 < 5;
       if (!isJPG) {
         this.$message.error('上传头像图片只能是 JPG/PNG 格式!');
@@ -416,16 +439,25 @@ export default {
       }
       return isJPG && isLt2M;
     },
+    handleChange(file, fileList) {
+      this.uploadFiles = fileList
+      console.log(this.uploadFiles)
+      // console.log(file)
+      // //获取添加文件进来的状态
+
+
+
+    },
 //图片预览
     handlePictureCardPreview(file) {
       this.imageUrl = file.url;
       this.dialogVisible = true;
     },
     //图片上传成功后的回调
-    handlePictureSuccess(res, file) {
-      console.log(file)
+    handlePictureSuccess(res, file, fileList) {
+      console.log(fileList)
       //设置图片访问路径 （articleImg 后台传过来的的上传地址）
-      this.imageUrl = file.response.url;
+      // this.imageUrl = file.response.url;
       this.fileList.push({
         url: file.response.url,
       })
@@ -511,6 +543,41 @@ export default {
       console.log(this.fileList)
       this.$refs["form"].validate(valid => {
         if (valid) {
+          console.log(this.uploadFiles)
+          if (this.uploadFiles&& this.uploadFiles.length>0){
+            let form = new FormData();
+            for (let i = 0; i < this.uploadFiles.length; i++) {
+              form.append('files',this.uploadFiles[i].raw);
+            }
+            uploadFile(form).then(res => {
+              res.urls.split(",").forEach(item => {
+                this.fileList.push({
+                  url: item,
+                });
+              });
+              let arr= []
+              this.fileList.forEach(item => {
+                arr.push(item.url)
+              })
+              this.form.fileList = arr
+              if (this.form.pId != null) {
+                updateBiao(this.form).then(response => {
+                  this.$modal.msgSuccess("修改成功");
+                  this.open = false;
+                  this.getList();
+                });
+              } else {
+                addBiao(this.form).then(response => {
+                  this.$modal.msgSuccess("新增成功");
+                  this.open = false;
+                  this.getList();
+                });
+              }
+              return
+            })
+          }
+
+
           let arr= []
           this.fileList.forEach(item => {
             arr.push(item.url)
@@ -529,6 +596,8 @@ export default {
               this.getList();
             });
           }
+
+
         }
       });
     },
