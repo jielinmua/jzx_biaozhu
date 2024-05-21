@@ -575,27 +575,24 @@ export default {
               }
               return
             })
+          }else {
+            if (this.form.pId != null) {
+              updateBiao(this.form).then(response => {
+                this.$modal.msgSuccess("修改成功");
+                this.open = false;
+                this.getList();
+              });
+            } else {
+              addBiao(this.form).then(response => {
+                this.$modal.msgSuccess("新增成功");
+                this.open = false;
+                this.getList();
+              });
+            }
+
           }
 
 
-          let arr= []
-          this.fileList.forEach(item => {
-            arr.push(item.url)
-          })
-          this.form.fileList = arr
-          if (this.form.pId != null) {
-            updateBiao(this.form).then(response => {
-              this.$modal.msgSuccess("修改成功");
-              this.open = false;
-              this.getList();
-            });
-          } else {
-            addBiao(this.form).then(response => {
-              this.$modal.msgSuccess("新增成功");
-              this.open = false;
-              this.getList();
-            });
-          }
 
 
         }
