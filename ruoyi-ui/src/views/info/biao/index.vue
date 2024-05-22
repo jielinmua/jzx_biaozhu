@@ -492,15 +492,13 @@ export default {
       this.getList();
     },
     handleJump(row) {
-      console.log('row')
-      console.log(row)
-      // return;
-      //跳转页面
-      // this.queryParams.pageNum = this.queryParams.pageNum
+      this.queryParams.isBiaozhu=this.queryParams.isBiaozhu == undefined? null : this.queryParams.isBiaozhu
+
       this.$router.push({
         path: '/medicalData/annotate',
         query: {
           pId: row.pId,
+          isBiaozhu:this.queryParams.isBiaozhu,
           pageNum:this.queryParams.pageNum,
           pageSize:this.queryParams.pageSize,
         }

@@ -474,11 +474,13 @@ import CanvasSelect from "canvas-select";
 import {getAnnotateData, updateAnnotateData} from "@/api/medicalData/annotate/index.js";
 import {copyFields} from "@/utils/validate.js"
 import {listBiao} from "@/api/info/biao";
+import cache from "@/plugins/cache";
 
 export default {
   name: "Annotate",
   data() {
     return {
+      url:null,
       index: 0,
       // 总条数
       total: 0,
@@ -587,11 +589,14 @@ export default {
     },
   },
   created() {
-    this.getList();
     // this.detail()
     this.queryParams.pageNum = this.$route.query.pageNum
     this.queryParams.pageSize = this.$route.query.pageSize
     this.pId = this.$route.query.pid
+    this.queryParams.isBiaozhu = this.$route.query.isBiaozhu
+
+    // return
+    this.getList();
   },
   methods: {
     // 详细数据
@@ -618,7 +623,7 @@ export default {
     /** 查询数据图表列表 */
     async getList() {
       this.loading = true;
-      console.log(this.queryParams.pageNum)
+
       await listBiao(this.queryParams).then(response => {
         this.biaoList = response.rows;
         this.total = response.total;
@@ -635,6 +640,7 @@ export default {
     },
     // 上一个
     async prev() {
+
       this.loading = true;
       if (this.queryParams.pageNum == 1 && this.index == 0) {
         this.$message.warning("已经是第一页！！！");
@@ -652,15 +658,30 @@ export default {
       }
       this.pId = this.biaoList[this.index].pId;
       // this.$message.warning(this.pId+"index的值为"+this.index);
+      let zhi = {
+        pId:this.pId,
+        pageNum:this.queryParams.pageNum,
+        isBiaozhu:this.queryParams.isBiaozhu,
+        pageSize:this.queryParams.pageSize
+      }
       var newUrl =
-        this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}`;
+        this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
       window.history.replaceState("", "", newUrl)
+
+      // session JSON值
+      // this.$cache.session.setJSON('historypatient', newUrl)
+      this.$cache.session.setJSON('zhi', zhi)
+      // console.log(this.$cache.session.getJSON('historypatient'))
       // await this.getList();
+      // this.$message.warning(newUrl);
+      this.url = newUrl
       this.detail(this.pId)
+      // await this.getList();
       this.loading = false;
     },
     // 点击下一个触发事件
     async next() {
+
       this.loading = true;
       this.index++;
       // this.$message.warning("index的值为"+this.index+this.biaoList.length);
@@ -686,13 +707,23 @@ export default {
 
 
       // this.$message.warning(this.pId+"index的值为"+this.index);
-
+      let zhi = {
+        pId:this.pId,
+        pageNum:this.queryParams.pageNum,
+        isBiaozhu:this.queryParams.isBiaozhu,
+        pageSize:this.queryParams.pageSize
+      }
       var newUrl =
-        this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}`;
+        this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
       window.history.replaceState("", "", newUrl);
+      this.$cache.session.setJSON('historypatient', newUrl)
+      this.$cache.session.setJSON('zhi', zhi)
+      // console.log(this.$cache.session.getJSON('historypatient'))
       // await this.getList();
-      // this.$message.warning("1");
+      // this.$message.warning(newUrl);
+      this.url = newUrl
       this.detail(this.pId)
+
       this.loading = false;
     },
 
@@ -948,6 +979,7 @@ export default {
     },
   },
   mounted() {
+
     this.pId = this.$route.query.pId;
     console.log("mounted")
     console.log(this.pId )
@@ -967,8 +999,34 @@ export default {
     window.onresize = this.canvasResize
   },
   activated() {
+    // console.log("zhi")
+    let zhi = this.$cache.session.getJSON('zhi')
+    // console.log(zhi)
+    // this.$message.success("111111111111111111111111")
+    // console.log("11111111111111111111")
+    //
+    // console.log(this.queryParams.isBiaozhu == this.$route.query.isBiaozhu)
+    // console.log("页面上的isBiaozhu"+this.queryParams.isBiaozhu)
+    // console.log("路由上的isBiaozhu"+this.$route.query.isBiaozhu)
+    this.queryParams.isBiaozhu = this.$route.query.isBiaozhu
+    this.getList()
+    // console.log("activated函数中")
+    // console.log(this.pId != this.$route.query.pId)
+    // console.log("路由"+this.$route.query.pId)
+    // console.log(this.pId)
+    // this.pId = this.$route.query.pId
+    // return
     if (this.pId != this.$route.query.pId) {
-      this.pId = this.$route.query.pId;
+      // console.log("到了判断中")
+      // this.$message.success("到了判断中")
+      // console.log("路由"+this.$route.query.pId)
+      // console.log(this.pId)
+      // console.log("值"+this.$route.query.isBiaozhu)
+      if(this.queryParams.isBiaozhu != zhi.isBiaozhu){
+        // this.$message.success("222")
+        this.pId = this.$route.query.pId;
+      }
+      // this.pId = this.$route.query.pId;
       getAnnotateData({pId: this.pId}).then(res => {
         this.patientAge = res.data.age;
         this.patientSex = res.data.gender;
@@ -983,7 +1041,15 @@ export default {
         this.instance.setData(this.option)
       })
     }
-  }
+  },
+  deactivated() {
+    // this.pId= this.$route.query.pId
+
+    // console.log("路由"+this.$route.query.pId)
+    // console.log(this.pId)
+    // 页面被缓存前（即将离开页面），可以在这里做一些清理工作
+    // console.log("清理")
+  },
 };
 </script>
 
