@@ -66,91 +66,100 @@
           <p>甲状腺病变</p>
         </div>
         <el-collapse v-model="activeNames" @change="handleChange" class="xialakuang">
-          <el-collapse-item>
+          <el-collapse-item name="1">
             <span class="large-title" slot="title"> 总体情况描述</span>
 
             <div class="thyroid">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">甲状腺实质弥漫</span>
-                <el-row>
-                  <el-col :offset="2">
-                    <el-radio v-model="markData.jiazhuangxianshizhimiman" :label="1">是</el-radio>
-                    <el-radio v-model="markData.jiazhuangxianshizhimiman" :label="0">否</el-radio>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">甲状腺实质弥漫</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-radio v-model="markData.jiazhuangxianshizhimiman" :label="1">是</el-radio>
+                  <el-radio v-model="markData.jiazhuangxianshizhimiman" :label="0">否</el-radio>
+                </el-col>
+              </el-row>
             </div>
 
             <div class="thyroid">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">是否双侧恶性</span>
-                <el-row>
-                  <el-col :offset="2">
-                    <el-radio v-model="markData.jzxShifoushuangceexing" :label="1">是</el-radio>
-                    <el-radio v-model="markData.jzxShifoushuangceexing" :label="0">否</el-radio>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">是否双侧恶性</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-radio v-model="markData.jzxShifoushuangceexing" :label="1">是</el-radio>
+                  <el-radio v-model="markData.jzxShifoushuangceexing" :label="0">否</el-radio>
+                </el-col>
+              </el-row>
             </div>
 
             <div class="thyroid">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">多发病灶(单侧叶)</span>
-                <el-row>
-                  <el-col :offset="2">
-                    <el-radio v-model="markData.jzxDuofabingzhao" :label="1">是</el-radio>
-                    <el-radio v-model="markData.jzxDuofabingzhao" :label="0">否</el-radio>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">多发病灶(单侧叶)</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-radio v-model="markData.jzxDuofabingzhao" :label="1">是</el-radio>
+                  <el-radio v-model="markData.jzxDuofabingzhao" :label="0">否</el-radio>
+                </el-col>
+              </el-row>
             </div>
 
-            <div class="thyroid Fouritems">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">位置</span>
-                <el-row>
-                  <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxWeizhiShangji" @change="weizhiChange(1)" :true-label="1"
-                      :false-label="0">上极
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxWeizhiXiaji" @change="weizhiChange(2)" :true-label="1"
-                      :false-label="0">下极
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxWeizhiZhongbu" @change="weizhiChange(3)" :true-label="1"
-                      :false-label="0">中部
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxWeizhiXiabu" @change="weizhiChange(4)" :true-label="1"
-                      :false-label="0">峡部
-                    </el-checkbox>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+            <div class="thyroid">
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">位置</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-row>
+                    <el-col>
+                      <el-checkbox v-model="markData.jzxWeizhiShangji" @change="weizhiChange(1)" :true-label="1"
+                        :false-label="0">上极
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxWeizhiXiaji" @change="weizhiChange(2)" :true-label="1"
+                        :false-label="0">下极
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxWeizhiZhongbu" @change="weizhiChange(3)" :true-label="1"
+                        :false-label="0">中部
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxWeizhiXiabu" @change="weizhiChange(4)" :true-label="1"
+                        :false-label="0">峡部
+                      </el-checkbox>
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
             </div>
 
-            <div class="thyroid duoxuan">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">组织病理结果</span>
-                <el-row>
-                  <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxZuzhibingliLiangxing" @change="bingliChange(1)" :true-label="1"
-                      :false-label="0">良性
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxZuzhibingliRutouzhuangai" @change="bingliChange(2)"
-                      :true-label="1" :false-label="0">乳头状癌
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxZuzhibingliSuiyangai" @change="bingliChange(3)" :true-label="1"
-                      :false-label="0">髓样癌
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxZuzhibinbliLvpaozhuangai" @change="bingliChange(4)"
-                      :true-label="1" :false-label="0">滤泡状癌
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxZuzhibingliQitaexing" @change="bingliChange(5)" :true-label="1"
-                      :false-label="0">其他恶性
-                    </el-checkbox>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+            <div class="thyroid">
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">组织病理结果</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-row>
+                    <el-col>
+                      <el-checkbox v-model="markData.jzxZuzhibingliLiangxing" @change="bingliChange(1)" :true-label="1"
+                        :false-label="0">良性
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxZuzhibingliRutouzhuangai" @change="bingliChange(2)"
+                        :true-label="1" :false-label="0">乳头状癌
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxZuzhibingliSuiyangai" @change="bingliChange(3)" :true-label="1"
+                        :false-label="0">髓样癌
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxZuzhibinbliLvpaozhuangai" @change="bingliChange(4)"
+                        :true-label="1" :false-label="0">滤泡状癌
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxZuzhibingliQitaexing" @change="bingliChange(5)" :true-label="1"
+                        :false-label="0">其他恶性
+                      </el-checkbox>
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
             </div>
+
             <!-- ===================================================================================== -->
             <!--<div class="thyroid">-->
             <!--  <el-collapse-item class="jiantou">-->
@@ -162,129 +171,151 @@
             </div>
           </el-collapse-item>
 
-          <el-collapse-item>
+          <el-collapse-item name="2">
             <span class="large-title" slot="title"> 结构描述</span>
 
             <div class="thyroid">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">内部结构</span>
-                <el-row>
-                  <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxNeibujiegouShixing" @change="jiegouChange(1)" :true-label="1"
-                      :false-label="0">实性
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouShixingweizhu" @change="jiegouChange(2)"
-                      :true-label="1" :false-label="0">实性为主
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouNangxingweizhu" @change="jiegouChange(3)"
-                      :true-label="1" :false-label="0">囊性为主
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouNangshixing" @change="jiegouChange(4)" :true-label="1"
-                      :false-label="0">囊实性
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouHaimianyang" @change="jiegouChange(5)" :true-label="1"
-                      :false-label="0">海绵样
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouNangxing" @change="jiegouChange(6)" :true-label="1"
-                      :false-label="0">囊性
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxNeibujiegouWufapanduan" @change="jiegouChange(7)" :true-label="1"
-                      :false-label="0">无法判断
-                    </el-checkbox>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">内部结构</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-row>
+                    <el-col>
+                      <el-checkbox v-model="markData.jzxNeibujiegouShixing" @change="jiegouChange(1)" :true-label="1"
+                        :false-label="0">实性
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxNeibujiegouShixingweizhu" @change="jiegouChange(2)"
+                        :true-label="1" :false-label="0">实性为主
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxNeibujiegouNangxingweizhu" @change="jiegouChange(3)"
+                        :true-label="1" :false-label="0">囊性为主
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxNeibujiegouNangshixing" @change="jiegouChange(4)"
+                        :true-label="1" :false-label="0">囊实性
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxNeibujiegouHaimianyang" @change="jiegouChange(5)"
+                        :true-label="1" :false-label="0">海绵样
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxNeibujiegouNangxing" @change="jiegouChange(6)" :true-label="1"
+                        :false-label="0">囊性
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxNeibujiegouWufapanduan" @change="jiegouChange(7)"
+                        :true-label="1" :false-label="0">无法判断
+                      </el-checkbox>
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
             </div>
 
             <div class="thyroid">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">回声</span>
-                <el-row>
-                  <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxHuishengGaohuisheng" @change="huishengChange(1)" :true-label="1"
-                      :false-label="0">高回声
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxHuishengDenghuisheng" @change="huishengChange(2)" :true-label="1"
-                      :false-label="0">等回声
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxHuishengDihuisheng" @change="huishengChange(3)" :true-label="1"
-                      :false-label="0">低回声
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxHuishengJidihuisheng" @change="huishengChange(4)" :true-label="1"
-                      :false-label="0">极低回声
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxHuishengWufapanduan" @change="huishengChange(5)" :true-label="1"
-                      :false-label="0">无法判断
-                    </el-checkbox>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">回声</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-row>
+                    <el-col>
+                      <el-checkbox v-model="markData.jzxHuishengGaohuisheng" @change="huishengChange(1)" :true-label="1"
+                        :false-label="0">高回声
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxHuishengDenghuisheng" @change="huishengChange(2)"
+                        :true-label="1" :false-label="0">等回声
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxHuishengDihuisheng" @change="huishengChange(3)" :true-label="1"
+                        :false-label="0">低回声
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxHuishengJidihuisheng" @change="huishengChange(4)"
+                        :true-label="1" :false-label="0">极低回声
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxHuishengWufapanduan" @change="huishengChange(5)" :true-label="1"
+                        :false-label="0">无法判断
+                      </el-checkbox>
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
             </div>
 
             <div class="thyroid">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">形状</span>
-                <el-row>
-                  <el-col :offset="2">
-                    <el-checkbox v-model="markData.jzxXingzhuangDayudengyu" @change="jzxxingzhuangChange(1)"
-                      :true-label="1" :false-label="0">纵横比≥1
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxXingzhuangXiaoyu" @change="jzxxingzhuangChange(2)" :true-label="1"
-                      :false-label="0">纵横比<1 </el-checkbox>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">形状</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-row>
+                    <el-col>
+                      <el-checkbox v-model="markData.jzxXingzhuangDayudengyu" @change="jzxxingzhuangChange(1)"
+                        :true-label="1" :false-label="0">纵横比≥1
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxXingzhuangXiaoyu" @change="jzxxingzhuangChange(2)"
+                        :true-label="1" :false-label="0">纵横比<1 </el-checkbox>
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
+            </div>
+
+
+            <div class="thyroid">
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">边缘</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-row>
+                    <el-col :span="20">
+                      <el-checkbox v-model="markData.jzxBianyuanGuangzheng" @change="jzxbianyuanChange(1)"
+                        :true-label="1" :false-label="0">边缘光整
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxBianyuanBuguize" @change="jzxbianyuanChange(2)" :true-label="1"
+                        :false-label="0">边缘不规则
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxBianyuanFenyezhuang" @change="jzxbianyuanChange(3)"
+                        :true-label="1" :false-label="0">边缘分叶状
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxBianyuanMohu" @change="jzxbianyuanChange(4)" :true-label="1"
+                        :false-label="0">边缘模糊
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxBianyuanEte" @change="jzxbianyuanChange(5)" :true-label="1"
+                        :false-label="0">ETE
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxBianyuanWufaqueding" @change="jzxbianyuanChange(6)"
+                        :true-label="1" :false-label="0">无法确定
+                      </el-checkbox>
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
             </div>
 
             <div class="thyroid">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">边缘</span>
-                <el-row>
-                  <el-col :offset="2" :span="20">
-                    <el-checkbox v-model="markData.jzxBianyuanGuangzheng" @change="jzxbianyuanChange(1)" :true-label="1"
-                      :false-label="0">边缘光整
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanBuguize" @change="jzxbianyuanChange(2)" :true-label="1"
-                      :false-label="0">边缘不规则
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanFenyezhuang" @change="jzxbianyuanChange(3)"
-                      :true-label="1" :false-label="0">边缘分叶状
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanMohu" @change="jzxbianyuanChange(4)" :true-label="1"
-                      :false-label="0">边缘模糊
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanEte" @change="jzxbianyuanChange(5)" :true-label="1"
-                      :false-label="0">ETE
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxBianyuanWufaqueding" @change="jzxbianyuanChange(6)"
-                      :true-label="1" :false-label="0">无法确定
-                    </el-checkbox>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
+              <el-row>
+                <el-col :span="8">
+                  <span class="item-title">局灶强回声</span>
+                </el-col>
+                <el-col :span="16">
+                  <el-row>
+                    <el-col>
+                      <el-checkbox v-model="markData.jzxJuzhaoqianghuishengDianzhuang" :true-label="1" :false-label="0">
+                        点状强回声
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxJuzhaoqianghuishengCudagaihua" :true-label="1" :false-label="0">
+                        粗大钙化
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxJuzhaoqianghuishengBianyuangaihua" :true-label="1"
+                        :false-label="0">边缘钙化
+                      </el-checkbox>
+                      <el-checkbox v-model="markData.jzxJuzhaoqianghuishengHuixingwei" :true-label="1" :false-label="0">
+                        彗星尾
+                      </el-checkbox>
+                    </el-col>
+                  </el-row>
+                </el-col>
+              </el-row>
             </div>
 
-            <div class="thyroid">
-              <el-collapse-item class="jiantou">
-                <span class="collapse-title" slot="title">局灶强回声</span>
-                <el-row>
-                  <el-col :offset="2" :span="20">
-                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengDianzhuang" :true-label="1" :false-label="0">
-                      点状强回声
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengCudagaihua" :true-label="1" :false-label="0">
-                      粗大钙化
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengBianyuangaihua" :true-label="1"
-                      :false-label="0">边缘钙化
-                    </el-checkbox>
-                    <el-checkbox v-model="markData.jzxJuzhaoqianghuishengHuixingwei" :true-label="1" :false-label="0">
-                      彗星尾
-                    </el-checkbox>
-                  </el-col>
-                </el-row>
-              </el-collapse-item>
-            </div>
           </el-collapse-item>
         </el-collapse>
       </div>
@@ -293,164 +324,211 @@
           <p>淋巴结病变</p>
         </div>
         <el-collapse v-model="activeNames" @change="handleChange">
+
           <div class="thyroid">
-            <el-collapse-item class="jiantou daxiao">
-              <span class="collapse-title" slot="title">大小</span>
-              <el-row>
-                <el-col :span="4" :offset="1">水平径</el-col>
-                <el-col :span="6">
-                  <el-input v-model="markData.lbjDaxiaoShuipingjing"></el-input>
-                </el-col>
-                <el-col :span="4" :offset="1">垂直径</el-col>
-                <el-col :span="6">
-                  <el-input v-model="markData.lbjDaxiaoCuizhijing"></el-input>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">大小</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col class="item-title" :span="8">水平径</el-col>
+                  <el-col :span="16">
+                    <el-input v-model="markData.lbjDaxiaoShuipingjing"></el-input>
+                  </el-col>
+                </el-row>
+                <el-row style="margin-top: 10px;">
+                  <el-col class="item-title" :span="8">垂直径</el-col>
+                  <el-col :span="16">
+                    <el-input v-model="markData.lbjDaxiaoCuizhijing"></el-input>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
           </div>
 
           <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">形状</span>
-              <el-row>
-                <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjXingzhuangTuoyuan" @change="lbjxingzhuangChange(1)" :true-label="1"
-                    :false-label="0">椭圆形
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjXingzhuangLeiyuan" @change="lbjxingzhuangChange(2)" :true-label="1"
-                    :false-label="0">类圆形
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjXingzhuangBuguize" @change="lbjxingzhuangChange(3)" :true-label="1"
-                    :false-label="0">不规则
-                  </el-checkbox>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">形状</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-checkbox v-model="markData.lbjXingzhuangTuoyuan" @change="lbjxingzhuangChange(1)"
+                      :true-label="1" :false-label="0">椭圆形
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjXingzhuangLeiyuan" @change="lbjxingzhuangChange(2)"
+                      :true-label="1" :false-label="0">类圆形
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjXingzhuangBuguize" @change="lbjxingzhuangChange(3)"
+                      :true-label="1" :false-label="0">不规则
+                    </el-checkbox>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
           </div>
 
           <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">边缘</span>
-              <el-row>
-                <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjBianyuanBuguize" @change="lbjbianyuanChange(1)" :true-label="1"
-                    :false-label="0">边缘不规则
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjBianyuanGuangzheng" @change="lbjbianyuanChange(2)" :true-label="1"
-                    :false-label="0">边缘光整
-                  </el-checkbox>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">边缘</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-checkbox v-model="markData.lbjBianyuanBuguize" @change="lbjbianyuanChange(1)" :true-label="1"
+                      :false-label="0">边缘不规则
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjBianyuanGuangzheng" @change="lbjbianyuanChange(2)" :true-label="1"
+                      :false-label="0">边缘光整
+                    </el-checkbox>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
+          </div>
+
+
+          <div class="thyroid">
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">淋巴门</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-checkbox v-model="markData.lbjLinbamenZhengchang" @change="lbjlinbamenChange(1)" :true-label="1"
+                      :false-label="0">正常
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjLinbamenPianxin" @change="lbjlinbamenChange(2)" :true-label="1"
+                      :false-label="0">偏心
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjLinbamenXiaoshi" @change="lbjlinbamenChange(3)" :true-label="1"
+                      :false-label="0">消失
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjLinbamenGaohuishengtuankuai" @change="lbjlinbamenChange(4)"
+                      :true-label="1" :false-label="0">高回声团块
+                    </el-checkbox>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
           </div>
 
           <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">淋巴门</span>
-              <el-row class="buju">
-                <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjLinbamenZhengchang" @change="lbjlinbamenChange(1)" :true-label="1"
-                    :false-label="0">正常
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjLinbamenPianxin" @change="lbjlinbamenChange(2)" :true-label="1"
-                    :false-label="0">偏心
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjLinbamenXiaoshi" @change="lbjlinbamenChange(3)" :true-label="1"
-                    :false-label="0">消失
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjLinbamenGaohuishengtuankuai" @change="lbjlinbamenChange(4)"
-                    :true-label="1" :false-label="0">高回声团块
-                  </el-checkbox>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">皮质</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-checkbox v-model="markData.lbjPizhiJunyunzenghou" @change="lbjpizhiChange(1)" :true-label="1"
+                      :false-label="0">均匀增厚
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjPizhiBujunyunzenghou" @change="lbjpizhiChange(2)" :true-label="1"
+                      :false-label="0">不均匀增厚
+                    </el-checkbox>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
           </div>
 
           <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">皮质</span>
-              <el-row>
-                <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjPizhiJunyunzenghou" @change="lbjpizhiChange(1)" :true-label="1"
-                    :false-label="0">均匀增厚
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjPizhiBujunyunzenghou" @change="lbjpizhiChange(2)" :true-label="1"
-                    :false-label="0">不均匀增厚
-                  </el-checkbox>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">内均质高回声</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-radio v-model="markData.lbjNeijunzhigaohuisheng" :label="1">是</el-radio>
+                    <el-radio v-model="markData.lbjNeijunzhigaohuisheng" :label="0">否</el-radio>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
           </div>
 
           <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">内均质高回声</span>
-              <el-row>
-                <el-col :offset="2">
-                  <el-radio v-model="markData.lbjNeijunzhigaohuisheng" :label="1">是</el-radio>
-                  <el-radio v-model="markData.lbjNeijunzhigaohuisheng" :label="0">否</el-radio>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">液化</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-radio v-model="markData.lbjYehua" :label="1">是</el-radio>
+                    <el-radio v-model="markData.lbjYehua" :label="0">否</el-radio>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
+          </div>
+
+
+          <div class="thyroid">
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">钙化</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-radio v-model="markData.lbjGaihua" :label="1">是</el-radio>
+                    <el-radio v-model="markData.lbjGaihua" :label="0">否</el-radio>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
           </div>
 
           <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">液化</span>
-              <el-row>
-                <el-col :offset="2">
-                  <el-radio v-model="markData.lbjYehua" :label="1">是</el-radio>
-                  <el-radio v-model="markData.lbjYehua" :label="0">否</el-radio>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">血流</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-checkbox v-model="markData.lbjXueliuZhengchang" @change="lbjxueliuChange(1)" :true-label="1"
+                      :false-label="0">正常
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjXueliuMenxing" @change="lbjxueliuChange(2)" :true-label="1"
+                      :false-label="0">门型
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjXueliuBianyuanweizhuxing" @change="lbjxueliuChange(3)"
+                      :true-label="1" :false-label="0">边缘为主型
+                    </el-checkbox>
+                    <el-checkbox v-model="markData.lbjXueliuHunhexing" @change="lbjxueliuChange(4)" :true-label="1"
+                      :false-label="0">混合型
+                    </el-checkbox>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
           </div>
 
           <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">钙化</span>
-              <el-row>
-                <el-col :offset="2">
-                  <el-radio v-model="markData.lbjGaihua" :label="1">是</el-radio>
-                  <el-radio v-model="markData.lbjGaihua" :label="0">否</el-radio>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
+            <el-row>
+              <el-col :span="8">
+                <span class="item-title">病理结果</span>
+              </el-col>
+              <el-col :span="16">
+                <el-row>
+                  <el-col>
+                    <el-radio v-model="markData.lbjBinglijieguo" :label="1">是</el-radio>
+                    <el-radio v-model="markData.lbjBinglijieguo" :label="0">否</el-radio>
+                  </el-col>
+                </el-row>
+              </el-col>
+            </el-row>
           </div>
 
-          <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">血流</span>
-              <el-row>
-                <el-col :offset="2">
-                  <el-checkbox v-model="markData.lbjXueliuZhengchang" @change="lbjxueliuChange(1)" :true-label="1"
-                    :false-label="0">正常
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjXueliuMenxing" @change="lbjxueliuChange(2)" :true-label="1"
-                    :false-label="0">门型
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjXueliuBianyuanweizhuxing" @change="lbjxueliuChange(3)"
-                    :true-label="1" :false-label="0">边缘为主型
-                  </el-checkbox>
-                  <el-checkbox v-model="markData.lbjXueliuHunhexing" @change="lbjxueliuChange(4)" :true-label="1"
-                    :false-label="0">混合型
-                  </el-checkbox>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
-          </div>
 
-          <div class="thyroid">
-            <el-collapse-item class="jiantou">
-              <span class="collapse-title" slot="title">病理结果</span>
-              <el-row>
-                <el-col :offset="2">
-                  <el-radio v-model="markData.lbjBinglijieguo" :label="1">是</el-radio>
-                  <el-radio v-model="markData.lbjBinglijieguo" :label="0">否</el-radio>
-                </el-col>
-              </el-row>
-            </el-collapse-item>
-          </div>
         </el-collapse>
       </div>
       <el-button type="primary" plain class="tijiao" @click="submit">提交</el-button>
@@ -494,7 +572,7 @@ export default {
       patientAge: "",
       patientSex: '',
       pId: "",
-      activeNames: ["1"],
+      activeNames: ["1", "2"],
       option: [],
       instance: null,
       instanceStatus: 0,
@@ -1285,6 +1363,21 @@ div {
   padding-left: 12px;
 }
 
+
+.item-title {
+  padding-left: 30px;
+  font-size: 13px;
+}
+
+.thyroid {
+  // height: 48px;
+  line-height: 2.769231;
+}
+
+::v-deep .el-row {
+  background-color: #fff !important;
+}
+
 ::v-deep .collapse-title {
   flex: 1 0 90%;
   order: 1;
@@ -1381,6 +1474,7 @@ div {
 
 .content1 {
   box-shadow: #eee 0px 0px 10px;
+  // font-size: 13px;
 }
 
 .jiantou ::v-deep .el-icon-arrow-right:before {
