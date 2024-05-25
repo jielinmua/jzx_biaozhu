@@ -11,29 +11,29 @@
           <el-button @click="instanceChange(0)" :type="instanceStatus == 0 ? 'primary' : ''">选中</el-button>
           <el-button @click="instanceFitting">重置图片位置</el-button>
 
-          <el-button @click="instanceFocus" :type="hideNoSelect? 'primary' : ''">隐藏未选中</el-button>
-          <el-button @click="instanceShowName" :type="hideName? 'primary' : ''">隐藏标记名称</el-button>
+          <el-button @click="instanceFocus" :type="hideNoSelect ? 'primary' : ''">隐藏未选中</el-button>
+          <el-button @click="instanceShowName" :type="hideName ? 'primary' : ''">隐藏标记名称</el-button>
           <el-button @click="downImg">下载</el-button>
         </div>
         <div class="canvasToolDown">
           名称:
-          <el-input type="text" v-model="selectLabel" :disabled="labelDisabledState" class="instanceName"/>
+          <el-input type="text" v-model="selectLabel" :disabled="labelDisabledState" class="instanceName" />
         </div>
       </div>
       <div class="canvasContainer">
         <div class="canvasTool switchShow">
-          <el-button @click="instanceFocus" :type="hideNoSelect? 'primary' : ''"><i class="icon el-icon-view"/>隐藏未选中
+          <el-button @click="instanceFocus" :type="hideNoSelect ? 'primary' : ''"><i class="icon el-icon-view" />隐藏未选中
           </el-button>
         </div>
         <div class="canvasTool selectTool">
           <!--<i class="el-icon-rank"/>-->
           <el-select @change="instanceChange" v-model="instanceStatus">
-            <el-option :key="1" label="方形" :value="1"/>
-            <el-option :key="2" label="自定义" :value="2"/>
-            <el-option :key="3" label="点" :value="3"/>
-            <el-option :key="4" label="线" :value="4"/>
-            <el-option :key="5" label="圆" :value="5"/>
-            <el-option :key="0" label="默认鼠标" :value="0"/>
+            <el-option :key="1" label="方形" :value="1" />
+            <el-option :key="2" label="自定义" :value="2" />
+            <el-option :key="3" label="点" :value="3" />
+            <el-option :key="4" label="线" :value="4" />
+            <el-option :key="5" label="圆" :value="5" />
+            <el-option :key="0" label="默认鼠标" :value="0" />
           </el-select>
         </div>
         <div class="canvasTool tagName">
@@ -41,7 +41,7 @@
         </div>
         <div class="canvasTool resetBtn">
           <el-button @click="discard">丢弃该数据</el-button>
-          <el-button @click="instanceFitting"><i class="icon el-icon-refresh-left"/>重置图片位置</el-button>
+          <el-button @click="instanceFitting"><i class="icon el-icon-refresh-left" />重置图片位置</el-button>
         </div>
         <canvas class="container"></canvas>
       </div>
@@ -65,11 +65,7 @@
           <span></span>
           <p>甲状腺病变</p>
         </div>
-        <el-collapse
-          v-model="activeNames"
-          @change="handleChange"
-          class="xialakuang"
-        >
+        <el-collapse v-model="activeNames" @change="handleChange" class="xialakuang">
           <el-collapse-item>
             <span class="large-title" slot="title"> 总体情况描述</span>
 
@@ -115,16 +111,16 @@
                 <el-row>
                   <el-col :offset="2">
                     <el-checkbox v-model="markData.jzxWeizhiShangji" @change="weizhiChange(1)" :true-label="1"
-                                 :false-label="0">上极
+                      :false-label="0">上极
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxWeizhiXiaji" @change="weizhiChange(2)" :true-label="1"
-                                 :false-label="0">下极
+                      :false-label="0">下极
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxWeizhiZhongbu" @change="weizhiChange(3)" :true-label="1"
-                                 :false-label="0">中部
+                      :false-label="0">中部
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxWeizhiXiabu" @change="weizhiChange(4)" :true-label="1"
-                                 :false-label="0">峡部
+                      :false-label="0">峡部
                     </el-checkbox>
                   </el-col>
                 </el-row>
@@ -137,19 +133,19 @@
                 <el-row>
                   <el-col :offset="2">
                     <el-checkbox v-model="markData.jzxZuzhibingliLiangxing" @change="bingliChange(1)" :true-label="1"
-                                 :false-label="0">良性
+                      :false-label="0">良性
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxZuzhibingliRutouzhuangai" @change="bingliChange(2)"
-                                 :true-label="1" :false-label="0">乳头状癌
+                      :true-label="1" :false-label="0">乳头状癌
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxZuzhibingliSuiyangai" @change="bingliChange(3)" :true-label="1"
-                                 :false-label="0">髓样癌
+                      :false-label="0">髓样癌
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxZuzhibinbliLvpaozhuangai" @change="bingliChange(4)"
-                                 :true-label="1" :false-label="0">滤泡状癌
+                      :true-label="1" :false-label="0">滤泡状癌
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxZuzhibingliQitaexing" @change="bingliChange(5)" :true-label="1"
-                                 :false-label="0">其他恶性
+                      :false-label="0">其他恶性
                     </el-checkbox>
                   </el-col>
                 </el-row>
@@ -162,7 +158,7 @@
             <!--  </el-collapse-item>-->
             <!--</div>-->
             <div class="thyroid-box"><span class="thyroid-box-title">结节最大径</span>
-              <el-input class="thyroid-box-input" v-model="markData.jzxJiejiezuidajing"/>
+              <el-input class="thyroid-box-input" v-model="markData.jzxJiejiezuidajing" />
             </div>
           </el-collapse-item>
 
@@ -175,25 +171,25 @@
                 <el-row>
                   <el-col :offset="2">
                     <el-checkbox v-model="markData.jzxNeibujiegouShixing" @change="jiegouChange(1)" :true-label="1"
-                                 :false-label="0">实性
+                      :false-label="0">实性
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxNeibujiegouShixingweizhu" @change="jiegouChange(2)"
-                                 :true-label="1" :false-label="0">实性为主
+                      :true-label="1" :false-label="0">实性为主
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxNeibujiegouNangxingweizhu" @change="jiegouChange(3)"
-                                 :true-label="1" :false-label="0">囊性为主
+                      :true-label="1" :false-label="0">囊性为主
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxNeibujiegouNangshixing" @change="jiegouChange(4)" :true-label="1"
-                                 :false-label="0">囊实性
+                      :false-label="0">囊实性
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxNeibujiegouHaimianyang" @change="jiegouChange(5)" :true-label="1"
-                                 :false-label="0">海绵样
+                      :false-label="0">海绵样
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxNeibujiegouNangxing" @change="jiegouChange(6)" :true-label="1"
-                                 :false-label="0">囊性
+                      :false-label="0">囊性
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxNeibujiegouWufapanduan" @change="jiegouChange(7)" :true-label="1"
-                                 :false-label="0">无法判断
+                      :false-label="0">无法判断
                     </el-checkbox>
                   </el-col>
                 </el-row>
@@ -206,19 +202,19 @@
                 <el-row>
                   <el-col :offset="2">
                     <el-checkbox v-model="markData.jzxHuishengGaohuisheng" @change="huishengChange(1)" :true-label="1"
-                                 :false-label="0">高回声
+                      :false-label="0">高回声
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxHuishengDenghuisheng" @change="huishengChange(2)" :true-label="1"
-                                 :false-label="0">等回声
+                      :false-label="0">等回声
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxHuishengDihuisheng" @change="huishengChange(3)" :true-label="1"
-                                 :false-label="0">低回声
+                      :false-label="0">低回声
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxHuishengJidihuisheng" @change="huishengChange(4)" :true-label="1"
-                                 :false-label="0">极低回声
+                      :false-label="0">极低回声
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxHuishengWufapanduan" @change="huishengChange(5)" :true-label="1"
-                                 :false-label="0">无法判断
+                      :false-label="0">无法判断
                     </el-checkbox>
                   </el-col>
                 </el-row>
@@ -231,11 +227,10 @@
                 <el-row>
                   <el-col :offset="2">
                     <el-checkbox v-model="markData.jzxXingzhuangDayudengyu" @change="jzxxingzhuangChange(1)"
-                                 :true-label="1" :false-label="0">纵横比≥1
+                      :true-label="1" :false-label="0">纵横比≥1
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxXingzhuangXiaoyu" @change="jzxxingzhuangChange(2)" :true-label="1"
-                                 :false-label="0">纵横比<1
-                    </el-checkbox>
+                      :false-label="0">纵横比<1 </el-checkbox>
                   </el-col>
                 </el-row>
               </el-collapse-item>
@@ -247,22 +242,22 @@
                 <el-row>
                   <el-col :offset="2" :span="20">
                     <el-checkbox v-model="markData.jzxBianyuanGuangzheng" @change="jzxbianyuanChange(1)" :true-label="1"
-                                 :false-label="0">边缘光整
+                      :false-label="0">边缘光整
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxBianyuanBuguize" @change="jzxbianyuanChange(2)" :true-label="1"
-                                 :false-label="0">边缘不规则
+                      :false-label="0">边缘不规则
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxBianyuanFenyezhuang" @change="jzxbianyuanChange(3)"
-                                 :true-label="1" :false-label="0">边缘分叶状
+                      :true-label="1" :false-label="0">边缘分叶状
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxBianyuanMohu" @change="jzxbianyuanChange(4)" :true-label="1"
-                                 :false-label="0">边缘模糊
+                      :false-label="0">边缘模糊
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxBianyuanEte" @change="jzxbianyuanChange(5)" :true-label="1"
-                                 :false-label="0">ETE
+                      :false-label="0">ETE
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxBianyuanWufaqueding" @change="jzxbianyuanChange(6)"
-                                 :true-label="1" :false-label="0">无法确定
+                      :true-label="1" :false-label="0">无法确定
                     </el-checkbox>
                   </el-col>
                 </el-row>
@@ -281,7 +276,7 @@
                       粗大钙化
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxJuzhaoqianghuishengBianyuangaihua" :true-label="1"
-                                 :false-label="0">边缘钙化
+                      :false-label="0">边缘钙化
                     </el-checkbox>
                     <el-checkbox v-model="markData.jzxJuzhaoqianghuishengHuixingwei" :true-label="1" :false-label="0">
                       彗星尾
@@ -320,13 +315,13 @@
               <el-row>
                 <el-col :offset="2">
                   <el-checkbox v-model="markData.lbjXingzhuangTuoyuan" @change="lbjxingzhuangChange(1)" :true-label="1"
-                               :false-label="0">椭圆形
+                    :false-label="0">椭圆形
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjXingzhuangLeiyuan" @change="lbjxingzhuangChange(2)" :true-label="1"
-                               :false-label="0">类圆形
+                    :false-label="0">类圆形
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjXingzhuangBuguize" @change="lbjxingzhuangChange(3)" :true-label="1"
-                               :false-label="0">不规则
+                    :false-label="0">不规则
                   </el-checkbox>
                 </el-col>
               </el-row>
@@ -339,10 +334,10 @@
               <el-row>
                 <el-col :offset="2">
                   <el-checkbox v-model="markData.lbjBianyuanBuguize" @change="lbjbianyuanChange(1)" :true-label="1"
-                               :false-label="0">边缘不规则
+                    :false-label="0">边缘不规则
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjBianyuanGuangzheng" @change="lbjbianyuanChange(2)" :true-label="1"
-                               :false-label="0">边缘光整
+                    :false-label="0">边缘光整
                   </el-checkbox>
                 </el-col>
               </el-row>
@@ -355,16 +350,16 @@
               <el-row class="buju">
                 <el-col :offset="2">
                   <el-checkbox v-model="markData.lbjLinbamenZhengchang" @change="lbjlinbamenChange(1)" :true-label="1"
-                               :false-label="0">正常
+                    :false-label="0">正常
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjLinbamenPianxin" @change="lbjlinbamenChange(2)" :true-label="1"
-                               :false-label="0">偏心
+                    :false-label="0">偏心
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjLinbamenXiaoshi" @change="lbjlinbamenChange(3)" :true-label="1"
-                               :false-label="0">消失
+                    :false-label="0">消失
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjLinbamenGaohuishengtuankuai" @change="lbjlinbamenChange(4)"
-                               :true-label="1" :false-label="0">高回声团块
+                    :true-label="1" :false-label="0">高回声团块
                   </el-checkbox>
                 </el-col>
               </el-row>
@@ -377,10 +372,10 @@
               <el-row>
                 <el-col :offset="2">
                   <el-checkbox v-model="markData.lbjPizhiJunyunzenghou" @change="lbjpizhiChange(1)" :true-label="1"
-                               :false-label="0">均匀增厚
+                    :false-label="0">均匀增厚
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjPizhiBujunyunzenghou" @change="lbjpizhiChange(2)" :true-label="1"
-                               :false-label="0">不均匀增厚
+                    :false-label="0">不均匀增厚
                   </el-checkbox>
                 </el-col>
               </el-row>
@@ -429,16 +424,16 @@
               <el-row>
                 <el-col :offset="2">
                   <el-checkbox v-model="markData.lbjXueliuZhengchang" @change="lbjxueliuChange(1)" :true-label="1"
-                               :false-label="0">正常
+                    :false-label="0">正常
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjXueliuMenxing" @change="lbjxueliuChange(2)" :true-label="1"
-                               :false-label="0">门型
+                    :false-label="0">门型
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjXueliuBianyuanweizhuxing" @change="lbjxueliuChange(3)"
-                               :true-label="1" :false-label="0">边缘为主型
+                    :true-label="1" :false-label="0">边缘为主型
                   </el-checkbox>
                   <el-checkbox v-model="markData.lbjXueliuHunhexing" @change="lbjxueliuChange(4)" :true-label="1"
-                               :false-label="0">混合型
+                    :false-label="0">混合型
                   </el-checkbox>
                 </el-col>
               </el-row>
@@ -459,10 +454,10 @@
         </el-collapse>
       </div>
       <el-button type="primary" plain class="tijiao" @click="submit">提交</el-button>
-<!--      <el-button-group>-->
-<!--        <el-button type="primary" icon="el-icon-arrow-left">上一条</el-button>-->
-<!--        <el-button type="primary">下一条<i class="el-icon-arrow-right el-icon&#45;&#45;right"></i></el-button>-->
-<!--      </el-button-group>-->
+      <!--      <el-button-group>-->
+      <!--        <el-button type="primary" icon="el-icon-arrow-left">上一条</el-button>-->
+      <!--        <el-button type="primary">下一条<i class="el-icon-arrow-right el-icon&#45;&#45;right"></i></el-button>-->
+      <!--      </el-button-group>-->
       <el-button class="next" @click="prev()" :loading="loading">上一个</el-button>
       <el-button class="next" @click="next()" :loading="loading">下一个</el-button>
     </div>
@@ -471,16 +466,16 @@
 
 <script>
 import CanvasSelect from "canvas-select";
-import {getAnnotateData, updateAnnotateData} from "@/api/medicalData/annotate/index.js";
-import {copyFields} from "@/utils/validate.js"
-import {listBiao} from "@/api/info/biao";
+import { getAnnotateData, updateAnnotateData } from "@/api/medicalData/annotate/index.js";
+import { copyFields } from "@/utils/validate.js"
+import { listBiao } from "@/api/info/biao";
 import cache from "@/plugins/cache";
 
 export default {
   name: "Annotate",
   data() {
     return {
-      url:null,
+      url: null,
       index: 0,
       // 总条数
       total: 0,
@@ -600,10 +595,9 @@ export default {
   },
   methods: {
     // 详细数据
-    detail(a){
-      // console.log("这")
-      // this.pId = this.$route.query.pId;
-      getAnnotateData({pId:a}).then(res => {
+    detail(a) {
+
+      getAnnotateData({ pId: a }).then(res => {
         console.log(res)
 
         this.patientAge = res.data.age;
@@ -615,7 +609,9 @@ export default {
         copyFields(this.markData, res.data)
         this.imgUrl = res.data.imgAddress
         this.instance.setImage(this.imgUrl)
-        this.option = typeof (serverOption) == 'Array' ? serverOption : []
+        // this.option = typeof (serverOption) == 'Array' ? serverOption : []
+        this.option = Array.isArray(serverOption) ? serverOption : []
+
         this.instance.setData(this.option)
       })
     },
@@ -659,15 +655,15 @@ export default {
       this.pId = this.biaoList[this.index].pId;
       // this.$message.warning(this.pId+"index的值为"+this.index);
       let zhi = {
-        pId:this.pId,
-        pageNum:this.queryParams.pageNum,
-        isBiaozhu:this.queryParams.isBiaozhu,
-        pageSize:this.queryParams.pageSize
+        pId: this.pId,
+        pageNum: this.queryParams.pageNum,
+        isBiaozhu: this.queryParams.isBiaozhu,
+        pageSize: this.queryParams.pageSize
       }
       var newUrl =
-        this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
-      window.history.replaceState("", "", newUrl)
-
+        this.$route.path + `?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
+      // window.history.replaceState("", "", newUrl)
+      this.$router.push({ path: this.$route.path, query: zhi });
       // session JSON值
       // this.$cache.session.setJSON('historypatient', newUrl)
       this.$cache.session.setJSON('zhi', zhi)
@@ -708,14 +704,16 @@ export default {
 
       // this.$message.warning(this.pId+"index的值为"+this.index);
       let zhi = {
-        pId:this.pId,
-        pageNum:this.queryParams.pageNum,
-        isBiaozhu:this.queryParams.isBiaozhu,
-        pageSize:this.queryParams.pageSize
+        pId: this.pId,
+        pageNum: this.queryParams.pageNum,
+        isBiaozhu: this.queryParams.isBiaozhu,
+        pageSize: this.queryParams.pageSize
       }
       var newUrl =
-        this.$route.path +`?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
-      window.history.replaceState("", "", newUrl);
+        this.$route.path + `?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
+      // window.history.replaceState("", "", newUrl);
+      this.$router.push({ path: this.$route.path, query: zhi });
+
       this.$cache.session.setJSON('historypatient', newUrl)
       this.$cache.session.setJSON('zhi', zhi)
       // console.log(this.$cache.session.getJSON('historypatient'))
@@ -725,6 +723,7 @@ export default {
       this.detail(this.pId)
 
       this.loading = false;
+
     },
 
 
@@ -851,13 +850,15 @@ export default {
       }
     },
     submit() {
+      console.log('this.markData: ', this.markData);
+
       let data = {
         ...this.markData,
-        pId:this.pId,
-        age:this.patientAge||"",
-        gender:this.patientSex||"",
+        pId: this.pId,
+        age: this.patientAge || "",
+        gender: this.patientSex || "",
         date: JSON.stringify(this.option),
-        isBiaozhu:1
+        isBiaozhu: 1
       }
       updateAnnotateData(data).then(res => {
         if (res.code == 200) {
@@ -899,14 +900,14 @@ export default {
       this.instance.fitZoom();
     },
     // 丢弃
-    discard(){
+    discard() {
       let data = {
         ...this.markData,
-        pId:this.pId,
-        age:this.patientAge||"",
-        gender:this.patientSex||"",
+        pId: this.pId,
+        age: this.patientAge || "",
+        gender: this.patientSex || "",
         date: JSON.stringify(this.option),
-        isBiaozhu:2
+        isBiaozhu: 2
       }
       updateAnnotateData(data).then(res => {
         if (res.code == 200) {
@@ -982,24 +983,29 @@ export default {
 
     this.pId = this.$route.query.pId;
     console.log("mounted")
-    console.log(this.pId )
-    getAnnotateData({pId: this.pId}).then(res => {
+    console.log(this.pId)
+    getAnnotateData({ pId: this.pId }).then(res => {
       console.log(res)
       this.patientAge = res.data.age;
       this.patientSex = res.data.gender;
       console.log(res.data.date)
       let serverOption = JSON.parse(res.data.date)
-      console.log('请求来的数据')
-      console.log(res)
+      console.log('serverOption: ', serverOption);
+      // console.log('请求来的数据')
+      // console.log(res)
       this.imgUrl = res.data.imgAddress
-      this.option = typeof (serverOption) == 'Array' ? serverOption : []
+      // this.option = typeof (serverOption) == 'Array' ? serverOption : []
+      this.option = Array.isArray(serverOption) ? serverOption : []
+      console.log('typeof (serverOption): ', typeof serverOption);
+      console.log('this.option: ', this.option);
       this.instanceInit();
       copyFields(this.markData, res.data)
+      console.log('res.data: ', res.data);
     })
     window.onresize = this.canvasResize
   },
   activated() {
-    // console.log("zhi")
+    console.log("zhi")
     let zhi = this.$cache.session.getJSON('zhi')
     // console.log(zhi)
     // this.$message.success("111111111111111111111111")
@@ -1022,12 +1028,12 @@ export default {
       // console.log("路由"+this.$route.query.pId)
       // console.log(this.pId)
       // console.log("值"+this.$route.query.isBiaozhu)
-      if(this.queryParams.isBiaozhu != zhi.isBiaozhu){
+      if (this.queryParams.isBiaozhu != zhi.isBiaozhu) {
         // this.$message.success("222")
         this.pId = this.$route.query.pId;
       }
       // this.pId = this.$route.query.pId;
-      getAnnotateData({pId: this.pId}).then(res => {
+      getAnnotateData({ pId: this.pId }).then(res => {
         this.patientAge = res.data.age;
         this.patientSex = res.data.gender;
         console.log(res.data.date)
@@ -1380,5 +1386,4 @@ div {
 .jiantou ::v-deep .el-icon-arrow-right:before {
   content: "\e791"
 }
-
 </style>
