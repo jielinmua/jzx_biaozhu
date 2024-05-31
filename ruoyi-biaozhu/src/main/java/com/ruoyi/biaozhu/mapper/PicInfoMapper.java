@@ -26,6 +26,7 @@ public interface PicInfoMapper
      * @return 数据图表集合
      */
     public List<PicInfo> selectPicInfoList(PicInfo picInfo);
+    public List<PicInfo> selectPicInfoListByPatient(PicInfo picInfo);
 
     /**
      * 新增数据图表

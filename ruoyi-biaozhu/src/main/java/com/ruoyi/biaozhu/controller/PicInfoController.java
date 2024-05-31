@@ -50,6 +50,18 @@ public class PicInfoController extends BaseController
     }
 
     /**
+     * 查询患者列表
+     */
+    @PreAuthorize("@ss.hasPermi('info:biao:list')")
+    @GetMapping("/getPatientList")
+    public TableDataInfo getPatientList(PicInfo picInfo)
+    {
+        startPage();
+        List<PicInfo> list = picInfoService.selectPicInfoListByPatient(picInfo);
+        return getDataTable(list);
+    }
+
+    /**
      * 导出数据图表列表
      */
     @PreAuthorize("@ss.hasPermi('info:biao:export')")

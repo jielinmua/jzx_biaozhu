@@ -36,7 +36,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectPicInfoVo"/>
         where p_id = #{pId}
     </select>
-        
+    <select id="selectPicInfoListByPatient" resultType="com.ruoyi.biaozhu.domain.PicInfo" resultMap="PicInfoResult">
+        SELECT  patient_id,  age, gender ,create_time FROM pic_info GROUP BY patient_id,  age, gender ,create_time ORDER BY create_time
+    </select>
+
     <insert id="insertPicInfo" parameterType="PicInfo">
         insert into pic_info
         <trim prefix="(" suffix=")" suffixOverrides=",">

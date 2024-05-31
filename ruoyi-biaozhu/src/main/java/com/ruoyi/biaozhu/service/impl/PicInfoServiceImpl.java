@@ -54,6 +54,11 @@ public class PicInfoServiceImpl implements IPicInfoService
         return picInfoMapper.selectPicInfoList(picInfo);
     }
 
+    @Override
+    public List<PicInfo> selectPicInfoListByPatient(PicInfo picInfo) {
+        return picInfoMapper.selectPicInfoListByPatient(picInfo);
+    }
+
     /**
      * 新增数据图表
      * 
