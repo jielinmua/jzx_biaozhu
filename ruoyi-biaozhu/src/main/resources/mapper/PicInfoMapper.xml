@@ -37,7 +37,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where p_id = #{pId}
     </select>
     <select id="selectPicInfoListByPatient" resultType="com.ruoyi.biaozhu.domain.PicInfo" resultMap="PicInfoResult">
-        SELECT  patient_id,  age, gender ,create_time FROM pic_info GROUP BY patient_id,  age, gender ,create_time ORDER BY create_time
+        SELECT  patient_id,  age, gender ,create_time FROM pic_info
+        <where>
+            <if test="pId != null  and pId != ''"> and p_id = #{pId}</if>
+            <if test="age != null "> and age = #{age}</if>
+            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+            <if test="imgAddress != null  and imgAddress != ''"> and img_address = #{imgAddress}</if>
+            <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
+            <if test="isBiaozhu != null "> and is_biaozhu = #{isBiaozhu}</if>
+        </where>
+        GROUP BY patient_id,  age, gender ,create_time ORDER BY create_time
     </select>
 
     <insert id="insertPicInfo" parameterType="PicInfo">
