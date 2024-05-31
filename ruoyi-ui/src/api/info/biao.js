@@ -42,3 +42,13 @@ export function delBiao(pId) {
     method: 'delete'
   })
 }
+export function uploadFile(file) {
+  return request({
+    url: '/info/biao/fileUploads',
+    method: 'post',
+    data: file,
+    headers: {
+      "Content-Type": "multipart/form-data"
+    }
+  })
+}

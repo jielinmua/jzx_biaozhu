@@ -5,6 +5,9 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 数据图表对象 pic_info
  * 
@@ -39,7 +42,19 @@ public class PicInfo extends BaseEntity
     @Excel(name = "${comment}", readConverterExp = "$column.readConverterExp()")
     private Long isBiaozhu;
 
-    public void setpId(String pId) 
+
+
+    private List<String> fileList = new ArrayList<>();
+
+    public List<String> getFileList() {
+        return fileList;
+    }
+
+    public void setFileList(List<String> fileList) {
+        this.fileList = fileList;
+    }
+
+    public void setpId(String pId)
     {
         this.pId = pId;
     }
