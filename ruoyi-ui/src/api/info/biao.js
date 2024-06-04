@@ -52,3 +52,10 @@ export function uploadFile(file) {
     }
   })
 }
+export function getPatientList(query) {
+  return request({
+    url: '/info/biao/getPatientList',
+    method: 'get',
+    params: query
+  })
+}

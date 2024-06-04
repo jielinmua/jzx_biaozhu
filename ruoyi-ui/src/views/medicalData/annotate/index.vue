@@ -666,7 +666,9 @@ export default {
     this.queryParams.pageNum = this.$route.query.pageNum
     this.queryParams.pageSize = this.$route.query.pageSize
     this.pId = this.$route.query.pid
+    this.queryParams.pId = this.$route.query.pid
     this.queryParams.isBiaozhu = this.$route.query.isBiaozhu
+    this.queryParams.patientId=this.$route.query.patientId
 
     // return
     this.getList();
@@ -731,15 +733,18 @@ export default {
         this.index = this.queryParams.pageSize - 1;
       }
       this.pId = this.biaoList[this.index].pId;
+      // this.queryParams.patientId = this.biaoList[this.index].patientId;
+      // this.queryParams.isBiaozhu = this.biaoList[this.index].isBiaozhu;
       // this.$message.warning(this.pId+"index的值为"+this.index);
       let zhi = {
+        patientId:this.biaoList[this.index].patientId,
         pId: this.pId,
+        isBiaozhu: this.biaoList[this.index].isBiaozhu,
         pageNum: this.queryParams.pageNum,
-        isBiaozhu: this.queryParams.isBiaozhu,
         pageSize: this.queryParams.pageSize
       }
       var newUrl =
-        this.$route.path + `?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
+        this.$route.path + `?patientId=${this.biaoList[this.index].patientId}&pId=${this.pId}&isBiaozhu=${this.biaoList[this.index].isBiaozhu}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
       // window.history.replaceState("", "", newUrl)
       this.$router.push({ path: this.$route.path, query: zhi });
       // session JSON值
@@ -782,13 +787,14 @@ export default {
 
       // this.$message.warning(this.pId+"index的值为"+this.index);
       let zhi = {
+        patientId:this.biaoList[this.index].patientId,
         pId: this.pId,
+        isBiaozhu: this.biaoList[this.index].isBiaozhu,
         pageNum: this.queryParams.pageNum,
-        isBiaozhu: this.queryParams.isBiaozhu,
         pageSize: this.queryParams.pageSize
       }
       var newUrl =
-        this.$route.path + `?pId=${this.pId}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
+        this.$route.path + `?patientId=${this.biaoList[this.index].patientId}&pId=${this.pId}&isBiaozhu=${this.biaoList[this.index].isBiaozhu}&pageNum=${this.queryParams.pageNum}&pageSize=${this.queryParams.pageSize}&isBiaozhu=${this.queryParams.isBiaozhu}`;
       // window.history.replaceState("", "", newUrl);
       this.$router.push({ path: this.$route.path, query: zhi });
 

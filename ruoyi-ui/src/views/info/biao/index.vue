@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="id" prop="pId">
+      <el-form-item label="pid" prop="pId">
         <el-input
           v-model="queryParams.pId"
           placeholder="请输入id"
@@ -464,6 +464,11 @@ export default {
     },
     /** 查询数据图表列表 */
     getList() {
+      // console.log(this.$route.query)
+      // console.log("跳转到了数据标注页面")
+
+      this.queryParams.patientId = this.$route.query.patientId
+      // console.log(this.queryParams)
       this.loading = true;
       listBiao(this.queryParams).then(response => {
         this.biaoList = response.rows;
@@ -492,11 +497,13 @@ export default {
       this.getList();
     },
     handleJump(row) {
+      console.log(row)
       this.queryParams.isBiaozhu=this.queryParams.isBiaozhu == undefined? null : this.queryParams.isBiaozhu
-
+      // return
       this.$router.push({
         path: '/medicalData/annotate',
         query: {
+          patientId:row.patientId,
           pId: row.pId,
           isBiaozhu:this.queryParams.isBiaozhu,
           pageNum:this.queryParams.pageNum,
