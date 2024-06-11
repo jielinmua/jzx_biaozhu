@@ -8,6 +8,7 @@ import java.util.Random;
 import com.ruoyi.biaozhu.domain.Pic;
 import com.ruoyi.biaozhu.mapper.PicMapper;
 import com.ruoyi.common.utils.DateUtils;
+import com.ruoyi.common.utils.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -69,7 +70,10 @@ public class PicInfoServiceImpl implements IPicInfoService
     public int insertPicInfo(PicInfo picInfo)
     {
         picInfo.setpId(getNo());
-        picInfo.setPatientId(getNo());
+        if (StringUtils.isEmpty(picInfo.getPatientId())){
+            picInfo.setPatientId(getNo());
+        }
+
         picInfo.setCreateTime(DateUtils.getNowDate());
         if (!picInfo.getFileList().isEmpty()){
             for (String s : picInfo.getFileList()) {

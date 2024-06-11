@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
             <if test="isBiaozhu != null "> and is_biaozhu = #{isBiaozhu}</if>
         </where>
-        GROUP BY patient_id,  age, gender ,create_time ORDER BY create_time
+        GROUP BY patient_id,  age, gender ,create_time  ORDER BY create_time desc
     </select>
 
     <insert id="insertPicInfo" parameterType="PicInfo">

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.biaozhu.mapper.PatientMapper">
+
+    <resultMap type="Patient" id="PatientResult">
+        <result property="id"    column="id"    />
+        <result property="patientId"    column="patient_id"    />
+        <result property="age"    column="age"    />
+        <result property="gender"    column="gender"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+    </resultMap>
+
+    <sql id="selectPatientVo">
+        select id, patient_id, age, gender, create_time, update_time from patient
+    </sql>
+
+    <select id="selectPatientList" parameterType="Patient" resultMap="PatientResult">
+        <include refid="selectPatientVo"/>
+        <where>
+            <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
+            <if test="age != null "> and age = #{age}</if>
+            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+        </where>
+    </select>
+
+    <select id="selectPatientById" parameterType="Long" resultMap="PatientResult">
+        <include refid="selectPatientVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertPatient" parameterType="Patient" useGeneratedKeys="true" keyProperty="id">
+        insert into patient
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="patientId != null">patient_id,</if>
+            <if test="age != null">age,</if>
+            <if test="gender != null">gender,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="patientId != null">#{patientId},</if>
+            <if test="age != null">#{age},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+        </trim>
+    </insert>
+
+    <update id="updatePatient" parameterType="Patient">
+        update patient
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="patientId != null">patient_id = #{patientId},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deletePatientById" parameterType="Long">
+        delete from patient where id = #{id}
+    </delete>
+
+    <delete id="deletePatientByIds" parameterType="String">
+        delete from patient where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
