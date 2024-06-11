@@ -103,8 +103,8 @@
         <el-table-column type="selection" width="55" align="center"/>
         <el-table-column label="pid" align="center" prop="pId"/>
         <el-table-column label="患者id" align="center" prop="patientId"/>
-        <el-table-column label="年龄" align="center" prop="age"/>
-        <el-table-column label="性别" align="center" prop="gender"/>
+        <el-table-column label="年龄" align="center" prop="age" width="50"/>
+        <el-table-column label="性别" align="center" prop="gender" width="50" />
         <el-table-column label="图片地址" align="center" prop="imgAddress">
           <template v-slot:default="scope">
             <el-image
@@ -238,7 +238,7 @@
       <el-tab-pane label="已丢弃" name="fourth">    <el-table v-loading="loading" :data="biaoList" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55" align="center"/>
         <el-table-column label="pid" align="center" prop="pId"/>
-        <el-table-column label="年龄" align="center" prop="age"/>
+        <el-table-column label="年龄" align="center" prop="age" />
         <el-table-column label="性别" align="center" prop="gender"/>
         <el-table-column label="图片地址" align="center" prop="imgAddress">
           <template v-slot:default="scope">
@@ -293,10 +293,10 @@
     <!-- 添加或修改数据图表对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="年龄" prop="age">
+        <el-form-item v-if="control" label="年龄" prop="age">
           <el-input v-model="form.age" placeholder="请输入年龄"/>
         </el-form-item>
-        <el-form-item label="性别" prop="gender">
+        <el-form-item v-if="control" label="性别" prop="gender">
           <el-input v-model="form.gender" placeholder="请输入性别"/>
         </el-form-item>
         <el-form-item label="图片" prop="gender">
@@ -339,6 +339,8 @@ export default {
   name: "Biao",
   data() {
     return {
+      // 控制年龄性别显示
+      control:true,
       imgFiles: [],
       // 遮罩层
       loading: true,
@@ -478,6 +480,7 @@ export default {
     },
     // 取消按钮
     cancel() {
+      this.control= true
       this.open = false;
       this.reset();
     },
@@ -526,6 +529,7 @@ export default {
     handleAdd() {
       this.fileList=[]
       this.reset();
+      this.control= false
       this.open = true;
       this.title = "添加数据图表";
     },
@@ -545,6 +549,7 @@ export default {
     },
     /** 提交按钮 */
     submitForm() {
+      this.control= true
       console.log(this.fileList)
       this.$refs["form"].validate(valid => {
         if (valid) {
@@ -565,6 +570,7 @@ export default {
                 arr.push(item.url)
               })
               this.form.fileList = arr
+              console.log(this.form)
               if (this.form.pId != null) {
                 updateBiao(this.form).then(response => {
                   this.$modal.msgSuccess("修改成功");
@@ -572,7 +578,11 @@ export default {
                   this.getList();
                 });
               } else {
-                addBiao(this.form).then(response => {
+                this.form.patientId = this.biaoList[0].patientId
+                this.form.age = this.biaoList[0].age
+                this.form.gender = this.biaoList[0].gender
+                console.log(this.form)
+                    addBiao(this.form).then(response => {
                   this.$modal.msgSuccess("新增成功");
                   this.open = false;
                   this.getList();
@@ -581,6 +591,7 @@ export default {
               return
             })
           }else {
+            console.log(this.form)
             if (this.form.pId != null) {
               updateBiao(this.form).then(response => {
                 this.$modal.msgSuccess("修改成功");

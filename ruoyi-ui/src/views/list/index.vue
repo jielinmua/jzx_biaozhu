@@ -35,16 +35,16 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="是否标注" prop="isBiaozhu">
-        <el-select v-model="queryParams.isBiaozhu" placeholder="请选择是否标注" clearable>
-          <el-option
-            v-for="dict in dict.type.jzx_is_biaozhu"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
+<!--      <el-form-item label="是否标注" prop="isBiaozhu">-->
+<!--        <el-select v-model="queryParams.isBiaozhu" placeholder="请选择是否标注" clearable>-->
+<!--          <el-option-->
+<!--            v-for="dict in dict.type.jzx_is_biaozhu"-->
+<!--            :key="dict.value"-->
+<!--            :label="dict.label"-->
+<!--            :value="dict.value"-->
+<!--          />-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -62,17 +62,17 @@
           v-hasPermi="['info:biao:add']"
         >新增</el-button>
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['info:biao:edit']"
-        >修改</el-button>
-      </el-col>
+<!--      <el-col :span="1.5">-->
+<!--        <el-button-->
+<!--          type="success"-->
+<!--          plain-->
+<!--          icon="el-icon-edit"-->
+<!--          size="mini"-->
+<!--          :disabled="single"-->
+<!--          @click="handleUpdate"-->
+<!--          v-hasPermi="['info:biao:edit']"-->
+<!--        >修改</el-button>-->
+<!--      </el-col>-->
       <el-col :span="1.5">
         <el-button
           type="danger"
@@ -171,9 +171,9 @@
     <!-- 添加或修改数据图表对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="" prop="pId">
-          <el-input v-model="form.pId" placeholder="请输入" />
-        </el-form-item>
+<!--        <el-form-item label="pId" prop="pId">-->
+<!--          <el-input v-model="form.pId" placeholder="请输入" />-->
+<!--        </el-form-item>-->
         <el-form-item label="年龄" prop="age">
           <el-input v-model="form.age" placeholder="请输入年龄" />
         </el-form-item>
@@ -187,22 +187,22 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="图片地址" prop="imgAddress">
-          <image-upload v-model="form.imgAddress"/>
-        </el-form-item>
-        <el-form-item label="病人id" prop="patientId">
-          <el-input v-model="form.patientId" placeholder="请输入病人id" />
-        </el-form-item>
-        <el-form-item label="是否标注" prop="isBiaozhu">
-          <el-select v-model="form.isBiaozhu" placeholder="请选择是否标注">
-            <el-option
-              v-for="dict in dict.type.jzx_is_biaozhu"
-              :key="dict.value"
-              :label="dict.label"
-              :value="parseInt(dict.value)"
-            ></el-option>
-          </el-select>
-        </el-form-item>
+<!--        <el-form-item label="图片地址" prop="imgAddress">-->
+<!--          <image-upload v-model="form.imgAddress"/>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="病人id" prop="patientId">-->
+<!--          <el-input v-model="form.patientId" placeholder="请输入病人id" />-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="是否标注" prop="isBiaozhu">-->
+<!--          <el-select v-model="form.isBiaozhu" placeholder="请选择是否标注">-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.jzx_is_biaozhu"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="parseInt(dict.value)"-->
+<!--            ></el-option>-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">确 定</el-button>
@@ -213,6 +213,7 @@
 </template>
 
 <script>
+import { listPatient, getPatient, delPatient, addPatient, updatePatient } from "@/api/info/biao";
 import {getPatientList,listBiao, getBiao, delBiao, addBiao, updateBiao, uploadFile} from "@/api/info/biao";
 import request from '@/utils/request'
 import {getToken} from "@/utils/auth";
@@ -283,7 +284,7 @@ export default {
     /** 查询数据图表列表 */
     getList() {
       this.loading = true;
-      getPatientList(this.queryParams).then(response => {
+      listPatient(this.queryParams).then(response => {
         console.log(response)
         this.biaoList = response.rows;
         this.total = response.total;
