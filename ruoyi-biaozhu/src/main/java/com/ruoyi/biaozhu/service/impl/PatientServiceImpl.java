@@ -57,14 +57,15 @@ public class PatientServiceImpl implements IPatientService
      * @return 结果
      */
     @Override
-    public int insertPatient(Patient patient)
+    public Patient insertPatient(Patient patient)
     {
         if (StringUtils.isEmpty(patient.getPatientId())){
             patient.setPatientId(getNo());
         }
 
         patient.setCreateTime(DateUtils.getNowDate());
-        return patientMapper.insertPatient(patient);
+        patientMapper.insertPatient(patient);
+        return patient;
     }
     public String getNo() {
 //        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");

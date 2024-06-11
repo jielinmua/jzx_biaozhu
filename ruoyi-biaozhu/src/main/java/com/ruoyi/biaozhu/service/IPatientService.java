@@ -34,7 +34,7 @@ public interface IPatientService
      * @param patient 患者
      * @return 结果
      */
-    public int insertPatient(Patient patient);
+    public Patient insertPatient(Patient patient);
 
     /**
      * 修改患者

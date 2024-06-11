@@ -79,7 +79,7 @@ public class PatientController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody Patient patient)
     {
-        return toAjax(patientService.insertPatient(patient));
+        return AjaxResult.success(patientService.insertPatient(patient));
     }
 
     /**
