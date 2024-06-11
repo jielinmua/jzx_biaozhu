@@ -30,7 +30,50 @@ public class Patient extends BaseEntity
     @Excel(name = "性别")
     private String gender;
 
-    public void setId(Long id) 
+    private Integer all;
+
+
+    private Integer wei;
+
+
+    private Integer yi;
+
+
+    private Integer diu;
+
+    public Integer getAll() {
+        return all;
+    }
+
+    public void setAll(Integer all) {
+        this.all = all;
+    }
+
+    public Integer getWei() {
+        return wei;
+    }
+
+    public void setWei(Integer wei) {
+        this.wei = wei;
+    }
+
+    public Integer getYi() {
+        return yi;
+    }
+
+    public void setYi(Integer yi) {
+        this.yi = yi;
+    }
+
+    public Integer getDiu() {
+        return diu;
+    }
+
+    public void setDiu(Integer diu) {
+        this.diu = diu;
+    }
+
+    public void setId(Long id)
     {
         this.id = id;
     }

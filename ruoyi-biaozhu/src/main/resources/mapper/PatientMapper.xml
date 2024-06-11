@@ -18,12 +18,35 @@
     </sql>
 
     <select id="selectPatientList" parameterType="Patient" resultMap="PatientResult">
-        <include refid="selectPatientVo"/>
+        SELECT
+        patient.id,
+        patient.patient_id,
+        patient.age,
+        patient.gender,
+        patient.create_time,
+        patient.update_time,
+        COUNT(pic_info.p_id) AS `all`,
+        SUM(CASE WHEN pic_info.is_biaozhu = 0 THEN 1 ELSE 0 END) AS wei,
+        SUM(CASE WHEN pic_info.is_biaozhu = 1 THEN 1 ELSE 0 END) AS yi,
+        SUM(CASE WHEN pic_info.is_biaozhu = 2 THEN 1 ELSE 0 END) AS diu
+        FROM
+        patient
+        INNER JOIN
+        pic_info
+        ON
+        patient.patient_id = pic_info.patient_id
         <where>
             <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
             <if test="age != null "> and age = #{age}</if>
             <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
         </where>
+        GROUP BY
+        patient.id,
+        patient.patient_id,
+        patient.age,
+        patient.gender,
+        patient.create_time,
+        patient.update_time
     </select>
 
     <select id="selectPatientById" parameterType="Long" resultMap="PatientResult">
