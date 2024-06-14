@@ -184,7 +184,7 @@
 import {listPatient, getPatient, delPatient, addPatient, updatePatient, uploadFile, addBiao} from "@/api/info/biao";
 
 export default {
-  name: "Patient",
+  name: "Index1",
   dicts: ['jzx_is_biaozhu', 'sys_user_sex'],
   data() {
     return {
