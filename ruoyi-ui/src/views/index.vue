@@ -1,6 +1,6 @@
 <template>
   <div class="app-container home">
-    主页
+    <img class="img1" :src="require('@/assets/images/shouye.png')" />
   </div>
 </template>
 
@@ -24,8 +24,8 @@ export default {
 <style scoped lang="scss">
 .home {
   blockquote {
-    padding: 10px 20px;
-    margin: 0 0 20px;
+    //padding: 10px 20px;
+    //margin: 0 0 20px;
     font-size: 17.5px;
     border-left: 5px solid #eee;
   }
@@ -82,6 +82,16 @@ export default {
       padding-inline-start: 40px;
     }
   }
+}
+.app-container{
+  padding: 0 !important;
+}
+.img1{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: calc(100vh - 85px);
+ display: block;
 }
 </style>
 
