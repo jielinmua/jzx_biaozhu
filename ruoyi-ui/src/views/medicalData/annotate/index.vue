@@ -28,12 +28,12 @@
         <div class="canvasTool selectTool">
           <!--<i class="el-icon-rank"/>-->
           <el-select @change="instanceChange" v-model="instanceStatus">
-            <el-option :key="1" label="方形" :value="1" />
-            <el-option :key="2" label="自定义" :value="2" />
-            <el-option :key="3" label="点" :value="3" />
-            <el-option :key="4" label="线" :value="4" />
-            <el-option :key="5" label="圆" :value="5" />
-            <el-option :key="0" label="默认鼠标" :value="0" />
+            <el-option :key="1" label="方形(s)" :value="1" />
+            <el-option :key="2" label="自定义(u)" :value="2" />
+            <el-option :key="3" label="点(d)" :value="3" />
+            <!-- <el-option :key="4" label="线(l)" :value="4" /> -->
+            <el-option :key="5" label="圆(c)" :value="5" />
+            <el-option :key="0" label="默认鼠标(a)" :value="0" />
           </el-select>
         </div>
         <div class="canvasTool tagName">
@@ -166,9 +166,9 @@
             <!--    <span class="collapse-title" slot="title">结节最大径<el-input/></span>-->
             <!--  </el-collapse-item>-->
             <!--</div>-->
-<!--            <div class="thyroid-box"><span class="thyroid-box-title">结节最大径</span>-->
-<!--              <el-input class="thyroid-box-input" v-model="markData.jzxJiejiezuidajing" />-->
-<!--            </div>-->
+            <!--            <div class="thyroid-box"><span class="thyroid-box-title">结节最大径</span>-->
+            <!--              <el-input class="thyroid-box-input" v-model="markData.jzxJiejiezuidajing" />-->
+            <!--            </div>-->
             <div class="thyroid" style="margin-bottom: 10px">
               <el-row>
                 <el-col :span="9">
@@ -681,7 +681,7 @@ export default {
     this.pId = this.$route.query.pid
     this.queryParams.pId = this.$route.query.pid
     this.queryParams.isBiaozhu = this.$route.query.isBiaozhu
-    this.queryParams.patientId=this.$route.query.patientId
+    this.queryParams.patientId = this.$route.query.patientId
 
     // return
     this.getList();
@@ -750,7 +750,7 @@ export default {
       // this.queryParams.isBiaozhu = this.biaoList[this.index].isBiaozhu;
       // this.$message.warning(this.pId+"index的值为"+this.index);
       let zhi = {
-        patientId:this.biaoList[this.index].patientId,
+        patientId: this.biaoList[this.index].patientId,
         pId: this.pId,
         isBiaozhu: this.biaoList[this.index].isBiaozhu,
         pageNum: this.queryParams.pageNum,
@@ -800,7 +800,7 @@ export default {
 
       // this.$message.warning(this.pId+"index的值为"+this.index);
       let zhi = {
-        patientId:this.biaoList[this.index].patientId,
+        patientId: this.biaoList[this.index].patientId,
         pId: this.pId,
         isBiaozhu: this.biaoList[this.index].isBiaozhu,
         pageNum: this.queryParams.pageNum,
@@ -1075,9 +1075,27 @@ export default {
       container.style.height = canvasContainer.offsetHeight + 'px';
       this.instance.resize();
     },
+    handleKeyUp(event) {
+      const key = event.key
+      // instanceChange()
+      const keyList = {
+        s: 1,//方形
+        u: 2,//自定义
+        d: 3,//点
+        // l: 4,//线
+        c: 5,//圆
+        a: 0,//默认
+      }
+      console.log('keyList[key]: ', keyList[key]);
+      if (keyList[key] != undefined) {
+        this.instanceChange(keyList[key])
+      }
+
+
+    }
   },
   mounted() {
-
+    window.addEventListener("keydown", this.handleKeyUp)
     this.pId = this.$route.query.pId;
     console.log("mounted")
     console.log(this.pId)
@@ -1145,7 +1163,12 @@ export default {
       })
     }
   },
+  beforeDestroy() {
+    // 移除键盘事件监听
+    window.removeEventListener('keydown', this.handleKeyUp);
+  },
   deactivated() {
+
     // this.pId= this.$route.query.pId
 
     // console.log("路由"+this.$route.query.pId)
@@ -1310,7 +1333,8 @@ div {
 
 .box1 {
   display: flex;
-padding: 10px;
+  padding: 10px;
+
   p {
     // height: 40px;
     line-height: 4vh;
