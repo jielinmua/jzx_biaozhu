@@ -353,6 +353,7 @@ export default {
         // return
         if (valid) {
           if (this.form.id != null) {
+            console.log(this.form)
             updatePatient(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
               this.open = false;

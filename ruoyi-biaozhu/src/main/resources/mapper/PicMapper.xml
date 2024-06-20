@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <resultMap type="Pic" id="PicResult">
         <result property="pId"    column="p_id"    />
+        <result property="id"    column="id"    />
         <result property="patientId"    column="patient_id"    />
         <result property="age"    column="age"    />
         <result property="gender"    column="gender"    />
@@ -79,11 +80,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </sql>
 
     <select id="selectPicList" parameterType="Pic" resultMap="PicResult">
-        <include refid="selectPicVo"/>
+        SELECT
+        patient.id,
+        pic.*
+        FROM
+        patient
+        INNER JOIN
+        pic
+        ON
+        patient.patient_id = pic.patient_id
         <where>  
-            <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
-            <if test="age != null "> and age = #{age}</if>
-            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+            <if test="patientId != null  and patientId != ''"> and pic.patient_id = #{patientId}</if>
+            <if test="age != null "> and pic.age = #{age}</if>
+            <if test="gender != null  and gender != ''"> and pic.gender = #{gender}</if>
             <if test="jiazhuangxianshizhimiman != null "> and jiazhuangxianshizhimiman = #{jiazhuangxianshizhimiman}</if>
             <if test="jzxShifoushuangceexing != null "> and jzx_shifoushuangceexing = #{jzxShifoushuangceexing}</if>
             <if test="jzxDuofabingzhao != null "> and jzx_duofabingzhao = #{jzxDuofabingzhao}</if>
@@ -146,7 +155,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="imgAddress != null  and imgAddress != ''"> and img_address = #{imgAddress}</if>
             <if test="isBiaozhu != null "> and is_biaozhu = #{isBiaozhu}</if>
         </where>
-        ORDER BY create_time DESC
+        ORDER BY pic.create_time DESC
     </select>
     
     <select id="selectPicByPId" parameterType="String" resultMap="PicResult">

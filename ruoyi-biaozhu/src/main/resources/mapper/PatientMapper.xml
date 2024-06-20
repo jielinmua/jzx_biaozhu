@@ -36,9 +36,9 @@
         ON
         patient.patient_id = pic_info.patient_id
         <where>
-            <if test="patientId != null  and patientId != ''"> and patient_id = #{patientId}</if>
-            <if test="age != null "> and age = #{age}</if>
-            <if test="gender != null  and gender != ''"> and gender = #{gender}</if>
+            <if test="patientId != null  and patientId != ''"> and patient.patient_id = #{patientId}</if>
+            <if test="age != null "> and patient.age = #{age}</if>
+            <if test="gender != null  and gender != ''"> and patient.gender = #{gender}</if>
         </where>
         GROUP BY
         patient.id,

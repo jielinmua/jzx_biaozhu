@@ -631,6 +631,11 @@ export default {
         ...this.queryParams
       }, `biao_${new Date().getTime()}.xlsx`)
     },
+    // handleExport() {
+    //   this.download('biaozhu/pic/export', {
+    //
+    //   }, `biao_${new Date().getTime()}.xlsx`)
+    // },
     /**导入图片**/
     handleImport() {
       this.fileList=[]
