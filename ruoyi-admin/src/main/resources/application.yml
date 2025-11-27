@@ -7,7 +7,7 @@ ruoyi:
   # 版权年份
   copyrightYear: 2024
   # 文件路径 示例（ Windows配置D:/ruoyi/uploadPath，Linux配置 /home/ruoyi/uploadPath）
-  profile: /home/chenpeng/workspace/system/jzx/uploadPath/
+  profile: /16T_1/file/jzx/uploadPath/
   # 获取ip地址开关
   addressEnabled: false
   # 验证码类型 math 数字计算 char 字符验证
@@ -69,13 +69,14 @@ spring:
   # redis 配置
   redis:
     # 地址
-    host: localhost
+    host: 192.168.1.242
+#    host: localhost
     # 端口，默认为6379
     port: 6379
     # 数据库索引
     database: 0
     # 密码
-    password: zzu@2022
+    password: MY@zzu1210
     # 连接超时时间
     timeout: 10s
     lettuce:
@@ -128,3 +129,13 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
+
+minio:
+  endpoint: http://192.168.1.242:9010 # 域名
+#  endpoint: http://202.102.249.124:9010 # 域名
+  accessKey: zzu05@mindyardMinio # 用户名
+  secretKey: mindyard@Minio # 密钥
+  bucketName: jzx #存储桶名称
+  url: https://jzx.mindyard.cn #文件访问地址
+  urlPrefix: https://jzx.mindyard.cn/jzx #文件访问固定路径
+#  urlPrefix: http://192.168.1.115:9010/xindian #内网文件访问固定路径

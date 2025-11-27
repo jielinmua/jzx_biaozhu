@@ -2,9 +2,11 @@ package com.ruoyi.biaozhu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.biaozhu.utils.FileUploadUtils;
+import com.ruoyi.biaozhu.utils.MinioUtils;
 import com.ruoyi.common.config.RuoYiConfig;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.common.utils.file.FileUtils;
@@ -36,6 +38,9 @@ public class PicInfoController extends BaseController
 
     @Autowired
     private FileUploadUtils fileUploadUtils;
+
+    @Resource
+    private MinioUtils minioUtils;
 
     /**
      * 查询数据图表列表
@@ -123,10 +128,14 @@ public class PicInfoController extends BaseController
     {
         try
         {
-            // 上传文件路径
-            String filePath = RuoYiConfig.getUploadPath();
+            String imgName = file.getOriginalFilename();
+
+            String[] s = null;
+            if (imgName != null) {
+                s = imgName.split("\\.");
+            }
             // 上传并返回新文件名称
-            String fileName = fileUploadUtils.uploadImgUrl(file);
+            String fileName = minioUtils.uploadFileFixed("file", System.currentTimeMillis()+"." + (s!=null ? s[s.length-1] : "png"), file.getInputStream());
             AjaxResult ajax = AjaxResult.success();
             ajax.put("url", fileName);
             ajax.put("fileName", fileName);
@@ -158,7 +167,14 @@ public class PicInfoController extends BaseController
             for (MultipartFile file : files)
             {
                 // 上传并返回新文件名称
-                String fileName = fileUploadUtils.uploadImgUrl(file);
+                String imgName = file.getOriginalFilename();
+
+                String[] s = null;
+                if (imgName != null) {
+                    s = imgName.split("\\.");
+                }
+                // 上传并返回新文件名称
+                String fileName = minioUtils.uploadFileFixed("file", System.currentTimeMillis()+"." + (s!=null ? s[s.length-1] : "png"), file.getInputStream());
                 urls.add(fileName);
                 fileNames.add(fileName);
                 newFileNames.add(FileUtils.getName(fileName));

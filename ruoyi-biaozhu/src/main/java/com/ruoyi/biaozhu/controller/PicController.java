@@ -2,11 +2,13 @@ package com.ruoyi.biaozhu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ruoyi.biaozhu.domain.PicInfo;
 import com.ruoyi.biaozhu.service.IPicInfoService;
 import com.ruoyi.biaozhu.utils.FileUploadUtils;
+import com.ruoyi.biaozhu.utils.MinioUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +42,8 @@ public class PicController extends BaseController
     private FileUploadUtils fileUploadUtils;
 
 
+    @Resource
+    private MinioUtils minioUtils;
 
     /**
      * 查询标注列表
@@ -89,19 +93,19 @@ public class PicController extends BaseController
         try {
             for (MultipartFile image : images) {
                 // 生成PID
-                String pId = String.valueOf(System.currentTimeMillis()) + String.valueOf((int)((Math.random() * 9 + 1) * 100000));
+                String pId = System.currentTimeMillis() + String.valueOf((int)((Math.random() * 9 + 1) * 100000));
 
-                // 指定图片保存的位置和用户ID（这里假设使用PID作为示例的用户ID）
-                String location = "jzx"; // 请根据实际情况修改位置
-                String userId = pId; // 这应该是你识别用户的方式
+                String imgName = image.getOriginalFilename();
 
+                String[] s = null;
+                if (imgName != null) {
+                    s = imgName.split("\\.");
+                }
+                String path = minioUtils.uploadFileFixed("biaozhu", System.currentTimeMillis()+"." + (s!=null ? s[s.length-1] : "png"), image.getInputStream());
                 // 使用FileUploadUtils来保存文件
-                String path = fileUploadUtils.uploadImgUrl(image, location, userId);
-
                 if (path == null) {
                     return AjaxResult.error("上传图片失败");
                 }
-
                 // 创建Pic对象并设置属性
                 Pic pic = new Pic();
                 pic.setpId(pId);
