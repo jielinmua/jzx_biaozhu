@@ -28,12 +28,12 @@
         <div class="canvasTool selectTool">
           <!--<i class="el-icon-rank"/>-->
           <el-select @change="instanceChange" v-model="instanceStatus">
-            <el-option :key="1" label="方形" :value="1" />
-            <el-option :key="2" label="自定义" :value="2" />
-            <el-option :key="3" label="点" :value="3" />
-            <el-option :key="4" label="线" :value="4" />
-            <el-option :key="5" label="圆" :value="5" />
-            <el-option :key="0" label="默认鼠标" :value="0" />
+            <el-option :key="1" label="方形(s)" :value="1" />
+            <el-option :key="2" label="自定义(u)" :value="2" />
+            <el-option :key="3" label="点(d)" :value="3" />
+            <!-- <el-option :key="4" label="线(l)" :value="4" /> -->
+            <el-option :key="5" label="圆(c)" :value="5" />
+            <el-option :key="0" label="默认鼠标(a)" :value="0" />
           </el-select>
         </div>
         <div class="canvasTool tagName">
@@ -71,10 +71,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">甲状腺实质弥漫</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-radio v-model="markData.jiazhuangxianshizhimiman" :label="1">是</el-radio>
                   <el-radio v-model="markData.jiazhuangxianshizhimiman" :label="0">否</el-radio>
                 </el-col>
@@ -83,10 +83,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">是否双侧恶性</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-radio v-model="markData.jzxShifoushuangceexing" :label="1">是</el-radio>
                   <el-radio v-model="markData.jzxShifoushuangceexing" :label="0">否</el-radio>
                 </el-col>
@@ -95,10 +95,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">多发病灶(单侧叶)</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-radio v-model="markData.jzxDuofabingzhao" :label="1">是</el-radio>
                   <el-radio v-model="markData.jzxDuofabingzhao" :label="0">否</el-radio>
                 </el-col>
@@ -107,10 +107,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">位置</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-row>
                     <el-col>
                       <el-checkbox v-model="markData.jzxWeizhiShangji" @change="weizhiChange(1)" :true-label="1"
@@ -133,10 +133,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">组织病理结果</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-row>
                     <el-col>
                       <el-checkbox v-model="markData.jzxZuzhibingliLiangxing" @change="bingliChange(1)" :true-label="1"
@@ -166,9 +166,22 @@
             <!--    <span class="collapse-title" slot="title">结节最大径<el-input/></span>-->
             <!--  </el-collapse-item>-->
             <!--</div>-->
-            <div class="thyroid-box"><span class="thyroid-box-title">结节最大径</span>
-              <el-input class="thyroid-box-input" v-model="markData.jzxJiejiezuidajing" />
+            <!--            <div class="thyroid-box"><span class="thyroid-box-title">结节最大径</span>-->
+            <!--              <el-input class="thyroid-box-input" v-model="markData.jzxJiejiezuidajing" />-->
+            <!--            </div>-->
+            <div class="thyroid" style="margin-bottom: 10px">
+              <el-row>
+                <el-col :span="9">
+                  <span class="item-title">结节最大径</span>
+                </el-col>
+                <el-col :span="15">
+                  <el-input v-model="markData.jzxJiejiezuidajing" />
+                </el-col>
+              </el-row>
             </div>
+
+
+
           </el-collapse-item>
 
           <el-collapse-item name="2">
@@ -176,10 +189,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">内部结构</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-row>
                     <el-col>
                       <el-checkbox v-model="markData.jzxNeibujiegouShixing" @change="jiegouChange(1)" :true-label="1"
@@ -211,10 +224,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">回声</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-row>
                     <el-col>
                       <el-checkbox v-model="markData.jzxHuishengGaohuisheng" @change="huishengChange(1)" :true-label="1"
@@ -240,10 +253,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">形状</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-row>
                     <el-col>
                       <el-checkbox v-model="markData.jzxXingzhuangDayudengyu" @change="jzxxingzhuangChange(1)"
@@ -260,10 +273,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">边缘</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-row>
                     <el-col :span="20">
                       <el-checkbox v-model="markData.jzxBianyuanGuangzheng" @change="jzxbianyuanChange(1)"
@@ -292,10 +305,10 @@
 
             <div class="thyroid">
               <el-row>
-                <el-col :span="8">
+                <el-col :span="9">
                   <span class="item-title">局灶强回声</span>
                 </el-col>
-                <el-col :span="16">
+                <el-col :span="15">
                   <el-row>
                     <el-col>
                       <el-checkbox v-model="markData.jzxJuzhaoqianghuishengDianzhuang" :true-label="1" :false-label="0">
@@ -327,19 +340,19 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">大小</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
-                  <el-col class="item-title" :span="8">水平径</el-col>
-                  <el-col :span="16">
+                  <el-col class="item-title" :span="9">水平径</el-col>
+                  <el-col :span="15">
                     <el-input v-model="markData.lbjDaxiaoShuipingjing"></el-input>
                   </el-col>
                 </el-row>
                 <el-row style="margin-top: 10px;">
-                  <el-col class="item-title" :span="8">垂直径</el-col>
-                  <el-col :span="16">
+                  <el-col class="item-title" :span="9">垂直径</el-col>
+                  <el-col :span="15">
                     <el-input v-model="markData.lbjDaxiaoCuizhijing"></el-input>
                   </el-col>
                 </el-row>
@@ -349,10 +362,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">形状</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-checkbox v-model="markData.lbjXingzhuangTuoyuan" @change="lbjxingzhuangChange(1)"
@@ -372,10 +385,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">边缘</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-checkbox v-model="markData.lbjBianyuanBuguize" @change="lbjbianyuanChange(1)" :true-label="1"
@@ -393,10 +406,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">淋巴门</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-checkbox v-model="markData.lbjLinbamenZhengchang" @change="lbjlinbamenChange(1)" :true-label="1"
@@ -419,10 +432,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">皮质</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-checkbox v-model="markData.lbjPizhiJunyunzenghou" @change="lbjpizhiChange(1)" :true-label="1"
@@ -439,10 +452,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">内均质高回声</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-radio v-model="markData.lbjNeijunzhigaohuisheng" :label="1">是</el-radio>
@@ -455,10 +468,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">液化</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-radio v-model="markData.lbjYehua" :label="1">是</el-radio>
@@ -472,10 +485,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">钙化</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-radio v-model="markData.lbjGaihua" :label="1">是</el-radio>
@@ -488,10 +501,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">血流</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-checkbox v-model="markData.lbjXueliuZhengchang" @change="lbjxueliuChange(1)" :true-label="1"
@@ -514,10 +527,10 @@
 
           <div class="thyroid">
             <el-row>
-              <el-col :span="8">
+              <el-col :span="9">
                 <span class="item-title">病理结果</span>
               </el-col>
-              <el-col :span="16">
+              <el-col :span="15">
                 <el-row>
                   <el-col>
                     <el-radio v-model="markData.lbjBinglijieguo" :label="1">是</el-radio>
@@ -668,7 +681,7 @@ export default {
     this.pId = this.$route.query.pid
     this.queryParams.pId = this.$route.query.pid
     this.queryParams.isBiaozhu = this.$route.query.isBiaozhu
-    this.queryParams.patientId=this.$route.query.patientId
+    this.queryParams.patientId = this.$route.query.patientId
 
     // return
     this.getList();
@@ -737,7 +750,7 @@ export default {
       // this.queryParams.isBiaozhu = this.biaoList[this.index].isBiaozhu;
       // this.$message.warning(this.pId+"index的值为"+this.index);
       let zhi = {
-        patientId:this.biaoList[this.index].patientId,
+        patientId: this.biaoList[this.index].patientId,
         pId: this.pId,
         isBiaozhu: this.biaoList[this.index].isBiaozhu,
         pageNum: this.queryParams.pageNum,
@@ -787,7 +800,7 @@ export default {
 
       // this.$message.warning(this.pId+"index的值为"+this.index);
       let zhi = {
-        patientId:this.biaoList[this.index].patientId,
+        patientId: this.biaoList[this.index].patientId,
         pId: this.pId,
         isBiaozhu: this.biaoList[this.index].isBiaozhu,
         pageNum: this.queryParams.pageNum,
@@ -1062,9 +1075,27 @@ export default {
       container.style.height = canvasContainer.offsetHeight + 'px';
       this.instance.resize();
     },
+    handleKeyUp(event) {
+      const key = event.key
+      // instanceChange()
+      const keyList = {
+        s: 1,//方形
+        u: 2,//自定义
+        d: 3,//点
+        // l: 4,//线
+        c: 5,//圆
+        a: 0,//默认
+      }
+      console.log('keyList[key]: ', keyList[key]);
+      if (keyList[key] != undefined) {
+        this.instanceChange(keyList[key])
+      }
+
+
+    }
   },
   mounted() {
-
+    window.addEventListener("keydown", this.handleKeyUp)
     this.pId = this.$route.query.pId;
     console.log("mounted")
     console.log(this.pId)
@@ -1132,7 +1163,12 @@ export default {
       })
     }
   },
+  beforeDestroy() {
+    // 移除键盘事件监听
+    window.removeEventListener('keydown', this.handleKeyUp);
+  },
   deactivated() {
+
     // this.pId= this.$route.query.pId
 
     // console.log("路由"+this.$route.query.pId)
@@ -1165,7 +1201,7 @@ div {
   background-color: #409eff;
   width: 5px;
   height: 40%;
-  left: 2px;
+  left: 15px;
 }
 
 .leftAsh::after {
@@ -1182,7 +1218,7 @@ div {
 }
 
 .canvasBox {
-  width: 75%;
+  width: 70%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -1280,7 +1316,7 @@ div {
 
 .controllerBox {
   height: calc(100vh - 84px);
-  width: 25%;
+  width: 30%;
   background-color: #fff;
   padding: 0 20px;
   overflow-x: hidden;
@@ -1297,6 +1333,7 @@ div {
 
 .box1 {
   display: flex;
+  padding: 10px;
 
   p {
     // height: 40px;
@@ -1347,7 +1384,7 @@ div {
 .thyroid-box {
   height: 48px;
   display: flex;
-  padding-left: 50px;
+  padding-left: 15px;
 
   &-title {
     //文字不换行
@@ -1371,7 +1408,7 @@ div {
 
 
 .item-title {
-  padding-left: 30px;
+  padding-left: 15px;
   font-size: 13px;
 }
 

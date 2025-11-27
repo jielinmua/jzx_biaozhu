@@ -15,6 +15,9 @@ public class Pic extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
+
+    @Excel(name = "患者序号")
+    private Integer id;
     /** 主键 */
     private String pId;
 
@@ -275,7 +278,16 @@ public class Pic extends BaseEntity
     @Excel(name = "是否标注0为未标注1为已标注2丢弃")
     private Long isBiaozhu;
 
-    public void setpId(String pId) 
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setpId(String pId)
     {
         this.pId = pId;
     }

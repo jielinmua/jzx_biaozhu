@@ -184,7 +184,7 @@
 import {listPatient, getPatient, delPatient, addPatient, updatePatient, uploadFile, addBiao} from "@/api/info/biao";
 
 export default {
-  name: "Patient",
+  name: "Index1",
   dicts: ['jzx_is_biaozhu', 'sys_user_sex'],
   data() {
     return {
@@ -353,6 +353,7 @@ export default {
         // return
         if (valid) {
           if (this.form.id != null) {
+            console.log(this.form)
             updatePatient(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
               this.open = false;
